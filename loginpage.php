@@ -1,12 +1,33 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <title>log in screen</title>
 
 <head>
+    <title>LogInPage</title>
     <meta name="viewport" http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="loginpage.css">
-    <title>LogInPage</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#login_form").submit(function (event) {
+                event.preventDefault();
+                var username = $("#username").val();
+                var password = $("#password").val();
+                var submit = $("#submitlogin").val();
+                $("#login_msg").load("loginval.php", {
+                    username: username,
+                    password: password,
+                    submit : submit
+                });
+            });
+        });
+    </script>
+
+
 </head>
 
 
@@ -15,13 +36,15 @@
     <nav>
         <a class="welcomemsg">Welcome to our site</a>
         <div class="loginform">
-            <form name="login_form" method="POST" action="login.php">
-                Username:
-                <input type="text" name="username" placeholder="username" id="username">
-                Password:
-                <input style="margin-left: 4px" type="password" name="password" placeholder="password" id="password" a>
-                <input type="submit" value="Login">
+            <form id="login_form" name="login_form" method="POST" action="loginval.php">
+                <label>Username:</label>
+                <input id="username" type="text" name="username" placeholder="username" id="username">
+                <label>Password:</label>
+                <input style="margin-left: 4px" id="password" type="password" name="password" placeholder="password" id="password" a>
+                <input type="submit" id="submitlogin" name="submitlogin" value="Login">
+                <p id="login_msg"></p>
             </form>
+
 
         </div>
     </nav>
@@ -37,7 +60,7 @@
             </p>
             <div class="registerform">
                 <a>Εάν δεν έχετε λογαριασμό παρακαλώ εγγραφείτε ΕΔΩ</a>
-                    <form name="login_form" method="POST" action="login.php">
+                    <form name="register_form" method="POST" action="login.php">
                         <label>Όνομα:</label>
                         <input class="inputregister" type="text" name="fname" placeholder="Enter your first name" id="userfname">
                         <br>
@@ -51,7 +74,7 @@
                         <label>Email:</label>
                         <input class="inputregister"  type="email" name="email" placeholder="Enter Your Email" id="useremail">
                         <br>
-                        <input class="inputregister"  type="submit" value="Sign Up">
+                        <input class="inputregister" id="submitregister"  type="submit" value="Sign Up">
                     </form>
             </div>
         </div>

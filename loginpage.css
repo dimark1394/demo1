@@ -70,4 +70,15 @@ th, td {
     padding: 15px;
 }
 
+.loginerror{
+    color: red;
+}
+
+.inputerror{
+    box-shadow: 0 0 5px red;
+}
+
+.errormsg{
+    color: red;
+}
 
