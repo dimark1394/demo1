@@ -5,12 +5,12 @@ if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $errorEmpty = false;
-    $errorUsername = false;
-    $errorPassword = false;
+//    $errorEmpty = false;
+//    $errorUsername = false;
+//    $errorPassword = false;
 
     if (empty($username) || empty($password)) {
-        $errorEmpty = true;
+//        $errorEmpty = true;
         echo "<span class='errormsg'>Fill in all fields</span>";
     } else {
         $sql = "SELECT * FROM admin WHERE username=? ";
@@ -26,17 +26,17 @@ if (isset($_POST['submit'])) {
                 $pwdcheck = strcmp($hashedpwd, $row['password']);
                 if ($pwdcheck !== 0) {
                     echo "<span class='errormsg'>Password is wrong</span>";
-                    $errorpassword = true;
+//                    $errorpassword = true;
                 } else if ($pwdcheck == 0) {
                     session_start();
                     $_SESSION['uid'] = $row['username'];
-                    echo "success";
+                    echo "success as admin";
                 } else {
                     echo "Something Happened";
                 }
             } else {
                 echo "<span class='errormsg'>Username is wrong</span>";
-                $errorUsername = true;
+//                $errorUsername = true;
             }
         }
     }

@@ -12,22 +12,92 @@
     <link rel="stylesheet" href="loginpage.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function () {
             $("#login_form").submit(function (event) {
                 event.preventDefault();
-                var username = $("#username").val();
-                var password = $("#password").val();
-                var submit = $("#submitlogin").val();
-                $("#login_msg").load("loginval.php", {
-                    username: username,
-                    password: password,
-                    submit : submit
-                });
-            });
-        });
+                $.ajax({
+                    type: "POST",
+                    url: "loginval.php",
+                    data: {
+                        username: $("#username").val(),
+                        password: $("#password").val(),
+                        submit: $("#submitlogin").val()
+
+                    },
+                    success: function(data) {
+                        if(data === 'success as admin'){
+                            window.location.replace("indexadmin.php");
+                        }else if(data === 'success as user'){
+                            window.location.replace("profile.php");
+                        }
+                        else
+                        {
+                            $("#username, #password").removeClass("inputerror");
+                            $("#login_msg").html(data);
+                            if($("#login_msg").html(data).text() === "Fill in all fields") {
+                                $("#username, #password").addClass("inputerror");
+                            }
+                            if($("#login_msg").html(data).text() === "Username is wrong") {
+                                $("#username").addClass("inputerror");
+                            }
+                            if($("#login_msg").html(data).text() === "Password is wrong") {
+                                $("#password").addClass("inputerror");
+                            }
+                        }
+
+                    }
+                })
+
+            })
+
+        })
     </script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("#register_form").submit(function (eve) {
+            eve.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "register.php",
+                data: {
+                    firstname: $("#userfname").val(),
+                    lastname: $("#userlname").val(),
+                    usenamereg: $("#usenamereg").val(),
+                    passwordreg: $("#passwordreg").val(),
+                    email: $("#useremail").val(),
+                    submitregister:  $("#submitregister").val()
+                },
+                success: function(data) {
+                    if (data === 'successful registration') {
+                        window.location.replace("profile.php")
+                    } else {
+                        $("#userfname,#userlname, #passwordreg,#usernamereg, #useremail").removeClass("inputerror");
+                        $("#signupmsg").html(data);
+                        if ($("#signupmsg").html(data).text() === "Fill in all fields") {
+                            $("#userfname,#userlname, #passwordreg,#usernamereg, #useremail").addClass("inputerror");
+                            //     }
+                            //     if($("#signupmsg").html(data).text() === "Missing Lastname") {
+                            //         $("#userlname").addClass("inputerror");
+                            //     }
+                            //     if($("#signupmsg").html(data).text() === "Missing Username") {
+                            //         $("#usernamereg").addClass("inputerror");
+                            //     }
+                            //     if($("#signupmsg").html(data).text() === "Fill a password") {
+                            //         $("#passwordreg").addClass("inputerror");
+                            //     }
+                            //     if($("#signupmsg").html(data).text() === "Fill an email") {
+                            //         $("#email").addClass("inputerror");
+                            //     }
 
+                            // }
+                        }
+                    }
+                }
+            })
+        })
+    })
 
+    </script>
 </head>
 
 
@@ -60,7 +130,7 @@
             </p>
             <div class="registerform">
                 <a>Εάν δεν έχετε λογαριασμό παρακαλώ εγγραφείτε ΕΔΩ</a>
-                    <form name="register_form" method="POST" action="login.php">
+                    <form id="register_form" >
                         <label>Όνομα:</label>
                         <input class="inputregister" type="text" name="fname" placeholder="Enter your first name" id="userfname">
                         <br>
@@ -69,12 +139,13 @@
                         <label>Username:</label>
                         <input class="inputregister" type="text" name="username" placeholder="Enter your desired username" id="usernamereg">
                         <label>Password:</label>
-                        <input class="inputregister"  type="password" name="password" placeholder="Enter your Password" id="passwordreg" a>
+                        <input  class="inputregister"  type="password" name="password" placeholder="Enter your Password" id="passwordreg">
                         <br>
                         <label>Email:</label>
                         <input class="inputregister"  type="email" name="email" placeholder="Enter Your Email" id="useremail">
                         <br>
                         <input class="inputregister" id="submitregister"  type="submit" value="Sign Up">
+                        <p id="signupmsg"></p>
                     </form>
             </div>
         </div>
