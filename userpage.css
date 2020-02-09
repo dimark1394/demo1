@@ -1,0 +1,64 @@
+.welcomemsg{
+    font-size: 30px;
+    float: left;
+    display: inline;
+    padding-left: 55px;
+    margin-top: 11px;
+    margin-left: 50px;
+    color: aliceblue;
+
+}
+.elements {
+    font-size: 30px;
+    padding-bottom: 30px;
+    padding-left: 60%;
+    margin-top: 10px;
+    margin-bottom: 5%;
+    color: aliceblue;
+
+}
+
+nav{
+    background-color: #5d4954;
+    border: 0;
+    margin: 0;
+    padding-bottom: 0px;
+    padding-top: 50px;
+}
+
+body{
+    padding:0;
+    margin:0;
+    background-repeat: no-repeat, repeat;
+    background-position: 50% 65%;
+    background-attachment: fixed;
+    background-size: auto;
+
+}
+
+.section{
+    widows: auto;
+    height: 500px;
+    margin: 20px;
+
+}
+
+h2{
+    color: aliceblue;
+    padding-left: 5%;
+
+}
+
+
+#mapid {
+    margin-left: 40px;
+    height: 480px;
+    width: 40%;
+    align: "center"
+}
+
+.upload{
+    margin-left: 5%;
+    color: aliceblue;
+    font-size: 20px;
+}
