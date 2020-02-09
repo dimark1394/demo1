@@ -1,9 +1,13 @@
+header{
+    height: 5em;
+}
 nav{
     background-color: #5d4954;
     border: 0;
     margin: 0;
     padding-bottom: 50px;
     padding-top: 50px;
+    height: 2.01em;
 }
 .welcomemsg{
     font-size: 30px;
@@ -11,7 +15,6 @@ nav{
     display: inline;
     padding-left: 5px;
     color: aliceblue;
-
 }
 body{
     padding:0;
@@ -22,15 +25,34 @@ body{
     background-size: auto;
 
 }
-.loginform {
+#login_form{
     margin-top: 0;
     float: right;
-    display: inline;
     width: 30%;
+    color: aliceblue;
     background-color: transparent;
-    color : azure;
+    padding-right: 5px;
+    display: none;
+
+}
+#login_formu{
+    margin-top: 0;
+    float: right;
+    width: 30%;
+    color: aliceblue;
+    background-color: transparent;
     padding-right: 5px;
 }
+
+#logadmbtn{
+    float: right;
+    margin-right: 1em;
+}
+#logmsg{
+    float: left;
+    margin-right: 1em;
+}
+
 .container{
     width: 100%;
 }
@@ -81,4 +103,3 @@ th, td {
 .errormsg{
     color: red;
 }
-

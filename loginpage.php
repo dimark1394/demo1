@@ -11,112 +11,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="loginpage.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#login_form").submit(function (event) {
-                event.preventDefault();
-                $.ajax({
-                    type: "POST",
-                    url: "loginval.php",
-                    data: {
-                        username: $("#username").val(),
-                        password: $("#password").val(),
-                        submit: $("#submitlogin").val()
-
-                    },
-                    success: function(data) {
-                        if(data === 'success as admin'){
-                            window.location.replace("indexadmin.php");
-                        }else if(data === 'success as user'){
-                            window.location.replace("profile.php");
-                        }
-                        else
-                        {
-                            $("#username, #password").removeClass("inputerror");
-                            $("#login_msg").html(data);
-                            if($("#login_msg").html(data).text() === "Fill in all fields") {
-                                $("#username, #password").addClass("inputerror");
-                            }
-                            if($("#login_msg").html(data).text() === "Username is wrong") {
-                                $("#username").addClass("inputerror");
-                            }
-                            if($("#login_msg").html(data).text() === "Password is wrong") {
-                                $("#password").addClass("inputerror");
-                            }
-                        }
-
-                    }
-                })
-
-            })
-
-        })
-    </script>
-    <script type="text/javascript">
-    $(document).ready(function () {
-        $("#register_form").submit(function (eve) {
-            eve.preventDefault();
-            $.ajax({
-                type: "POST",
-                url: "register.php",
-                data: {
-                    firstname: $("#userfname").val(),
-                    lastname: $("#userlname").val(),
-                    usenamereg: $("#usenamereg").val(),
-                    passwordreg: $("#passwordreg").val(),
-                    email: $("#useremail").val(),
-                    submitregister:  $("#submitregister").val()
-                },
-                success: function(data) {
-                    if (data === 'successful registration') {
-                        window.location.replace("profile.php")
-                    } else {
-                        $("#userfname,#userlname, #passwordreg,#usernamereg, #useremail").removeClass("inputerror");
-                        $("#signupmsg").html(data);
-                        if ($("#signupmsg").html(data).text() === "Fill in all fields") {
-                            $("#userfname,#userlname, #passwordreg,#usernamereg, #useremail").addClass("inputerror");
-                            //     }
-                            //     if($("#signupmsg").html(data).text() === "Missing Lastname") {
-                            //         $("#userlname").addClass("inputerror");
-                            //     }
-                            //     if($("#signupmsg").html(data).text() === "Missing Username") {
-                            //         $("#usernamereg").addClass("inputerror");
-                            //     }
-                            //     if($("#signupmsg").html(data).text() === "Fill a password") {
-                            //         $("#passwordreg").addClass("inputerror");
-                            //     }
-                            //     if($("#signupmsg").html(data).text() === "Fill an email") {
-                            //         $("#email").addClass("inputerror");
-                            //     }
-
-                            // }
-                        }
-                    }
-                }
-            })
-        })
-    })
-
-    </script>
+    <script type="text/javascript" src="login.js"></script>
+    <script type="text/javascript" src="loginuser.js"></script>
+    <script type="text/javascript" src="register.js" ></script>
 </head>
+
 
 
 <body background="images/patras.jpg">
 <header>
     <nav>
         <a class="welcomemsg">Welcome to our site</a>
-        <div class="loginform">
-            <form id="login_form" name="login_form" method="POST" action="loginval.php">
-                <label>Username:</label>
-                <input id="username" type="text" name="username" placeholder="username" id="username">
-                <label>Password:</label>
-                <input style="margin-left: 4px" id="password" type="password" name="password" placeholder="password" id="password" a>
-                <input type="submit" id="submitlogin" name="submitlogin" value="Login">
-                <p id="login_msg"></p>
-            </form>
+<!--        <div class="loginformu" >-->
+
+        <form id="login_formu" name="login_form" method="POST" action="loginvaluser.php">
+            <label>Username:</label>
+            <input id="usernameu" type="text" name="username" placeholder="username" >
+            <label>Password:</label>
+            <input style="margin-left: 4px" id="passwordu" type="password" name="password" placeholder="password">
+            <input type="submit" id="submitloginu" name="submitlogin" value="Login">
+            <p id="login_msguser">Logging in as a User</p>
+        </form>
+<!--        </div>-->
+<!--        <div class="loginforma" >-->
+        <form id="login_form" name="login_form" method="POST" action="loginval.php">
+            <label>Username:</label>
+            <input id="username" type="text" name="username" placeholder="username" >
+            <label>Password:</label>
+            <input style="margin-left: 4px" id="password" type="password" name="password" placeholder="password" >
+            <input type="submit" id="submitlogin" name="submitlogin" value="Login">
+            <p id="login_msg">Logging in as Admin</p>
+        </form>
+        <button id="logadmbtn" onclick="showhide()">Log in as Admin</button><br>
+        <script>
+            function showhide() {
+                let x = document.getElementById("login_form");
+                let y = document.getElementById("login_formu");
+                if(x.style.display === 'none'){
+                    x.style.display = 'inline';
+                    y.style.display = 'none';
+                    document.getElementById('logadmbtn').innerHTML = 'Log in as User';
+                }else{
+                    x.style.display = 'none';
+                    y.style.display = 'inline';
+                    document.getElementById('logadmbtn').innerHTML = 'Log in as Admin';
+                }
+
+            }
+        </script>
 
 
-        </div>
+
+<!--        </div>-->
+
     </nav>
 </header>
 
@@ -130,23 +77,27 @@
             </p>
             <div class="registerform">
                 <a>Εάν δεν έχετε λογαριασμό παρακαλώ εγγραφείτε ΕΔΩ</a>
-                    <form id="register_form" >
-                        <label>Όνομα:</label>
-                        <input class="inputregister" type="text" name="fname" placeholder="Enter your first name" id="userfname">
-                        <br>
-                        <label>Επώνυμο:</label>
-                        <input class="inputregister" type="text" name="λναμε" placeholder="Enter your last rname" id="userlname">
-                        <label>Username:</label>
-                        <input class="inputregister" type="text" name="username" placeholder="Enter your desired username" id="usernamereg">
-                        <label>Password:</label>
-                        <input  class="inputregister"  type="password" name="password" placeholder="Enter your Password" id="passwordreg">
-                        <br>
-                        <label>Email:</label>
-                        <input class="inputregister"  type="email" name="email" placeholder="Enter Your Email" id="useremail">
-                        <br>
-                        <input class="inputregister" id="submitregister"  type="submit" value="Sign Up">
-                        <p id="signupmsg"></p>
-                    </form>
+                <form id="register_form" action="register.php" method="POST" >
+                    <label>Όνομα:</label>
+                    <input class="inputregister" type="text" name="fname" placeholder="Enter your first name" id="userfname">
+                    <br>
+                    <label>Επώνυμο:</label>
+                    <input class="inputregister" type="text" name="lname" placeholder="Enter your last last name" id="userlname">
+                    <label>Username:</label>
+                    <input class="inputregister" type="text" name="username" placeholder="Enter your desired username" id="usernamereg">
+                    <label>Password:</label>
+                    <input  class="inputregister"  type="password" name="password" placeholder="Choose a password with at least 8 characters one number and one symbol" id="passwordreg">
+                    <br>
+                    <label>Email:</label>
+                    <input class="inputregister"  type="email" name="email" placeholder="Enter Your Email" id="useremail">
+                    <br>
+                    <input class="inputregister" id="submitregister"  type="submit" value="Sign Up">
+                    <div id="ack"></div>
+
+                </form>
+                <p id="dasdasd"></p>
+                <!--connect with reigster.js (AJAX) -->
+                <script type="text/javascript"  src="register.js"></script>
             </div>
         </div>
 </main>
