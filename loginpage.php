@@ -51,10 +51,12 @@
                     x.style.display = 'inline';
                     y.style.display = 'none';
                     document.getElementById('logadmbtn').innerHTML = 'Log in as User';
+                    document.getElementById('login_msguser').innerHTML = 'Logging in as a User';
                 }else{
                     x.style.display = 'none';
                     y.style.display = 'inline';
                     document.getElementById('logadmbtn').innerHTML = 'Log in as Admin';
+                    document.getElementById('login_msg').innerHTML = 'Logging in as Admin';
                 }
 
             }

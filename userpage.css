@@ -1,31 +1,128 @@
-.welcomemsg{
-    font-size: 30px;
-    float: left;
-    display: inline;
-    padding-left: 55px;
-    margin-top: 11px;
-    margin-left: 50px;
-    color: aliceblue;
+/*nav{*/
+/*    background-color: #5d4954;*/
+/*    border: 0;*/
+/*    margin: 0;*/
+/*    padding-bottom: 50px;*/
+/*    padding-top: 50px;*/
+/*}*/
+/*.welcomemsg{*/
+/*    font-size: 30px;*/
+/*    float: left;*/
+/*    padding-left: 5px;*/
+/*    margin-top: 0;*/
+/*    color: aliceblue;*/
 
-}
-.elements {
-    font-size: 30px;
-    padding-bottom: 30px;
-    padding-left: 60%;
-    margin-top: 10px;
-    margin-bottom: 5%;
-    color: aliceblue;
+/*}*/
+/*#logoutuser{*/
+/*    float: right;*/
+/*    margin-right: 1%;*/
+/*}*/
+/*body{*/
+/*    padding:0;*/
+/*    margin:0;*/
+/*    background-repeat: no-repeat, repeat;*/
+/*    background-position: 50% 65%;*/
+/*    background-attachment: fixed;*/
+/*    background-size: auto;*/
 
-}
+/*}*/
+/*.loginform {*/
+/*    margin-top: 0;*/
+/*    float: right;*/
+/*    display: inline;*/
+/*    width: 30%;*/
+/*    background-color: transparent;*/
+/*    color : azure;*/
+/*    padding-right: 5px;*/
+/*}*/
+/*.container{*/
+/*    width: 100%;*/
+/*}*/
+/*.greetingmsg{*/
+/*    margin-left: 1%;*/
+/*    margin-top:  3%;*/
+/*    width: 30%;*/
+/*    float: left;*/
+/*    font-size: large;*/
+/*    display: inline;*/
+/*    background-color: rgba(93, 73, 84, 0.3);*/
+/*    border: black;*/
+/*    border-radius: 4px;*/
+/*}*/
+/*.registerform{*/
+/*    clear: both;*/
+/*    float: right;*/
+/*    color: azure;*/
+/*    display: inline;*/
+/*    background-color: rgba(93, 73, 84, 0.3);*/
+/*    font-size: x-large;*/
+/*    border: black;*/
+/*    border-radius: 4px;*/
+/*    padding: 1em;*/
+/*    margin-right: 1%;*/
+/*}*/
 
+/*.inputregister{*/
+/*    width: 100%;*/
+/*}*/
+
+/*input[type=submit]:hover {*/
+/*    background-color: #C36A9B;*/
+/*}*/
+
+/*th, td {*/
+/*    padding: 15px;*/
+/*}*/
+
+/*.loginerror{*/
+/*    color: red;*/
+/*}*/
+
+/*.inputerror{*/
+/*    box-shadow: 0 0 5px red;*/
+/*}*/
+
+/*.errormsg{*/
+/*    color: red;*/
+/*}*/
+
+
+
+/*#mapid {*/
+/*    margin-left: 40px;*/
+/*    height: 480px;*/
+/*    width: 40%;*/
+/*}*/
+
+/*.upload{*/
+/*    margin-left: 5%;*/
+/*    color: aliceblue;*/
+/*    font-size: 20px;*/
+/*}*/
+
+/*#logoutuser{*/
+/*    margin-right: 1%;*/
+/*    float: right;*/
+/*}*/
 nav{
     background-color: #5d4954;
     border: 0;
     margin: 0;
-    padding-bottom: 0px;
+    padding-bottom: 50px;
     padding-top: 50px;
 }
+.welcomemsg{
+    font-size: 30px;
+    float: left;
+    padding-left: 5px;
+    margin-top: 0;
+    color: aliceblue;
 
+}
+#logoutuser{
+    float: right;
+    margin-right: 1%;
+}
 body{
     padding:0;
     margin:0;
@@ -35,18 +132,64 @@ body{
     background-size: auto;
 
 }
-
-.section{
-    widows: auto;
-    height: 500px;
-    margin: 20px;
-
+.loginform {
+    margin-top: 0;
+    float: right;
+    display: inline;
+    width: 30%;
+    background-color: transparent;
+    color : azure;
+    padding-right: 5px;
+}
+.container{
+    width: 100%;
+}
+.greetingmsg{
+    margin-left: 1%;
+    margin-top:  3%;
+    width: 30%;
+    float: left;
+    font-size: large;
+    display: inline;
+    background-color: rgba(93, 73, 84, 0.3);
+    border: black;
+    border-radius: 4px;
+}
+.registerform{
+    clear: both;
+    float: right;
+    color: azure;
+    display: inline;
+    background-color: rgba(93, 73, 84, 0.3);
+    font-size: x-large;
+    border: black;
+    border-radius: 4px;
+    padding: 1em;
+    margin-right: 1%;
 }
 
-h2{
-    color: aliceblue;
-    padding-left: 5%;
+.inputregister{
+    width: 100%;
+}
 
+input[type=submit]:hover {
+    background-color: #C36A9B;
+}
+
+th, td {
+    padding: 15px;
+}
+
+.loginerror{
+    color: red;
+}
+
+.inputerror{
+    box-shadow: 0 0 5px red;
+}
+
+.errormsg{
+    color: red;
 }
 
 
@@ -54,7 +197,6 @@ h2{
     margin-left: 40px;
     height: 480px;
     width: 40%;
-    align: "center"
 }
 
 .upload{
@@ -62,3 +204,4 @@ h2{
     color: aliceblue;
     font-size: 20px;
 }
+
