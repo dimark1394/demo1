@@ -64,6 +64,8 @@ if(!isset($_SESSION['uiduser'])){
     <nav>
         <a class="welcomemsg">Hello again!</a>
         <a id="logoutuser" href="logoutuser.php">Logout</a>
+        <a class="infouser">Username: <?php echo $_SESSION['uiduser'] ?>  Email: <?php echo $_SESSION['usermail'] ?> </a>
+
     </nav>
 </header>
 
@@ -71,10 +73,11 @@ if(!isset($_SESSION['uiduser'])){
     <h2>Upload your location json file for Patras city</h2>
     <div id="mapid"></div>
     <script type="text/javascript" src="map.js"></script>
-    <form class="upload">
+    <form id="upload" enctype="multipart/form-data">
         Choose your json file :
-        <input type="file">
-        <input type="submit">
+        <input type="file" name="file" id="file" accept=".json" required/>
+        <input type="submit" name="submitupload">
+        <a id="upmsg">asdasdasd</a>
     </form>
 
 </main>

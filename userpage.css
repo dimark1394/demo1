@@ -119,9 +119,17 @@ nav{
     color: aliceblue;
 
 }
+.infouser{
+    float: right;
+    margin-right: 5em;
+    color: aliceblue;
+    font-size: large;
+}
 #logoutuser{
     float: right;
     margin-right: 1%;
+    color: chartreuse;
+    border: chartreuse;
 }
 body{
     padding:0;
@@ -201,7 +209,10 @@ th, td {
 
 .upload{
     margin-left: 5%;
-    color: aliceblue;
+    color: aqua;
     font-size: 20px;
+}
+#upmsg{
+    color: aliceblue;
 }
 
