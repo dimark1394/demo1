@@ -70,7 +70,8 @@ if(!isset($_SESSION['uiduser'])){
 </header>
 
 <main>
-    <h2>Upload your location json file for Patras city</h2>
+    <div id="mapcontainer">
+    <a id="maptitle">Upload your location json file for Patras city</a>
     <div id="mapid"></div>
     <script type="text/javascript" src="map.js"></script>
     <form id="upload" enctype="multipart/form-data">
@@ -79,6 +80,36 @@ if(!isset($_SESSION['uiduser'])){
         <input type="submit" name="submitupload">
         <a id="upmsg">asdasdasd</a>
     </form>
+    </div>
+
+    <div id="highscores">
+        <a id="highscoresmsg">These are the top three ecologists of the month</a>
+        <table id="t01">
+            <tr>
+                <th>Place</th>
+                <th>Last name</th>
+                <th>First name</th>
+            </tr>
+            <tr>
+                <td>1st</td>
+                <td>lastname1</td>
+                <td>firstname1</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>lastname1</td>
+                <td>firstname1</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>lastname3</td>
+                <td>firstname3</td>
+            </tr>
+
+        </table>
+
+
+    </div>
 
 </main>
 

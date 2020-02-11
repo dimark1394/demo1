@@ -131,6 +131,9 @@ nav{
     color: chartreuse;
     border: chartreuse;
 }
+#logoutuser:hover{
+    color: aqua;
+}
 body{
     padding:0;
     margin:0;
@@ -183,7 +186,9 @@ body{
 input[type=submit]:hover {
     background-color: #C36A9B;
 }
-
+#t01{
+    width: auto;
+}
 th, td {
     padding: 15px;
 }
@@ -204,10 +209,10 @@ th, td {
 #mapid {
     margin-left: 40px;
     height: 480px;
-    width: 40%;
+    width: auto;
 }
 
-.upload{
+#upload{
     margin-left: 5%;
     color: aqua;
     font-size: 20px;
@@ -216,3 +221,44 @@ th, td {
     color: aliceblue;
 }
 
+#maptitle{
+    margin-left: 2em;
+    font-size: x-large;
+    color: aliceblue;
+}
+
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+table#t01 tr:nth-child(even) {
+    background-color: orange;
+}
+table#t01 tr:nth-child(odd) {
+    background-color: coral;
+}
+table#t01 th {
+    background-color: orangered;
+    color: white;
+}
+
+#mapcontainer{
+    float: left;
+    width: 30%;
+}
+
+#highscores{
+    float: right;
+    margin-right: 10%;
+}
+
+#highscoresmsg{
+    color: aliceblue;
+    font-size: larger;
+    margin-bottom: 2em;
+}
