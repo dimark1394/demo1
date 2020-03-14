@@ -17,6 +17,9 @@ if(!isset($_SESSION['uiduser'])){
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"> </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/vendor/jquery.ui.widget.js"></script>
+    <script src="js/jquery.iframe-transport.js"></script>
+    <script src="js/jquery.fileupload.js"></script>
     <script src="upload.js"></script>
     <link rel="stylesheet" href="userpage.css">
 </head>
@@ -35,12 +38,14 @@ if(!isset($_SESSION['uiduser'])){
     <a id="maptitle">Upload your location json file for Patras city</a>
     <div id="mapid"></div>
     <script type="text/javascript" src="map.js"></script>
-    <form id="upload" enctype="multipart/form-data">
+    <div id="upload" >
         Choose your json file :
-        <input type="file" name="file" id="file" accept=".json" required/>
-        <input type="submit" name="submitupload" id="submitupload">
-        <a id="upmsg">asdasdasd</a>
-    </form>
+        <input type="file" name="uploadingfile" id="uploadedfile" accept=".json" required/>
+        <button name="submitupload" id="submitupload">Sumbit your JSON file!</button>
+        <a id="progress"></a><br>
+        <div id="error"></div><br>
+        <div id="files"></div>
+    </div>
     </div>
 
     <div id="highscores">

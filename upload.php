@@ -1,7 +1,6 @@
 <?php
-$uploadDir = 'uploads/';
+if (isset($_FILES['uploadingfile'])){
+    $msg = array("msg" => "file ok");
 
-
-if(isset($_POST['file'])){
-    echo "file ok";
+    exit(json_encode($msg));
 }
