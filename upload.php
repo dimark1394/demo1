@@ -4,18 +4,20 @@ include_once ('connection.php');
 if (isset($_FILES['uploadingfile'])){
 
     $file = $_FILES['uploadingfile']['tmp_name'];
-    print_r($file);
+    //print_r($file);
 
 
     $data = file_get_contents($file);
 
     $array = json_decode($data, true );
 
-    print_r($array);
 
-    foreach ($array["locations"] as $location ) {
-            echo $location['timestampMs'];
-            echo PHP_EOL;
+    foreach ($array["locations"] as $row ) {
+        $sql = "INSERT INTO locations(timestamp) VALUES ('".$row["timestampMs"]."')";
+        mysqli_query($conn, $sql);
+        print_r($row);
+//        echo $temptime;
+        //$temploc =  $location['timestampMs'];
         }
 
     $msg = array("msg" => "times ok ");
