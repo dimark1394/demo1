@@ -18,7 +18,8 @@ if (isset($_FILES['uploadingfile'])){
         $lontemp = $row['longitudeE7']*pow(10, -7);
 
         if(cacldist($lattemp, $lontemp) < 10.0){
-        $sql = "INSERT INTO locations(username,timestamp,accuracy,lat,lng) VALUES ('".$tempusername."','".$row["timestampMs"]."','".$row["accuracy"]."','".$lattemp."','".$lontemp."')";
+        $temptime = date('Y-m-d H:i:s', substr($row["timestampMs"], 0, -3));
+        $sql = "INSERT INTO locations(username,timestamp,accuracy,lat,lng) VALUES ('".$tempusername."','".$temptime."','".$row["accuracy"]."','".$lattemp."','".$lontemp."')";
         mysqli_query($conn, $sql);
         }
         //echo $row["timestampMs"];
