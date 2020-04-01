@@ -19,11 +19,28 @@ if (isset($_FILES['uploadingfile'])){
         if(!$row["activity"]){
             continue;
         }elseif((cacldist($lattemp, $lontemp) < 10.0) && ($row["activity"])) {
-            $temptime = date('Y-m-d H:i:s', substr($row["timestampMs"], 0, -3));
+            if(strlen($row["timestampMs"]) == 12){
+                $temptime = date('Y-m-d H:i:s', substr($row["timestampMs"], 0, -2));
+            }else{
+                $temptime = date('Y-m-d H:i:s', substr($row["timestampMs"], 0, -3));}
             $sql = "INSERT INTO locations(username,timestamp,accuracy,lat,lng) VALUES ('".$tempusername."','".$temptime."','".$row["accuracy"]."','".$lattemp."','".$lontemp."')";
             mysqli_query($conn, $sql);
-            print_r($row["activity"]);
+            $tempact = $row["activity"];
+            foreach ($tempact as $activities){
+                $timestmp = $activities["timestampMs"];
+                $tempactivities = $activities["activity"];
+                foreach ($tempactivities as $actofact){
+                    $type = $actofact["type"];
+                    echo ($type);
+                    echo PHP_EOL;
+                    echo ($timestmp);
+                    echo PHP_EOL;
+                    echo PHP_EOL;
+                }
+
+            }
         }
+
         }
 
     $msg = array("msg" => "times ok ");
