@@ -153,6 +153,13 @@ label {
     width: auto;
 }
 
+#maptitle{
+    margin-left: 2em;
+    font-size: x-large;
+    color: aliceblue;
+}
+
+
 #switch
 {
     float: right;
