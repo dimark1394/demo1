@@ -2,7 +2,19 @@
 include_once('connection.php');
 session_start();
 $tempusername = $_SESSION['uiduser'];
-$password = mysqli_real_escape_string($conn, $_POST["password"] );
+$date = mysqli_real_escape_string($conn, $_POST["datefilter"] );
+echo $date;
+echo "<br>";
+echo strlen("$date");
+echo "<br>";
+$date1 = substr("$date",12, 23);
+echo "<br>";
+echo "this is date 1:  ", $date1;
+echo "<br>";
+$date2 =  substr("$date",0, 10);
+echo "<br>";
+echo "This is date 2: ", $date2;
+echo "<br>";
 
 //with get_data i make an array with locations
 function get_data() {
