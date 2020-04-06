@@ -2,6 +2,7 @@
 include_once('connection.php');
 session_start();
 $tempusername = $_SESSION['uiduser'];
+$password = mysqli_real_escape_string($conn, $_POST["password"] );
 
 //with get_data i make an array with locations
 function get_data() {
@@ -22,5 +23,3 @@ function get_data() {
     return json_decode($location_data) ;
 }
 
-//fifsdonfsdafbalifgwfiaewgfliewagflasdyfgafliyg
-//assaasasasasasasas

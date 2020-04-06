@@ -90,10 +90,9 @@ if(!isset($_SESSION['uiduser'])){
 
     <div class="datepicker">
         <h3>Select your range of dates</h3>
+        <form id="heatmap" name="heatmap" method="POST" action="getlocations.php">
         <input type="text" name="datefilter" value="" />
         <br> <br>
-        <form id="heatmap" name="heatmap" method="POST" action="getlocations.php">
-
             <button id="heatmap">See your heatmap</button>
             <div id="#heat"></div>
         <form>
@@ -108,7 +107,7 @@ if(!isset($_SESSION['uiduser'])){
                 });
 
                 $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-                    $(this).val(picker.startDate.format('MM/YYYY') + ' - ' + picker.endDate.format('MM/YYYY'));
+                    $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('MM/YYYY'));
                 });
 
                 $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
