@@ -77,20 +77,26 @@ if(!isset($_SESSION['uiduser'])){
         <a id="maptitle">Upload your location json file for Patras city</a>
         <div id="mapid"></div>
         <script type="text/javascript" src="map.js"></script>
-        <div id="upload" >
+        <form id="upload" >
             Choose your json file :
             <input type="file" name="uploadingfile" id="uploadedfile" accept=".json" required/>
             <button name="submitupload" id="submitupload">Sumbit your JSON file!</button>
             <a id="progress"></a><br>
             <div id="error"></div><br>
             <div id="files"></div>
-        </div>
+
+        </form>
     </div>
 
     <div class="datepicker">
         <h3>Select your range of dates</h3>
         <input type="text" name="datefilter" value="" />
+        <br> <br>
+        <form id="heatmap" name="heatmap" method="POST" action="getlocations.php">
 
+            <button id="heatmap">See your heatmap</button>
+            <div id="#heat"></div>
+        <form>
         <script type="text/javascript">
             $(function() {
 
