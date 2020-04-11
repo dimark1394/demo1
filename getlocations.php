@@ -42,7 +42,7 @@ $date2_mid = substr("$date2", 2,4);
 //echo "<br>";
 $date2_insert = $date2_end.$date2_mid.$date2_start;
 echo "This is date2  insert :", $date2_insert;
-echo "<br>";
+//echo "<br>";
 
 
 
@@ -50,7 +50,7 @@ echo "<br>";
 //with get_data i make an array with locations
 function get_data() {
 
-    $sql = "SELECT lat, lng FROM locations WHERE username='$tempuserame'";
+    $sql = "SELECT lat, lng FROM locations WHERE username='$tempuserame' AND timestamp BETWEEN '$date1_insert' AND '$date2_insert' ";
     $result = mysqli_query($conn, $sql);
     $location_data = array();
     while($row = mysqli_fetch_array($result))
