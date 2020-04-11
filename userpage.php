@@ -101,6 +101,7 @@ if(!isset($_SESSION['uiduser'])){
 
                 $('input[name="datefilter"]').daterangepicker({
                     timePicker: true,
+                    timePicker24Hour:true,
                     autoUpdateInput: false,
                     locale: {
                         cancelLabel: 'Clear'
@@ -108,7 +109,7 @@ if(!isset($_SESSION['uiduser'])){
                 });
 
                 $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-                    $(this).val(picker.startDate.format('DD-MM-YYYY hh:mm:ss') + ' - ' + picker.endDate.format('DD-MM-YYYY hh:mm:ss'));
+                    $(this).val(picker.startDate.format('DD-MM-YYYY HH:mm:ss') + ' - ' + picker.endDate.format('DD-MM-YYYY HH:mm:ss'));
                 });
 
                 $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {

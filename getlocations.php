@@ -44,27 +44,25 @@ $date2_mid = substr("$date2", 2,4);
 $date2_time = substr("$date2", 10, 9);
 $date2_insert = $date2_end.$date2_mid.$date2_start.$date2_time;
 echo "This is date2  insert :", $date2_insert;
+echo "<br>";
+$location_data = array();
 //echo "<br>";
+print_r($location_data);
 
 
-
-
-//with get_data i make an array with locations
-function get_data() {
-
-    $sql = "SELECT lat, lng FROM locations WHERE username='$tempuserame' AND timestamp BETWEEN '$date1_insert' AND '$date2_insert' ";
+$sql = "SELECT lat, lng FROM locations WHERE username = '$tempusername' AND timestamp BETWEEN '$date1_insert' AND '$date2_insert' ";
     $result = mysqli_query($conn, $sql);
-    $location_data = array();
     while($row = mysqli_fetch_array($result))
     {
         $location_data [] = array(
             'lat' => $row["lat"],
-            'lng' => $row["lng'"]
+            'lng' => $row["lng"]
         ) ;
 
-    }
 
     //convert the array and return the json file
-    return json_decode($location_data) ;
 }
+//print_r($location_data);
+echo json_encode($location_data);
+
 
