@@ -67,4 +67,6 @@ function get_data() {
     //convert the array and return the json file
     return json_decode($location_data) ;
 }
-
+echo '<pre>';
+print_r(get_data());
+echo'</pre>';
