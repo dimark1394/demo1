@@ -2,7 +2,7 @@
 include_once ('connection.php');
 session_start();
 $tempusername = $_SESSION['uiduser'];
-if (isset($_FILES['uploadingfile'])){
+if (isset($_FILES['uploadingfile'])) {
 
     $file = $_FILES['uploadingfile']['tmp_name'];
     //print_r($file);
@@ -10,15 +10,13 @@ if (isset($_FILES['uploadingfile'])){
 
     $data = file_get_contents($file);
 
-    $array = json_decode($data, true );
-
+    $array = json_decode($data, true);
+}
 
     foreach ($array["locations"] as $row ) {
         $lattemp = $row['latitudeE7']*pow(10,-7);
         $lontemp = $row['longitudeE7']*pow(10, -7);
-        if(!$row["activity"]){
-            continue;
-        }elseif((cacldist($lattemp, $lontemp) < 10.0) && ($row["activity"])) {
+        if((cacldist($lattemp, $lontemp) < 10.0) && ($row["activity"])) {
             if(strlen($row["timestampMs"]) == 12){
                 $temptime = date('Y-m-d H:i:s', substr($row["timestampMs"], 0, -2));
             }else{
@@ -31,11 +29,11 @@ if (isset($_FILES['uploadingfile'])){
                 $tempactivities = $activities["activity"];
                 foreach ($tempactivities as $actofact){
                     $type = $actofact["type"];
-                    echo ($type);
-                    echo PHP_EOL;
-                    echo ($timestmp);
-                    echo PHP_EOL;
-                    echo PHP_EOL;
+//                    echo ($type);
+//                    echo PHP_EOL;
+//                    echo ($timestmp);
+//                    echo PHP_EOL;
+//                    echo PHP_EOL;
                 }
 
             }
@@ -45,7 +43,7 @@ if (isset($_FILES['uploadingfile'])){
 
     $msg = array("msg" => "times ok ");
     exit(json_encode($msg));
-}
+
 
 function cacldist($lat2,$lon2){
     $lat1=38.230462;
