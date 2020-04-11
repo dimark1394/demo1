@@ -7,14 +7,20 @@ echo $date;
 echo "<br>";
 echo strlen("$date");
 echo "<br>";
-$date1 = substr("$date",12, 23);
+$date1 =  substr("$date",0, 10);
 echo "<br>";
 echo "this is date 1:  ", $date1;
+$date1_end
+echo "this is date1 end :", $date1_end;
 echo "<br>";
-$date2 =  substr("$date",0, 10);
+$date2 = substr("$date",12, 23);
 echo "<br>";
 echo "This is date 2: ", $date2;
 echo "<br>";
+str
+$date2 = substr("$date",12, 23);
+
+
 
 //with get_data i make an array with locations
 function get_data() {
