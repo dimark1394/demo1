@@ -3,45 +3,47 @@ include_once('connection.php');
 session_start();
 $tempusername = $_SESSION['uiduser'];
 $date = mysqli_real_escape_string($conn, $_POST["datefilter"] );
-echo $date;
-echo "<br>";
-echo strlen("$date");
-echo "<br>";
+//echo $date;
+//echo "<br>";
+//echo strlen("$date");
+//echo "<br>";
 $date1 =  substr("$date",0, 10);
-echo "<br>";
-echo "this is date 1:  ", $date1;
+//echo "<br>";
+//echo "this is date 1:  ", $date1;
 $date1_end = substr("$date1",6, 9 );
-echo "<br>";
-echo "this is date1 end :", $date1_end;
-echo "<br>";
+//echo "<br>";
+//echo "this is date1 end :", $date1_end;
+//echo "<br>";
 $date1_start = substr("$date1", 0,2);
-echo "This is date start :", $date1_start;
-echo "<br>";
+//echo "This is date start :", $date1_start;
+//echo "<br>";
 $date1_mid = substr("$date1", 2,4);
-echo "This is date mid :", $date1_mid;
-echo "<br>";
+//echo "This is date mid :", $date1_mid;
+//echo "<br>";
 $date1_insert = $date1_end.$date1_mid.$date1_start;
 echo "This is date1  insert :", $date1_insert;
 echo "<br>";
+
 //date2
 
 $date2 = substr("$date",13, 23);
-echo "<br>";
-echo "This is date 2:", $date2;
-echo "<br>";
+//echo "<br>";
+//echo "This is date 2:", $date2;
+//echo "<br>";
 $date2_end = substr("$date2",6, 9 );
-echo "<br>";
-echo "this is date 2 end :", $date2_end;
-echo "<br>";
+//echo "<br>";
+//echo "this is date 2 end :", $date2_end;
+//echo "<br>";
 $date2_start = substr("$date2", 0,2);
-echo "This is date 2 start :", $date2_start;
-echo "<br>";
+//echo "This is date 2 start :", $date2_start;
+//echo "<br>";
 $date2_mid = substr("$date2", 2,4);
-echo "This is date 2 mid :", $date2_mid;
-echo "<br>";
+//echo "This is date 2 mid :", $date2_mid;
+//echo "<br>";
 $date2_insert = $date2_end.$date2_mid.$date2_start;
-echo "This is date2  insert : ", $date2_insert;
+echo "This is date2  insert :", $date2_insert;
 echo "<br>";
+
 
 
 
