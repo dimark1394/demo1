@@ -2,8 +2,7 @@
 include_once('connection.php');
 session_start();
 $tempusername = $_SESSION['uiduser'];
-if(isset($_POST['submit'])) {
-    $date = mysqli_real_escape_string($conn, $_POST["pickeddate"]);
+$date = mysqli_real_escape_string($conn, $_POST['datefilter']);
 //echo $date;
 //echo "<br>";
 //echo strlen("$date");
@@ -23,8 +22,6 @@ if(isset($_POST['submit'])) {
 //echo "<br>";
     $date1_time = substr("$date1", 10, 9);
     $date1_insert = $date1_end . $date1_mid . $date1_start . $date1_time;
-    echo "This is date1  insert :", $date1_insert;
-    echo "<br>";
 
 //date2
 
@@ -44,11 +41,8 @@ if(isset($_POST['submit'])) {
 //echo "<br>";
     $date2_time = substr("$date2", 10, 9);
     $date2_insert = $date2_end . $date2_mid . $date2_start . $date2_time;
-    echo "This is date2  insert :", $date2_insert;
-    echo "<br>";
     $location_data = array();
 //echo "<br>";
-    print_r($location_data);
 
 
     $sql = "SELECT lat, lng FROM locations WHERE username = '$tempusername' AND timestamp BETWEEN '$date1_insert' AND '$date2_insert' ";
@@ -63,8 +57,6 @@ if(isset($_POST['submit'])) {
         //convert the array and return the json file
     }
 //print_r($location_data);
-    $data_json = json_encode($location_data);
-    echo $data_json;
+    echo json_encode($location_data);
 
-}
 

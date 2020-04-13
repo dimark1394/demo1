@@ -1,17 +1,23 @@
+var myArray = [];
 $(document).ready(function () {
-    $("#heatmap").submit(function (event) {
-        event.preventDefault();
+    $("#heatmap").submit(function (e) {
+        e.preventDefault();
         $.ajax({
             type: "POST",
             url: "getlocations.php",
+            dataType: 'JSON',
             data: {
-                pickeddate: $("#datefilter").val(),
-                submit: $("#heatmap").val()
+                datefilter: $("#datefilter").val(),
+                submit: $("#heatmapsubmit").val()
             },
-            success: function(data){
-                    let test_data = data;
-                    console.log(test_data);
+            success: function (data) {
+                var test = data;
+                $.each(test,function (i,object) {
+                    myArray.push(object.lat,object.lng);
+                })
+                console.log(myArray);
 
             }
+        })
     })
 })

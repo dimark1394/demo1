@@ -79,54 +79,7 @@ if(!isset($_SESSION['uiduser'])){
     <div id="mapcontainer">
         <a id="maptitle">Upload your location json file for Patras city</a>
         <div id="mapid"></div>
-        <script src="map.js"></script>
-<!--        <script>-->
-<!--            let testData = {-->
-<!--                max: 8,-->
-<!--                data: [-->
-<!--                {lat: 38.246242, lng: 21.735085, count:3},-->
-<!--                {lat: 38.323343, lng: 21.865082, count:2},-->
-<!--                {lat: 38.34381, lng: 21.57074, count:8},-->
-<!--                {lat: 38.108628, lng: 21.502075, count:7},-->
-<!--                {lat: 38.123034, lng: 21.917725, count:4}]};-->
-<!--            let mymap = L.map("mapid");-->
-<!--            let osmUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";-->
-<!--            let osmAttrib =-->
-<!--                'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';-->
-<!--            let osm = new L.TileLayer(osmUrl, { attribution: osmAttrib });-->
-<!--            mymap.addLayer(osm);-->
-<!--            mymap.setView([38.246242, 21.7350847],8);-->
-<!---->
-<!---->
-<!--            let cfg = {-->
-<!--                // radius should be small ONLY if scaleRadius is true (or small radius is intended)-->
-<!--                // if scaleRadius is false it will be the constant radius used in pixels-->
-<!--                "radius": 40,-->
-<!--                "maxOpacity": 0.8,-->
-<!--                // scales the radius based on map zoom-->
-<!--                "scaleRadius": false,-->
-<!--                // if set to false the heatmap uses the global maximum for colorization-->
-<!--                // if activated: uses the data maximum within the current map boundaries-->
-<!--                //   (there will always be a red spot with useLocalExtremas true)-->
-<!--                "useLocalExtrema": false,-->
-<!--                // which field name in your data represents the latitude - default "lat"-->
-<!--                latField: 'lat',-->
-<!--                // which field name in your data represents the longitude - default "lng"-->
-<!--                lngField: 'lng',-->
-<!--                // which field name in your data represents the data value - default "value"-->
-<!--                valueField: 'count'-->
-<!--            };-->
-<!--            //var testData = {-->
-<!--            //    max: 8,-->
-<!--            //    data : --><?php ////echo $data_json; ?>
-//            //
-//            //}
-//            let heatmapLayer =  new HeatmapOverlay(cfg);
-//
-//            mymap.addLayer(heatmapLayer);
-//            heatmapLayer.setData(testData);
-        </script>
-<!--        <script type="text/javascript" src="map.js"></script>-->
+        <script type="text/javascript" src="map.js"></script>
         <form id="upload" >
             Choose your json file :
             <input type="file" name="uploadingfile" id="uploadedfile" accept=".json" required/>
@@ -137,15 +90,16 @@ if(!isset($_SESSION['uiduser'])){
 
         </form>
     </div>
-
+    <script src="showmeheatmap.js"></script>
     <div class="datepicker">
         <h3>Select your range of dates</h3>
-        <form id="heatmap" name="heatmap" method="POST" action="getlocations.php">
-        <input type="text" name="datefilter" value="" />
+        <form id="heatmap" name="heatmap">
+        <input type="text" name="datefilter" id="datefilter" value="" />
         <br> <br>
-            <button type="submit" name="heatmap" id="heatmap">See your heatmap</button>
+            <input type="submit" name="heatmapsumbit" id="heatmapsubmit" value="Submit your heatmap">
             <div id="#heat"></div>
-        <form>
+        </form>
+        <script src="showmeheatmap.js"></script>
         <script type="text/javascript">
             $(function() {
 
@@ -218,11 +172,30 @@ if(!isset($_SESSION['uiduser'])){
                 <div class="content2">
                     <h3>User Info</h3>
                     <p> Your last upload was on ""</p>
-                    <p> <?php echo $message ?> </p>
-                    <script type="text/javascript">
+                    <?php
+include_once ('connection.php');
+$tempusername = $_SESSION['uiduser'];
+$date_data= array();
 
-                    </script>
+$sql = "SELECT timestamp FROM locations WHERE username='$tempusername' ORDER BY timestamp ";
+$result = mysqli_query($conn, $sql);
+while($row = mysqli_fetch_array($result) )
+{
+    $date_data [] = array(
+        'timestamp'  => $row['timestamp']
+    ) ;
 
+}
+
+//$cover_json =json_encode($date_data);
+
+$first_date = $date_data[0]['timestamp'];
+$last_date = $date_data[sizeof($date_data) -1]['timestamp'];
+$message=  "Your data covers from " .  $first_date . " until " .  $last_date;
+
+
+?>
+                    <p> <span><?php echo $message ?></span>  </p>
 
 
 
