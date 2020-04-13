@@ -1,7 +1,7 @@
 <?php
 include_once ('connection.php');
-session_status();
-$tempusername = $_SESSION['iduser'];
+session_start();
+$tempusername = $_SESSION['uiduser'];
 $date_data= array();
 
 $sql = "SELECT timestamp FROM locations WHERE username='$tempusername' ORDER BY timestamp ";
@@ -14,4 +14,10 @@ while($row = mysqli_fetch_array($result) )
 
 }
 
-return json_decode($date_data);
+//$cover_json =json_encode($date_data);
+
+$first_date = $date_data[0]['timestamp'];
+$last_date = $date_data[sizeof($date_data) -1]['timestamp'];
+$message=  "Your data covers from ", $first_date, " until ", $last_date;
+
+exit;

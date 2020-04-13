@@ -218,7 +218,14 @@ if(!isset($_SESSION['uiduser'])){
                 <div class="content2">
                     <h3>User Info</h3>
                     <p> Your last upload was on ""</p>
-                    <p id="cover"> Your data covers those dates:  ""</p>
+                    <p> <?php echo $message ?> </p>
+                    <script type="text/javascript">
+
+                    </script>
+
+
+
+
                 </div>
             </div>
 
