@@ -168,7 +168,7 @@ if(!isset($_SESSION['uiduser'])){
                 <div class="content2">
                     <h3>User Info</h3>
                     <p> Your last upload was on ""</p>
-                    <p> Your data covers those dates: ""</p>
+                    <p id="cover"> Your data covers those dates:  ""</p>
                 </div>
             </div>
 
