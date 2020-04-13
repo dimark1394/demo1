@@ -16,6 +16,9 @@ if(!isset($_SESSION['uiduser'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"> </script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/heatmapjs@2.0.2/heatmap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-heatmap@1.0.0/leaflet-heatmap.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -76,7 +79,54 @@ if(!isset($_SESSION['uiduser'])){
     <div id="mapcontainer">
         <a id="maptitle">Upload your location json file for Patras city</a>
         <div id="mapid"></div>
-        <script type="text/javascript" src="map.js"></script>
+        <script src="map.js"></script>
+<!--        <script>-->
+<!--            let testData = {-->
+<!--                max: 8,-->
+<!--                data: [-->
+<!--                {lat: 38.246242, lng: 21.735085, count:3},-->
+<!--                {lat: 38.323343, lng: 21.865082, count:2},-->
+<!--                {lat: 38.34381, lng: 21.57074, count:8},-->
+<!--                {lat: 38.108628, lng: 21.502075, count:7},-->
+<!--                {lat: 38.123034, lng: 21.917725, count:4}]};-->
+<!--            let mymap = L.map("mapid");-->
+<!--            let osmUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";-->
+<!--            let osmAttrib =-->
+<!--                'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';-->
+<!--            let osm = new L.TileLayer(osmUrl, { attribution: osmAttrib });-->
+<!--            mymap.addLayer(osm);-->
+<!--            mymap.setView([38.246242, 21.7350847],8);-->
+<!---->
+<!---->
+<!--            let cfg = {-->
+<!--                // radius should be small ONLY if scaleRadius is true (or small radius is intended)-->
+<!--                // if scaleRadius is false it will be the constant radius used in pixels-->
+<!--                "radius": 40,-->
+<!--                "maxOpacity": 0.8,-->
+<!--                // scales the radius based on map zoom-->
+<!--                "scaleRadius": false,-->
+<!--                // if set to false the heatmap uses the global maximum for colorization-->
+<!--                // if activated: uses the data maximum within the current map boundaries-->
+<!--                //   (there will always be a red spot with useLocalExtremas true)-->
+<!--                "useLocalExtrema": false,-->
+<!--                // which field name in your data represents the latitude - default "lat"-->
+<!--                latField: 'lat',-->
+<!--                // which field name in your data represents the longitude - default "lng"-->
+<!--                lngField: 'lng',-->
+<!--                // which field name in your data represents the data value - default "value"-->
+<!--                valueField: 'count'-->
+<!--            };-->
+<!--            //var testData = {-->
+<!--            //    max: 8,-->
+<!--            //    data : --><?php ////echo $data_json; ?>
+//            //
+//            //}
+//            let heatmapLayer =  new HeatmapOverlay(cfg);
+//
+//            mymap.addLayer(heatmapLayer);
+//            heatmapLayer.setData(testData);
+        </script>
+<!--        <script type="text/javascript" src="map.js"></script>-->
         <form id="upload" >
             Choose your json file :
             <input type="file" name="uploadingfile" id="uploadedfile" accept=".json" required/>
@@ -93,7 +143,7 @@ if(!isset($_SESSION['uiduser'])){
         <form id="heatmap" name="heatmap" method="POST" action="getlocations.php">
         <input type="text" name="datefilter" value="" />
         <br> <br>
-            <button id="heatmap">See your heatmap</button>
+            <button type="submit" name="heatmap" id="heatmap">See your heatmap</button>
             <div id="#heat"></div>
         <form>
         <script type="text/javascript">
@@ -101,6 +151,7 @@ if(!isset($_SESSION['uiduser'])){
 
                 $('input[name="datefilter"]').daterangepicker({
                     timePicker: true,
+                    timePicker24Hour:true,
                     autoUpdateInput: false,
                     locale: {
                         cancelLabel: 'Clear'
@@ -108,7 +159,7 @@ if(!isset($_SESSION['uiduser'])){
                 });
 
                 $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-                    $(this).val(picker.startDate.format('DD-MM-YYYY hh:mm:ss') + ' - ' + picker.endDate.format('DD-MM-YYYY hh:mm:ss'));
+                    $(this).val(picker.startDate.format('DD-MM-YYYY HH:mm:ss') + ' - ' + picker.endDate.format('DD-MM-YYYY HH:mm:ss'));
                 });
 
                 $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
