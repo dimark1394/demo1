@@ -18,5 +18,6 @@ while($row = mysqli_fetch_array($result) )
 
 $first_date = $date_data[0]['timestamp'];
 $last_date = $date_data[sizeof($date_data) -1]['timestamp'];
-$message=  "Your data covers from " .  $first_date . " until " .  $last_date;
+echo "Your data covers from ", $first_date, " until ", $last_date;
+
 exit;
