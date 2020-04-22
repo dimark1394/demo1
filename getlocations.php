@@ -48,10 +48,11 @@ $date = mysqli_real_escape_string($conn, $_POST['datefilter']);
     $sql = "SELECT lat, lng FROM locations WHERE username = '$tempusername' AND timestamp BETWEEN '$date1_insert' AND '$date2_insert' ";
     $result = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_array($result)) {
-        $location_data [] = array(
+        $location_data [] = [
             'lat' => $row["lat"],
-            'lng' => $row["lng"]
-        );
+            'lng' => $row["lng"],
+            'count' => 1
+        ];
 
 
         //convert the array and return the json file

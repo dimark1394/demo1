@@ -80,6 +80,7 @@ if(!isset($_SESSION['uiduser'])){
         <a id="maptitle">Upload your location json file for Patras city</a>
         <div id="mapid"></div>
         <script type="text/javascript" src="map.js"></script>
+<!--        <script src="showmeheatmap.js"></script>-->
         <form id="upload" >
             Choose your json file :
             <input type="file" name="uploadingfile" id="uploadedfile" accept=".json" required/>
@@ -90,7 +91,6 @@ if(!isset($_SESSION['uiduser'])){
 
         </form>
     </div>
-    <script src="showmeheatmap.js"></script>
     <div class="datepicker">
         <h3>Select your range of dates</h3>
         <form id="heatmap" name="heatmap">
@@ -99,7 +99,6 @@ if(!isset($_SESSION['uiduser'])){
             <input type="submit" name="heatmapsumbit" id="heatmapsubmit" value="Submit your heatmap">
             <div id="#heat"></div>
         </form>
-        <script src="showmeheatmap.js"></script>
         <script type="text/javascript">
             $(function() {
 
@@ -122,6 +121,7 @@ if(!isset($_SESSION['uiduser'])){
 
             });
         </script>
+        <script src="showmeheatmap.js"></script>
     </div>
 
 
@@ -192,7 +192,6 @@ while($row = mysqli_fetch_array($result) )
 $first_date = $date_data[0]['timestamp'];
 $last_date = $date_data[sizeof($date_data) -1]['timestamp'];
 $message=  "Your data covers from " .  $first_date . " until " .  $last_date;
-//dkdsajdasidjasd
 
 
 ?>
