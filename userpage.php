@@ -171,30 +171,37 @@ if(!isset($_SESSION['uiduser'])){
                 <div class="icon2"><i class="fa fa-address-book" aria-hidden="true"></i></div>
                 <div class="content2">
                     <h3>User Info</h3>
-                    <p> Your last upload was on </p>
                     <?php
-include_once ('connection.php');
-$tempusername = $_SESSION['uiduser'];
-$date_data= array();
+                    include_once ('connection.php');
+                    $tempusername = $_SESSION['uiduser'];
+                    $date_data= array();
 
-$sql = "SELECT timestamp FROM locations WHERE username='$tempusername' ORDER BY timestamp ";
-$result = mysqli_query($conn, $sql);
-while($row = mysqli_fetch_array($result) )
-{
-    $date_data [] = array(
-        'timestamp'  => $row['timestamp']
-    ) ;
+                    $sql = "SELECT timestamp FROM locations WHERE username='$tempusername' ORDER BY timestamp ";
+                    $result = mysqli_query($conn, $sql);
+                    while($row = mysqli_fetch_array($result) )
+                    {
+                        $date_data [] = array(
+                            'timestamp'  => $row['timestamp']
+                        ) ;
 
-}
+                    }
 
-//$cover_json =json_encode($date_data);
+                    //$cover_json =json_encode($date_data);
 
-$first_date = $date_data[0]['timestamp'];
-$last_date = $date_data[sizeof($date_data) -1]['timestamp'];
-$message=  "Your data covers from " .  $first_date . " until " .  $last_date;
+                    $first_date = $date_data[0]['timestamp'];
+                    $last_date = $date_data[sizeof($date_data) -1]['timestamp'];
+                    $message=  "Your data covers from " .  $first_date . " until " .  $last_date;
 
 
-?>
+                    $query = "SELECT lastupload FROM users WHERE username='$tempusername' ";
+                    $last = mysqli_query($conn, $query);
+                    $last_message= "Your last upload was on" . $last;
+
+                    ?>
+
+
+                    <p> <?php echo $last_message ?>  </p>
+
                     <p> <?php echo $message ?> </p>
 
 
