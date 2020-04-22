@@ -11,6 +11,9 @@ if (isset($_FILES['uploadingfile'])) {
     $data = file_get_contents($file);
 
     $array = json_decode($data, true);
+    $currentdate = date('Y-m-d H:i:s');
+    $sql1 = "UPDATE users SET lastupload='$currentdate' WHERE username='$tempusername'";
+    mysqli_query($conn,$sql1);
 }
 
     foreach ($array["locations"] as $row ) {
