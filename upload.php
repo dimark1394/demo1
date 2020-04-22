@@ -15,7 +15,9 @@ if (isset($_FILES['uploadingfile'])) {
     $sql1 = "UPDATE users SET lastupload='$currentdate' WHERE username='$tempusername'";
     mysqli_query($conn,$sql1);
 }
-
+    $update=date('Y-m-d H:i:s');
+    $query = "UPDATE users SET lastupload='$update'  WHERE username='$tempusername' ";
+    mysqli_query($conn, $query);
     foreach ($array["locations"] as $row ) {
         $lattemp = $row['latitudeE7']*pow(10,-7);
         $lontemp = $row['longitudeE7']*pow(10, -7);
@@ -26,6 +28,7 @@ if (isset($_FILES['uploadingfile'])) {
                 $temptime = date('Y-m-d H:i:s', substr($row["timestampMs"], 0, -3));}
             $sql = "INSERT INTO locations(username,timestamp,accuracy,lat,lng) VALUES ('".$tempusername."','".$temptime."','".$row["accuracy"]."','".$lattemp."','".$lontemp."')";
             mysqli_query($conn, $sql);
+
             $tempact = $row["activity"];
             foreach ($tempact as $activities){
                 $timestmp = $activities["timestampMs"];
