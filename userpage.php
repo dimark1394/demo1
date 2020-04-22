@@ -121,7 +121,6 @@ if(!isset($_SESSION['uiduser'])){
 
             });
         </script>
-        <script src="showmeheatmap.js"></script>
     </div>
 
 
@@ -195,12 +194,16 @@ if(!isset($_SESSION['uiduser'])){
 
                     $query = "SELECT lastupload FROM users WHERE username='$tempusername' ";
                     $last = mysqli_query($conn, $query);
-                    $last_message= "Your last upload was on" . $last;
-
+                    while($last1 = mysqli_fetch_array($last)){
+                        $last_updates [] = array(
+                                'lastupload' => $last1['lastupload']
+                        );
+                    }
+                    $last_update = "Your last upload was on "  .$last_updates[0]['lastupload'];
                     ?>
 
 
-                    <p> <?php echo $last_message ?>  </p>
+                    <p> <?php echo  $last_update?>  </p>
 
                     <p> <?php echo $message ?> </p>
 
