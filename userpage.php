@@ -171,7 +171,7 @@ if(!isset($_SESSION['uiduser'])){
                 <div class="icon2"><i class="fa fa-address-book" aria-hidden="true"></i></div>
                 <div class="content2">
                     <h3>User Info</h3>
-                    <p> Your last upload was on ""</p>
+                    <p> Your last upload was on </p>
                     <?php
 include_once ('connection.php');
 $tempusername = $_SESSION['uiduser'];
@@ -196,7 +196,7 @@ $message=  "Your data covers from " .  $first_date . " until " .  $last_date;
 
 
 ?>
-                    <p> <span><?php echo $message ?></span>  </p>
+                    <p> <?php echo $message ?> </p>
 
 
 
