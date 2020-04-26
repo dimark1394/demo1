@@ -172,6 +172,7 @@ if(!isset($_SESSION['uiduser'])){
                     <h3>User Info</h3>
                     <?php
                     include_once ('connection.php');
+                    date_default_timezone_set('Europe/Athens');
                     $tempusername = $_SESSION['uiduser'];
                     $date_data= array();
 

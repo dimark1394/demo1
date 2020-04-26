@@ -1,5 +1,5 @@
 //call the submit button me to id #submitregister
-$(document).ready(function () {
+
     $("#submitregister").click(function () {
         //use the id of the form (#register form) and atrr('action') in order to connect the register.php and register.js
         $.post($("#register_form").attr("action"),
@@ -29,4 +29,3 @@ $(document).ready(function () {
             $(this).val("");
         })
     }
-})

@@ -37,7 +37,7 @@ elseif ( 0 == preg_match('/[#$%^&@*()+=\-\[\]\';,.\/{}|":<>?~\\\\]/', $temp) ) {
 }
 else {
     //make the instert to the database web20 , table users
-    $sql = "INSERT INTO users VALUES('', '$username','$password','$email','$lname','$fname','$uid')";
+    $sql = "INSERT INTO users VALUES('', '$username','$password','$email','$lname','$fname','$uid','')";
     //check if the insertion was made
     if (mysqli_query($conn, $sql)) {
         echo "Inserted Successfully";
