@@ -176,22 +176,6 @@ if(!isset($_SESSION['uiduser'])){
                     $tempusername = $_SESSION['uiduser'];
                     $date_data= array();
 
-                    $sql = "SELECT timestamp FROM locations WHERE username='$tempusername' ORDER BY timestamp ";
-                    $result = mysqli_query($conn, $sql);
-                    while($row = mysqli_fetch_array($result) )
-                    {
-                        $date_data [] = array(
-                            'timestamp'  => $row['timestamp']
-                        ) ;
-
-                    }
-
-                    //$cover_json =json_encode($date_data);
-
-                    $first_date = $date_data[0]['timestamp'];
-                    $last_date = $date_data[sizeof($date_data) -1]['timestamp'];
-                    $message=  "Your data covers from " .  $first_date . " until " .  $last_date;
-
 
                     $query = "SELECT lastupload FROM users WHERE username='$tempusername' ";
                     $last = mysqli_query($conn, $query);
@@ -200,7 +184,41 @@ if(!isset($_SESSION['uiduser'])){
                                 'lastupload' => $last1['lastupload']
                         );
                     }
-                    $last_update = "Your last upload was on "  .$last_updates[0]['lastupload'];
+
+                    if($last_updates[0]['lastupload']== "0000-00-00 00:00:00")
+                    {
+                        $last_update="You have not uploaded data yet";
+                        $message="";
+                    }
+                    else
+                        {
+                        $last_update = "Your last upload was on " . $last_updates[0]['lastupload'];
+
+
+                        $sql = "SELECT timestamp FROM locations WHERE username='$tempusername' ORDER BY timestamp ";
+                        $result = mysqli_query($conn, $sql);
+                        while ($row = mysqli_fetch_array($result)) {
+                            $date_data [] = array(
+                                'timestamp' => $row['timestamp']
+                            );
+
+                        }
+
+                        //$cover_json =json_encode($date_data);
+
+
+                        $first_date = $date_data[0]['timestamp'];
+                        $last_date = $date_data[sizeof($date_data) - 1]['timestamp'];
+                        $message = "Your data covers from " . $first_date . " until " . $last_date;
+
+                        }
+
+
+
+
+
+
+
                     ?>
 
 
