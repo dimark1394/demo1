@@ -6,7 +6,9 @@ $password = mysqli_real_escape_string($conn, $_POST["password"] );
 $email = mysqli_real_escape_string($conn, $_POST["email"] );
 $lname = mysqli_real_escape_string($conn, $_POST["lname"] );
 $fname = mysqli_real_escape_string($conn, $_POST["fname"] );
-$uid = rand(0,50);
+$cipher_method = 'aes-128-ctr';
+$enc_iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length($cipher_method));
+$uid = openssl_encrypt($email ,$cipher_method,$password,0, $enc_iv );
 
 $temp = $password;
 $password = (md5($password));

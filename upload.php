@@ -30,14 +30,16 @@ if (isset($_FILES['uploadingfile'])) {
             $tempact = $row["activity"];
             foreach ($tempact as $activities){
                 $timestmp = $activities["timestampMs"];
+                echo ($timestmp);
+                echo PHP_EOL;
                 $tempactivities = $activities["activity"];
                 foreach ($tempactivities as $actofact){
                     $type = $actofact["type"];
-//                    echo ($type);
-//                    echo PHP_EOL;
-//                    echo ($timestmp);
-//                    echo PHP_EOL;
-//                    echo PHP_EOL;
+                    echo ($type);
+                    echo PHP_EOL;
+//                  echo ($timestmp);
+//                  echo PHP_EOL;
+//                  echo PHP_EOL;
                 }
 
             }
