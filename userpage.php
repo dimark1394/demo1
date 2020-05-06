@@ -159,10 +159,10 @@ if(!isset($_SESSION['uiduser'])){
         <div class="container2">
             <div class="box">
                 <div class="icon"><i class="fa fa-leaf" aria-hidden="true"></i></div>
-                <div class="content">
+                <div class="content" id="eco">
                     <h3>Eco Score</h3>
                     <p> Your eco score this past month is ...%</p>
-
+                    <script type="text/javascript" src="eco.js"></script>
                 </div>
             </div>
 

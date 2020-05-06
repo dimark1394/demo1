@@ -29,7 +29,9 @@ else
 
     $eco_score=($count_eco/$count_loc)*100;
 
-    echo "Your eco score this month is ", $eco_score , "%";
+    $message= "Your eco score this month is " .$eco_score ."%";
+
+    echo $message;
 }
 
 /*echo "Arithmos topothesiwn ",$count_loc;
