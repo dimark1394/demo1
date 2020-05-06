@@ -26,11 +26,15 @@ if (isset($_FILES['uploadingfile'])) {
                 $temptime = date('Y-m-d H:i:s', substr($row["timestampMs"], 0, -3));}
             $sql = "INSERT INTO locations(username,timestamp,accuracy,lat,lng) VALUES ('".$tempusername."','".$temptime."','".$row["accuracy"]."','".$lattemp."','".$lontemp."')";
             mysqli_query($conn, $sql);
-
+            $last_id = mysqli_insert_id($conn);
             $tempact = $row["activity"];
             $activitycount = 0;
             foreach ($tempact as $activities){
                 $timestmp = $activities["timestampMs"];
+                if(strlen($timestmp) == 12){
+                    $tempacttime = date('Y-m-d H:i:s', substr($row["timestampMs"], 0, -2));
+                }else{
+                    $tempacttime = date('Y-m-d H:i:s', substr($row["timestampMs"], 0, -3));}
                 $confmax = 0;
                 $typemax = '';
                 $tempactivities = $activities["activity"];
@@ -47,11 +51,8 @@ if (isset($_FILES['uploadingfile'])) {
                         }
 
                     }
-                    echo($typemax);
-                    echo PHP_EOL;
-                    echo($confmax);
-                    echo PHP_EOL;
-                    echo PHP_EOL;
+                    $sql1 = "INSERT INTO activity(username,type,confidence,timestamp,id_location) VALUES ('".$tempusername."','".$typemax."','".$confmax."','".$tempacttime."','".$last_id."')";
+                    mysqli_query($conn,$sql1);
                 }
 
             }
