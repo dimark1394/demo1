@@ -62,7 +62,6 @@ if(!isset($_SESSION['uiduser'])){
     <script src="js/vendor/jquery.ui.widget.js"></script>
     <script src="js/jquery.iframe-transport.js"></script>
     <script src="js/jquery.fileupload.js"></script>
-    <script src="upload.js"></script>
 
 </head>
 <body background="images/rio.jpg">
@@ -91,6 +90,7 @@ if(!isset($_SESSION['uiduser'])){
 
         </form>
     </div>
+    <script src="upload.js"></script>
     <div class="datepicker">
         <h3>Select your range of dates</h3>
         <form id="heatmap" name="heatmap">
@@ -154,11 +154,11 @@ if(!isset($_SESSION['uiduser'])){
         </table>
 
         <div id="curve_chart" style="width: 700px; height: 300px"></div>
-
+        <script src="datespan.js"></script>
         <!-- Apikonisi stixion xristi -->
         <div class="container2">
             <div class="box">
-                <div class="icon"><i class="fa fa-leaf" aria-hidden="true"></i></div>
+                <div class="icon" id="box1"><i class="fa fa-leaf" aria-hidden="true"></i></div>
                 <div class="content" id="eco">
                     <h3>Eco Score</h3>
                     <p> Your eco score this past month is ...%</p>
@@ -167,64 +167,11 @@ if(!isset($_SESSION['uiduser'])){
             </div>
 
             <div class="box2">
-                <div class="icon2"><i class="fa fa-address-book" aria-hidden="true"></i></div>
+                <div class="icon2" id="box2"><i class="fa fa-address-book" aria-hidden="true"></i></div>
                 <div class="content2">
                     <h3>User Info</h3>
-                    <?php
-                    include_once ('connection.php');
-                    date_default_timezone_set('Europe/Athens');
-                    $tempusername = $_SESSION['uiduser'];
-                    $date_data= array();
 
-
-                    $query = "SELECT lastupload FROM users WHERE username='$tempusername' ";
-                    $last = mysqli_query($conn, $query);
-                    while($last1 = mysqli_fetch_array($last)){
-                        $last_updates [] = array(
-                                'lastupload' => $last1['lastupload']
-                        );
-                    }
-
-                    if($last_updates[0]['lastupload']== "0000-00-00 00:00:00")
-                    {
-                        $last_update="You have not uploaded data yet";
-                        $message="";
-                    }
-                    else
-                        {
-                        $last_update = "Your last upload was on " . $last_updates[0]['lastupload'];
-
-
-                        $sql = "SELECT timestamp FROM locations WHERE username='$tempusername' ORDER BY timestamp ";
-                        $result = mysqli_query($conn, $sql);
-                        while ($row = mysqli_fetch_array($result)) {
-                            $date_data [] = array(
-                                'timestamp' => $row['timestamp']
-                            );
-
-                        }
-
-                        //$cover_json =json_encode($date_data);
-
-
-                        $first_date = $date_data[0]['timestamp'];
-                        $last_date = $date_data[sizeof($date_data) - 1]['timestamp'];
-                        $message = "Your data covers from " . $first_date . " until " . $last_date;
-
-                        }
-
-
-
-
-
-
-
-                    ?>
-
-
-                    <p> <?php echo  $last_update?>  </p>
-
-                    <p> <?php echo $message ?> </p>
+                    <p><span id="lastupload"></span><span id="startdate"></span><span id="enddate"></span></p>
 
 
 

@@ -1,6 +1,7 @@
 <?php
 include_once ('connection.php');
 session_start();
+date_default_timezone_set('Europe/Athens');
 $tempusername = $_SESSION['uiduser'];
 if (isset($_FILES['uploadingfile'])) {
 
