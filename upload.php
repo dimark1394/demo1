@@ -28,18 +28,30 @@ if (isset($_FILES['uploadingfile'])) {
             mysqli_query($conn, $sql);
 
             $tempact = $row["activity"];
+            $activitycount = 0;
             foreach ($tempact as $activities){
                 $timestmp = $activities["timestampMs"];
-                echo ($timestmp);
-                echo PHP_EOL;
+                $confmax = 0;
+                $typemax = '';
                 $tempactivities = $activities["activity"];
-                foreach ($tempactivities as $actofact){
-                    $type = $actofact["type"];
-                    echo ($type);
+                $activitycount = $activitycount + 1;
+                if ($activitycount <= 1) {
+                    echo ($timestmp);
                     echo PHP_EOL;
-//                  echo ($timestmp);
-//                  echo PHP_EOL;
-//                  echo PHP_EOL;
+                    foreach ($tempactivities as $actofact) {
+                        $type = $actofact["type"];
+                        $conf = $actofact["confidence"];
+                        if ($confmax <= $conf) {
+                            $confmax = $conf;
+                            $typemax = $type;
+                        }
+
+                    }
+                    echo($typemax);
+                    echo PHP_EOL;
+                    echo($confmax);
+                    echo PHP_EOL;
+                    echo PHP_EOL;
                 }
 
             }
