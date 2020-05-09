@@ -25,38 +25,6 @@ if(!isset($_SESSION['uiduser'])){
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Month', 'Score'],
-                ['January',  10],
-                ['February',  24],
-                ['March',  23],
-                ['April',  50],
-                ['May',  50],
-                ['June',  63],
-                ['Juy',  30],
-                ['August',  80],
-                ['September',  23],
-                ['October',  12],
-                ['November',  10],
-                ['December',  18]
-            ]);
-
-            var options = {
-                title: 'Your scores this last year',
-                curveType: 'function',
-                legend: { position: 'bottom' }
-            };
-
-            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-            chart.draw(data, options);
-        }
-    </script>
     <link rel="stylesheet" href="userpage.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="js/vendor/jquery.ui.widget.js"></script>
@@ -153,7 +121,9 @@ if(!isset($_SESSION['uiduser'])){
 
         </table>
 
+        <script type="text/javascript" src="last_year.js"></script>
         <div id="curve_chart" style="width: 700px; height: 300px"></div>
+
         <script src="datespan.js"></script>
         <script src="eco.js"></script>
         <!-- Apikonisi stixion xristi -->
