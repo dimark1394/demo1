@@ -155,14 +155,14 @@ if(!isset($_SESSION['uiduser'])){
 
         <div id="curve_chart" style="width: 700px; height: 300px"></div>
         <script src="datespan.js"></script>
+        <script src="eco.js"></script>
         <!-- Apikonisi stixion xristi -->
         <div class="container2">
             <div class="box">
                 <div class="icon" id="box1"><i class="fa fa-leaf" aria-hidden="true"></i></div>
                 <div class="content" id="eco">
                     <h3>Eco Score</h3>
-                    <p> Your eco score this past month is ...%</p>
-                    <script type="text/javascript" src="eco.js"></script>
+                    <p><span id="eco"></span></p>
                 </div>
             </div>
 

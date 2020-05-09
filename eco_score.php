@@ -6,6 +6,7 @@ $tempusername = $_SESSION['uiduser'];
 date_default_timezone_set('Europe/Athens');
 $current_month=date('m');
 $count_loc=0;
+$eco_message=array();
 
 $count_eco=0;
 
@@ -18,7 +19,11 @@ $count_loc=mysqli_num_rows($result);
 
 if ($count_loc == 0)
 {
-    echo "You don't have any location history the current month ";
+    $eco_score=0;
+    $message="You don't have any location history the current month";
+    $eco_message[]= array("message" => $message );
+
+    //echo $eco_message[0]["message"] ;
 }
 else
 {
@@ -30,9 +35,13 @@ else
     $eco_score=($count_eco/$count_loc)*100;
 
     $message= "Your eco score this month is " .$eco_score ."%";
+    $eco_message[]= array("message" => $message);
 
-    echo $message;
+    //echo $eco_message[0]["message"] ;
 }
+
+$response = json_encode($eco_message);
+echo  $response;
 
 /*echo "Arithmos topothesiwn ",$count_loc;
 echo "<br>";
