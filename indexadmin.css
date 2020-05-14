@@ -170,3 +170,8 @@ label {
 {
     display: inline;
 }
+
+#adminform
+{
+    float: right;
+}

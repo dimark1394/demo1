@@ -17,6 +17,7 @@ if(!isset($_SESSION['uid'])){
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="indexadmin.js"></script>
     <link rel="stylesheet" href="indexadmin.css">
+   <!--  <script type="text/javascript" src="map.js"></script> -->
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"> </script>
@@ -30,6 +31,8 @@ if(!isset($_SESSION['uid'])){
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
 
 
 
@@ -83,43 +86,47 @@ if(!isset($_SESSION['uid'])){
 
             }
         </script>
+
         <div id="mapid"></div>
+    
         <script type="text/javascript" src="map.js"></script>
-        <div id="datepicker">
-            <label for="date">Choose a date</label>
-            <input type="text" id="date" name="birthday" value="10/24/2000" />
+        <div id="adminform">
+        	<form>
+        		<label for="date">Pick your desired daterange</label>
+			        <div id="datepicker">
+			        	<input type="text" name="datetimes" />
+			        	<script>
+			        		
+							$(function() {
+							  $('input[name="datetimes"]').daterangepicker({
+							    timePicker: true,
+							    startDate: moment().startOf('hour'),
+							    endDate: moment().startOf('hour').add(32, 'hour'),
+							    locale: {
+							      format: 'M/DD hh:mm A'
+							    }
+							  });
+							});
+			        	</script>
+            
+        			</div>
+        		<label for="activity">Pick your desired activity</label>
+        		<select id="activity" name="activity" multiple>
+        			<option value="walking">WALKING</option>
+        			<option value="running">RUNNING</option>
+        			<option value="still">STILL</option>
+        			<option value="car">CAR</option>
+        			<option value="bike">BIKE</option>
+        		</select>
 
-            <script>
-                $(function() {
-                    $('input[name="birthday"]').daterangepicker({
-                        singleDatePicker: true,
-                        showDropdowns: true,
-                        minYear: 1901,
-                        maxYear: parseInt(moment().format('YYYY'),10)
-                    }, function(start, end, label) {
-                        var years = moment().diff(start, 'years');
-                        alert("You are " + years + " years old!");
-                    });
-                });
-            </script>
-        </div>
+        		<button type="button">Create HeatMap</button>
 
-        <div id="timepicker">
-            <label for="appt">Choose a time:</label>
-
-            <input type="time" id="appt" name="appt"
-                   min="09:00" max="18:00" required>
-        </div>
-
-        <div class="activity_selector">
-            <button onclick="myFunction()" class="dropbtn">Choose Activity</button>
-            <div id="myDropdown" class="dropdown-content">
-                <a href="#">STILL</a>
-                <a href="#">WALKING</a>
-                <a href="#">CAR</a>
-            </div>
-
-        </div>
+        		<label for="db">Export or Delete DataBase</label>
+        		<button type="button">EXPORT</button>
+        		<button type="button">DELETE</button>
+    		</form>
+    	</div>
+    </div>
 
 
 
