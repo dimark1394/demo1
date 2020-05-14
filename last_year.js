@@ -3,7 +3,7 @@ google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
     var data = google.visualization.arrayToDataTable([
-        ['Month', 'Score'],
+        ['Month', 'score'],
         ['January',  10],
         ['February',  24],
         ['March',  23],
