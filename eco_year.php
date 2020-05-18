@@ -17,8 +17,24 @@ while($row = mysqli_fetch_array($result) )
         'type'  => $row['type']
 
     ) ;
+    if ($eco_type[]['timestamp'] == )
+
+
 
 }
+$eco_month_count=array();
+$N = sizeof($eco_type);
+//echo $eco_type[1]['timestamp'];
+//echo "<br>";
+//echo $eco_type[sizeof($eco_type) -1]['timestamp'];
+//$N=[sizeof($eco_type) -1];
+//echo $N;
+for($i=0; $i<$N; $i++ )
+{
+    echo $eco_type[$i]['timestamp'];
+    echo "<br>";
+}
+
 
 echo json_encode($eco_type);
 
