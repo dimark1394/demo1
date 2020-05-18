@@ -17,6 +17,7 @@ if (isset($_FILES['uploadingfile'])) {
     $sql1 = "UPDATE users SET lastupload='$currentdate' WHERE username='$tempusername'";
     mysqli_query($conn,$sql1);
 }
+    $date_cor = "0";
     foreach ($array["locations"] as $row ) {
         $lattemp = $row['latitudeE7']*pow(10,-7);
         $lontemp = $row['longitudeE7']*pow(10, -7);
@@ -34,19 +35,18 @@ if (isset($_FILES['uploadingfile'])) {
                 $timestmp = $activities["timestampMs"];
                 if(strlen($timestmp) == 12){
                     $tempacttime = date('Y-m-d H:i:s', substr($row["timestampMs"], 0, -2));
-                }else{
-                    $tempacttime = date('Y-m-d H:i:s', substr($row["timestampMs"], 0, -3));}
+                }else {
+                    $tempacttime = date('Y-m-d H:i:s', substr($row["timestampMs"], 0, -3));
+                }
                 $confmax = 0;
                 $typemax = '';
                 $tempactivities = $activities["activity"];
                 $activitycount = $activitycount + 1;
                 if ($activitycount <= 1) {
-                    echo ($timestmp);
-                    echo PHP_EOL;
                     foreach ($tempactivities as $actofact) {
                         $type = $actofact["type"];
                         $conf = $actofact["confidence"];
-                        if ($confmax <= $conf) {
+                        if ($confmax < $conf && ($type != 'UNKNOWN')) {
                             $confmax = $conf;
                             $typemax = $type;
                         }

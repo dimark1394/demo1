@@ -30,6 +30,7 @@ if(!isset($_SESSION['uiduser'])){
     <script src="js/vendor/jquery.ui.widget.js"></script>
     <script src="js/jquery.iframe-transport.js"></script>
     <script src="js/jquery.fileupload.js"></script>
+    <script src="entries_per_activity.js"></script>
 
 </head>
 <body background="images/rio.jpg">
@@ -57,6 +58,7 @@ if(!isset($_SESSION['uiduser'])){
             <div id="files"></div>
 
         </form>
+        <div id="entries_per_activity" style="width: 700px; height: 300px"></div>
     </div>
     <script src="upload.js"></script>
     <div class="datepicker">
@@ -152,7 +154,6 @@ if(!isset($_SESSION['uiduser'])){
 
 
         </div>
-
 
 
 
