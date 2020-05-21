@@ -23,14 +23,3 @@ $result -> free();
 $table['rows'] = $rows;
 $jsonTable = json_encode($table,true);
 echo $jsonTable;
-//$count_array = [[
-//   "type" => 'count'
-//]];
-//while($row = mysqli_fetch_array($result)){
-//    if($row['type'] != ""){
-//        $count_array [] = [
-//            $row['type'] => $row['counter'],
-//        ];
-//    }
-//}
-//echo json_encode($count_array);
