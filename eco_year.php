@@ -7,18 +7,17 @@ date_default_timezone_set('Europe/Athens');
 
 $eco_type=array();
 
-$sql="SELECT type,MONTH(timestamp),count(*) AS counter FROM activity  GROUP BY type,MONTH(timestamp)";
+$sql="SELECT type,month(timestamp),count(*) AS counter FROM activity WHERE timestamp BETWEEN DATE_SUB(NOW(), INTERVAL 365 DAY) AND NOW()  GROUP BY type,month(timestamp) ORDER BY month(timestamp)";
 $result=mysqli_query($conn, $sql);
 
 while($row = mysqli_fetch_array($result) )
 {
     $eco_type [] = array(
-        'type' => $row['type'],
-        'count' => $row['counter'],
-        'month' => $row['MONTH(timestamp)']
+        'Month' => $row['month(timestamp)'],
+        'type'  => $row['type'],
+        'count' => $row['counter']
     ) ;
 }
-print_r($eco_type);
 
 //$N = sizeof($eco_type);
 //
@@ -87,7 +86,63 @@ print_r($eco_type);
 //    echo $eco_type[$i]['timestamp'];
 //    echo "<br>";
 //}
+$N=sizeof($eco_type);
+for ($i=0 ; $i<$N; $i++)
+{
+    print_r($eco_type[$i]);
+    echo "<br>";
+}
+
+echo "<br>";
+echo "<br>";
+$current_month = 0;
+$next_month = 1;
+$count_total = 0;
+$count_eco = 0;
+$same_month = 0;
+
+foreach ($eco_type as $value) {
+        $current_month = $value['Month'];
+        while ($current_month != $next_month) {
+            $same_month += 1;
+        }else{
+            $same_month = 0;
+        }
+
+ echo   $same_month;
+    }
+
+//$M = sizeof($eco_y);
+//for ($i=0 ; $i<$M; $i++)
+//{
+print_r($eco_y);
+//    echo "<br>";
+//}
+//$eco_per_moth=array();
+//for($i=1; $i<13; $i++)
+//{
+//    $count = 0;
+//    for($j=1; $j<$N; $j++)
+//    {
+//        if($eco_type[$j]['month'] == $eco_type[$j-1]['month'] )
+//        {
+//            $count = $count ++;
+//        }
 //
-//echo json_encode($eco_type);
+//    }
+//            $eco_per_moth [] = array(
+//                'month' => $i,
+//                'score' => $count
 //
+//            );
+//
+//
+//}
+//
+//$M=sizeof($eco_per_moth);
+//for($i=0; $i<13; $i++)
+//{
+//    print_r($eco_per_moth[$i]);
+//    echo "<br>";
+//}
 //
