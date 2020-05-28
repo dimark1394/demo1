@@ -7,142 +7,237 @@ date_default_timezone_set('Europe/Athens');
 
 $eco_type=array();
 
-$sql="SELECT type,month(timestamp),count(*) AS counter FROM activity WHERE timestamp BETWEEN DATE_SUB(NOW(), INTERVAL 365 DAY) AND NOW()  GROUP BY type,month(timestamp) ORDER BY month(timestamp)";
-$result=mysqli_query($conn, $sql);
+$sql="SELECT monthname(timestamp),count(*) AS counter FROM activity WHERE timestamp BETWEEN DATE_SUB(NOW(), INTERVAL 365 DAY) AND NOW() AND (type='WALKING' OR type='ON_BICYCLE' ) GROUP BY month(timestamp) ORDER BY month(timestamp)";
+$result = mysqli_query($conn, $sql);
 
 while($row = mysqli_fetch_array($result) )
 {
     $eco_type [] = array(
-        'Month' => $row['month(timestamp)'],
-        'type'  => $row['type'],
+        'Month' => $row['monthname(timestamp)'],
         'count' => $row['counter']
     ) ;
 }
 
-//$N = sizeof($eco_type);
-//
-//for($i=0; $i<$N; $i++ )
-//{
-//
-//    $eco_type[$i]['timestamp']=substr($eco_type[$i]['timestamp'], 5,2);
-//   // echo $eco_type[$i]['timestamp'];
-//    //echo "<br>";
-//}
-//
-//for($i=0; $i<$N; $i++ )
-//{
-//    if ($eco_type[$i]['timestamp']=="01")
-//    {
-//        $eco_type[$i]['timestamp'] = "January";
-//    }
-//    elseif ($eco_type[$i]['timestamp']=="02")
-//    {
-//        $eco_type[$i]['timestamp'] = "February";
-//    }
-//    elseif ($eco_type[$i]['timestamp']=="03")
-//    {
-//        $eco_type[$i]['timestamp'] = "March";
-//    }
-//    elseif ($eco_type[$i]['timestamp']=="04")
-//    {
-//        $eco_type[$i]['timestamp'] = "April";
-//    }
-//    elseif ($eco_type[$i]['timestamp']=="05")
-//    {
-//        $eco_type[$i]['timestamp'] = "May";
-//    }
-//    elseif ($eco_type[$i]['timestamp']=="06")
-//    {
-//        $eco_type[$i]['timestamp'] = "June";
-//    }
-//    elseif ($eco_type[$i]['timestamp']=="07")
-//    {
-//        $eco_type[$i]['timestamp'] = "July";
-//    }
-//    elseif ($eco_type[$i]['timestamp']=="08")
-//    {
-//        $eco_type[$i]['timestamp'] = "August";
-//    }
-//    elseif ($eco_type[$i]['timestamp']=="09")
-//    {
-//        $eco_type[$i]['timestamp'] = "September";
-//    }
-//    elseif ($eco_type[$i]['timestamp']=="10")
-//    {
-//        $eco_type[$i]['timestamp'] = "October";
-//    }
-//    elseif ($eco_type[$i]['timestamp']=="11")
-//    {
-//        $eco_type[$i]['timestamp'] = "November";
-//    }
-//    elseif ($eco_type[$i]['timestamp']=="12")
-//    {
-//        $eco_type[$i]['timestamp'] = "December";
-//    }
-//}
-//
-//for($i=0; $i<$N; $i++ )
-//{
-//    echo $eco_type[$i]['timestamp'];
-//    echo "<br>";
-//}
-$N=sizeof($eco_type);
-for ($i=0 ; $i<$N; $i++)
+//print_r($eco_type);
+
+$sql1="SELECT MONTHNAME(timestamp),count(*) AS counter1 FROM activity  WHERE timestamp BETWEEN DATE_SUB(NOW(), INTERVAL 365 DAY) AND NOW() GROUP BY MONTHNAME(timestamp) ORDER BY MONTH(timestamp)";
+$result1 = mysqli_query($conn,$sql1);
+
+while($row = mysqli_fetch_array($result1) )
 {
-    print_r($eco_type[$i]);
+    $eco_type_total [] = array(
+        'Month' => $row['MONTHNAME(timestamp)'],
+        'count' => $row['counter1']
+    ) ;
+}
+
+$N=sizeof($eco_type);
+$M=sizeof($eco_type_total);
+echo "This is the eco type array";
+echo "<br>";
+for ($i=0; $i<$N; $i++)
+{
+    echo $eco_type[$i]['Month'];
+    echo " ";
+    echo $eco_type[$i]['count'];
+    echo " i=";
+    echo $i;
+    echo "<br>";
+}
+echo "<br>";
+echo "<br>";
+echo "This is the eco total array";
+echo "<br>";
+for ($i=0; $i<$M; $i++)
+{
+    echo $eco_type_total[$i]['Month'];
+    echo " ";
+    echo $eco_type_total[$i]['count'];
+    echo " i=";
+    echo $i;
     echo "<br>";
 }
 
 echo "<br>";
-echo "<br>";
-$current_month = 0;
-$next_month = 1;
-$count_total = 0;
-$count_eco = 0;
-$same_month = 0;
 
-foreach ($eco_type as $value) {
-        $current_month = $value['Month'];
-        while ($current_month != $next_month) {
-            $same_month += 1;
-        }else{
-            $same_month = 0;
-        }
 
- echo   $same_month;
+for($i=0; $i<12; $i++)
+{
+    if ($i==0)
+    {
+    $eco_fill[] = array(
+        'month'=>'January',
+        'score'=> 0
+    );
     }
+    if ($i==1)
+    {
+        $eco_fill[] = array(
+            'month'=>'February',
+            'score'=> 0
+        );
+    }
+    if ($i==2)
+    {
+        $eco_fill[] = array(
+            'month'=>'March',
+            'score'=> 0
+        );
+    }
+    if ($i==3)
+    {
+        $eco_fill[] = array(
+            'month'=>'April',
+            'score'=> 0
+        );
+    }
+    if ($i==4)
+    {
+        $eco_fill[] = array(
+            'month'=>'May',
+            'score'=> 0
+        );
+    }
+    if ($i==5)
+    {
+        $eco_fill[] = array(
+            'month'=>'June',
+            'score'=> 0
+        );
+    }
+    if ($i==6)
+    {
+        $eco_fill[] = array(
+            'month'=>'July',
+            'score'=> 0
+        );
+    }
+    if ($i==7)
+    {
+        $eco_fill[] = array(
+            'month'=>'August',
+            'score'=> 0
+        );
+    }
+    if ($i==8)
+    {
+        $eco_fill[] = array(
+            'month'=>'September',
+            'score'=> 0
+        );
+    }
+    if ($i==9)
+    {
+        $eco_fill[] = array(
+            'month'=>'October',
+            'score'=> 0
+        );
+    }
+    if ($i==10)
+    {
+        $eco_fill[] = array(
+            'month'=>'November',
+            'score'=> 0
+        );
+    }
+    if ($i==11)
+    {
+        $eco_fill[] = array(
+            'month'=>'December',
+            'score'=> 0
+        );
+    }
+}
 
-//$M = sizeof($eco_y);
-//for ($i=0 ; $i<$M; $i++)
+
+echo "<br>";
+//print_r($eco_fill);
+echo "This is the last array for json";
+echo "<br>";
+echo "<br>";
+$K=sizeof($eco_fill);
+for ($i=0; $i<$K; $i++)
+{
+    echo $eco_fill[$i]['month'];
+    echo " ";
+    echo $eco_fill[$i]['score'];
+    echo " i=";
+    echo $i;
+    echo "<br>";
+}
+
+echo "<br>";
+//echo "<br>";
+//echo "TRYING TO DO THE FUCKING IF";
+//echo "<br>";
+
+//$i=11;
+//if($eco_fill[$i]['month']==$eco_type[$i]['Month'])
 //{
-print_r($eco_y);
-//    echo "<br>";
+//    echo "They are equal";
 //}
-//$eco_per_moth=array();
-//for($i=1; $i<13; $i++)
+//else
 //{
-//    $count = 0;
-//    for($j=1; $j<$N; $j++)
-//    {
-//        if($eco_type[$j]['month'] == $eco_type[$j-1]['month'] )
-//        {
-//            $count = $count ++;
-//        }
-//
-//    }
-//            $eco_per_moth [] = array(
-//                'month' => $i,
-//                'score' => $count
-//
-//            );
-//
-//
+//    echo "They are not";
 //}
-//
-//$M=sizeof($eco_per_moth);
-//for($i=0; $i<13; $i++)
-//{
-//    print_r($eco_per_moth[$i]);
-//    echo "<br>";
-//}
-//
+
+for($i=0; $i<$N; $i++)
+{
+    for($j=0; $j<12; $j++)
+    {
+        if ($eco_fill[$j]['month']==$eco_type[$i]['Month'])
+        {
+//            echo "Hello";
+//            echo " i=";
+//            echo $i;
+//            echo "<br>";
+            $eco_fill[$j]['score']=$eco_type[$i]['count'];
+
+        }
+    }
+}
+
+
+echo "This is the last array for json with the eco_type count only";
+
+echo "<br>";
+for ($i=0; $i<12; $i++)
+{
+    echo $eco_fill[$i]['month'];
+    echo " ";
+    echo $eco_fill[$i]['score'];
+    echo " i=";
+    echo $i;
+    echo "<br>";
+}
+
+echo "<br>";
+
+
+for($i=0; $i<$M; $i++)
+{
+    for($j=0; $j<12; $j++)
+    {
+        if ($eco_fill[$j]['month']==$eco_type_total[$i]['Month'])
+        {
+            if($eco_fill[$j]['score']!=0)
+            {
+                $eco_fill[$j]['score'] = ($eco_fill[$j]['score'] / $eco_type_total[$i]['count']) * 100;
+            }
+        }
+    }
+}
+
+
+echo "This is the last array for json with the eco score for each month  only FUCCCK YOUUUU ECOOO";
+
+echo "<br>";
+for ($i=0; $i<12; $i++)
+{
+    echo $eco_fill[$i]['month'];
+    echo " ";
+    echo $eco_fill[$i]['score'];
+    echo "<br>";
+}
+
+echo json_encode($eco_fill);
