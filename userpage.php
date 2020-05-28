@@ -123,7 +123,7 @@ if(!isset($_SESSION['uiduser'])){
 
         </table>
 
-        <script type="text/javascript" src="last_year.js"></script>
+        <script defer async type="text/javascript" src="last_year.js"></script>
         <div id="curve_chart" style="width: 700px; height: 300px"></div>
 
         <script src="datespan.js"></script>

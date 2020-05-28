@@ -33,32 +33,32 @@ while($row = mysqli_fetch_array($result1) )
 
 $N=sizeof($eco_type);
 $M=sizeof($eco_type_total);
-echo "This is the eco type array";
-echo "<br>";
-for ($i=0; $i<$N; $i++)
-{
-    echo $eco_type[$i]['Month'];
-    echo " ";
-    echo $eco_type[$i]['count'];
-    echo " i=";
-    echo $i;
-    echo "<br>";
-}
-echo "<br>";
-echo "<br>";
-echo "This is the eco total array";
-echo "<br>";
-for ($i=0; $i<$M; $i++)
-{
-    echo $eco_type_total[$i]['Month'];
-    echo " ";
-    echo $eco_type_total[$i]['count'];
-    echo " i=";
-    echo $i;
-    echo "<br>";
-}
-
-echo "<br>";
+//echo "This is the eco type array";
+//echo "<br>";
+//for ($i=0; $i<$N; $i++)
+//{
+//    echo $eco_type[$i]['Month'];
+//    echo " ";
+//    echo $eco_type[$i]['count'];
+//    echo " i=";
+//    echo $i;
+//    echo "<br>";
+//}
+//echo "<br>";
+//echo "<br>";
+//echo "This is the eco total array";
+//echo "<br>";
+//for ($i=0; $i<$M; $i++)
+//{
+//    echo $eco_type_total[$i]['Month'];
+//    echo " ";
+//    echo $eco_type_total[$i]['count'];
+//    echo " i=";
+//    echo $i;
+//    echo "<br>";
+//}
+//
+//echo "<br>";
 
 
 for($i=0; $i<12; $i++)
@@ -150,23 +150,23 @@ for($i=0; $i<12; $i++)
 }
 
 
-echo "<br>";
-//print_r($eco_fill);
-echo "This is the last array for json";
-echo "<br>";
-echo "<br>";
-$K=sizeof($eco_fill);
-for ($i=0; $i<$K; $i++)
-{
-    echo $eco_fill[$i]['month'];
-    echo " ";
-    echo $eco_fill[$i]['score'];
-    echo " i=";
-    echo $i;
-    echo "<br>";
-}
-
-echo "<br>";
+//echo "<br>";
+////print_r($eco_fill);
+//echo "This is the last array for json";
+//echo "<br>";
+//echo "<br>";
+//$K=sizeof($eco_fill);
+//for ($i=0; $i<$K; $i++)
+//{
+//    echo $eco_fill[$i]['month'];
+//    echo " ";
+//    echo $eco_fill[$i]['score'];
+//    echo " i=";
+//    echo $i;
+//    echo "<br>";
+//}
+//
+//echo "<br>";
 //echo "<br>";
 //echo "TRYING TO DO THE FUCKING IF";
 //echo "<br>";
@@ -198,20 +198,20 @@ for($i=0; $i<$N; $i++)
 }
 
 
-echo "This is the last array for json with the eco_type count only";
-
-echo "<br>";
-for ($i=0; $i<12; $i++)
-{
-    echo $eco_fill[$i]['month'];
-    echo " ";
-    echo $eco_fill[$i]['score'];
-    echo " i=";
-    echo $i;
-    echo "<br>";
-}
-
-echo "<br>";
+//echo "This is the last array for json with the eco_type count only";
+//
+//echo "<br>";
+//for ($i=0; $i<12; $i++)
+//{
+//    echo $eco_fill[$i]['month'];
+//    echo " ";
+//    echo $eco_fill[$i]['score'];
+//    echo " i=";
+//    echo $i;
+//    echo "<br>";
+//}
+//
+//echo "<br>";
 
 
 for($i=0; $i<$M; $i++)
@@ -229,15 +229,17 @@ for($i=0; $i<$M; $i++)
 }
 
 
-echo "This is the last array for json with the eco score for each month  only FUCCCK YOUUUU ECOOO";
+//echo "This is the last array for json with the eco score for each month  only FUCCCK YOUUUU ECOOO";
+//
+//echo "<br>";
+//for ($i=0; $i<12; $i++)
+//{
+//    echo $eco_fill[$i]['month'];
+//    echo " ";
+//    echo $eco_fill[$i]['score'];
+//    echo "<br>";
+//}
 
-echo "<br>";
-for ($i=0; $i<12; $i++)
-{
-    echo $eco_fill[$i]['month'];
-    echo " ";
-    echo $eco_fill[$i]['score'];
-    echo "<br>";
-}
 
-echo json_encode($eco_fill);
+$response = json_encode($eco_fill);
+echo $response;
