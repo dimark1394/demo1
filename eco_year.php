@@ -240,6 +240,27 @@ for($i=0; $i<$M; $i++)
 //    echo "<br>";
 //}
 
+//print_r($eco_fill);
+$table = array();
+$table['cols'] = array(
+    array('label' => 'month', 'type' => 'string'),
+    array('label' => 'score', 'type'=> 'number')
+);
 
-$response = json_encode($eco_fill);
-echo $response;
+$rows = array();
+foreach ($eco_fill as $row)
+{
+    $temp=array();
+    $temp[] = array('v' => (string) $row['month']);
+    $temp[] = array('v'=> (integer) $row['score']);
+    $rows[] = array('c'=> $temp);
+
+}
+
+
+$table['rows'] = $rows;
+$jsonTable = json_encode($table, true);
+echo $jsonTable;
+
+//$response = json_encode($table, true);
+//echo $response;
