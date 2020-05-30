@@ -10,22 +10,22 @@ google.charts.setOnLoadCallback(drawLineChart4);
 
 // Draw the chart and set the chart values
 function drawPieChart() {
-    var data = google.visualization.arrayToDataTable([
-        ['Activity', 'Percentage'],
-        ['WALKING', 8],
-        ['STILL', 2],
-        ['CAR', 2],
-
-    ]);
-
-// Set options for pie chart.
-    var piechart_options = {title:'Ποσοστό εγγραφών ανά δραστηριότητα',
-        width:400,
-        height:300};
-
+    var jsonData = $.ajax({
+        url: "entries_per_activity_admin.php",
+        dataType: "json",
+        async: false
+    }).responseText;
+    var data = new google.visualization.DataTable(jsonData);
+    var options = {
+        title: 'Pososto drastiriotitas ana xristi',
+        curveType: 'function',
+        legend: { position: 'bottom' }
+    };
+    console.log(data);
 // Instantiate and draw the chart for pizza.
-    var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
-    piechart.draw(data, piechart_options);
+    var chart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+
+    chart.draw(data, options);
 }
 
 function drawBarChart() {
