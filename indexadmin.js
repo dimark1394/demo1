@@ -54,122 +54,82 @@ function drawBarChart() {
 
 
 function drawLineChart() {
-    var data = google.visualization.arrayToDataTable([
-        ['Month', 'Percentage'],
-        ['January', 18],
-        ['February', 28],
-        ['March', 58],
-        ['April', 8],
-        ['May', 12],
-        ['June', 5],
-        ['July', 75],
-        ['August', 5],
-        ['Septmber', 8],
-        ['Octomber', 7],
-        ['November', 45],
-        ['December', 75],
+    var jsonData = $.ajax({
+        url: "entries_per_month_admin.php",
+        dataType: "json",
+        async: false
+    }).responseText;
+    var data = new google.visualization.DataTable(jsonData);
+    var options = {
+        title: 'Pososto drastiriotitas ana mina',
+        curveType: 'function',
+        legend: { position: 'bottom' }
+    };
+    console.log(data);
+// Instantiate and draw the chart for pizza.
+    var chart = new google.visualization.PieChart(document.getElementById('linechart_div'));
 
-    ]);
-
-    // Set options for pie chart.
-    var linechart_options = {title:'Ποσοστό εγγραφών ανά μήνα', curveType: 'function', legend: {position: 'bottom'},
-        width:400,
-        height:300};
-
-    // Instantiate and draw the chart for pizza.
-    var linechart = new google.visualization.LineChart(document.getElementById('linechart_div'));
-    linechart.draw(data, linechart_options);
+    chart.draw(data, options);
 }
 
 
 function drawLineChart2() {
-    var data = google.visualization.arrayToDataTable([
-        ['Day', 'Percentage'],
-        ['Monday', 55],
-        ['Tuesday', 12],
-        ['Wendsday', 15],
-        ['Thursday', 36],
-        ['Friday', 2],
-        ['Saturday', 1],
-        ['Sunday', 20],
+    var jsonData = $.ajax({
+        url: "entries_per_day_admin.php",
+        dataType: "json",
+        async: false
+    }).responseText;
+    var data = new google.visualization.DataTable(jsonData);
+    var options = {
+        title: 'Pososto drastiriotitas ana mera',
+        curveType: 'function',
+        legend: { position: 'bottom' }
+    };
+    console.log(data);
+// Instantiate and draw the chart for pizza.
+    var chart = new google.visualization.PieChart(document.getElementById('linechart2_div'));
 
-
-    ]);
-
-    // Set options for pie chart.
-    var linechart_options = {title:'Ποσοστό εγγραφών ανά ημέρα', curveType: 'function', legend: {position: 'bottom'},
-        width:400,
-        height:300};
-
-    // Instantiate and draw the chart for pizza.
-    var linechart = new google.visualization.LineChart(document.getElementById('linechart2_div'));
-    linechart.draw(data, linechart_options);
+    chart.draw(data, options);
 }
 
 
 function drawLineChart3() {
-    var data = google.visualization.arrayToDataTable([
-        ['Time', 'Percentage'],
-        ['00', 0],
-        ['01', 0],
-        ['02', 0],
-        ['03', 0],
-        ['04', 0],
-        ['05', 0],
-        ['06', 0],
-        ['07', 0],
-        ['08', 12],
-        ['09', 15],
-        ['12', 36],
-        ['13', 2],
-        ['14', 1],
-        ['15', 20],
-        ['16', 55],
-        ['17', 12],
-        ['18', 15],
-        ['19', 36],
-        ['20', 0],
-        ['21', 0],
-        ['22', 0],
-        ['23', 0],
+    var jsonData = $.ajax({
+        url: "entries_per_hour_admin.php",
+        dataType: "json",
+        async: false
+    }).responseText;
+    var data = new google.visualization.DataTable(jsonData);
+    var options = {
+        title: 'Pososto drastiriotitas ana wra',
+        curveType: 'function',
+        legend: { position: 'bottom' }
+    };
+    console.log(data);
+// Instantiate and draw the chart for pizza.
+    var chart = new google.visualization.PieChart(document.getElementById('linechart3_div'));
 
-
-
-    ]);
-
-    // Set options for pie chart.
-    var linechart_options = {title:'Ποσοστό εγγραφών ανά ώρα', curveType: 'function', legend: {position: 'bottom'},
-        width:400,
-        height:300};
-
-    // Instantiate and draw the chart for pizza.
-    var linechart = new google.visualization.LineChart(document.getElementById('linechart3_div'));
-    linechart.draw(data, linechart_options);
+    chart.draw(data, options);
 }
 
 
 function drawLineChart4() {
-    var data = google.visualization.arrayToDataTable([
-        ['Year', 'Percentage'],
-        ['2015', 12],
-        ['2016', 25],
-        ['2017', 32],
-        ['2018', 55],
-        ['2019', 80],
-        ['2020', 75]
+    var jsonData = $.ajax({
+        url: "entries_per_year_admin.php",
+        dataType: "json",
+        async: false
+    }).responseText;
+    var data = new google.visualization.DataTable(jsonData);
+    var options = {
+        title: 'Pososto drastiriotitas ana xrono',
+        curveType: 'function',
+        legend: { position: 'bottom' }
+    };
+    console.log(data);
+// Instantiate and draw the chart for pizza.
+    var chart = new google.visualization.PieChart(document.getElementById('linechart4_div'));
 
-
-
-    ]);
-
-    // Set options for pie chart.
-    var linechart_options = {title:'Ποσοστό εγγραφών ανά έτος', curveType: 'function', legend: {position: 'bottom'},
-        width:400,
-        height:300};
-
-    // Instantiate and draw the chart for pizza.
-    var linechart = new google.visualization.LineChart(document.getElementById('linechart4_div'));
-    linechart.draw(data, linechart_options);
+    chart.draw(data, options);
 }
 
 /* When the user clicks on the button,
