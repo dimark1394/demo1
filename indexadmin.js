@@ -30,25 +30,21 @@ function drawPieChart() {
 
 function drawBarChart() {
 
-    var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Topping');
-    data.addColumn('number', 'Slices');
-    data.addRows([
-        ['Mark', 3],
-        ['Nikos', 1],
-        ['Vag', 1],
-
-    ]);
-
-
-
-    var barchart_options = {title:'Barchart: Ποσοστό εγγαρφών ανά χρήστη',
-        width:400,
-        height:300,
-        legend: 'none'};
+    var jsonData = $.ajax({
+        url: "entries_per_user.php",
+        dataType: "json",
+        async: false
+    }).responseText;
+    var data = new google.visualization.DataTable(jsonData);
+    var options = {
+        title: 'Pososto egraffwn ana xristi',
+        curveType: 'function',
+        legend: { position: 'bottom' }
+    };
+    console.log(data);
 
     var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
-    barchart.draw(data, barchart_options);
+    barchart.draw(data, options);
 
 }
 
