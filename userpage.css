@@ -140,6 +140,13 @@ table#t01 th {
     background-color: orangered;
     color: white;
 }
+#t02{
+    background-color: #cccccc;
+}
+
+#t03{
+    background-color: #cccccc;
+}
 
 #mapcontainer{
     float: left;
