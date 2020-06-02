@@ -59,6 +59,21 @@ if(!isset($_SESSION['uiduser'])){
 
         </form>
         <div id="entries_per_activity" style="width: 700px; height: 300px"></div>
+        <table id="t02">
+            <tr>
+                <th>Type</th>
+                <th>Busiest Day</th>
+                <th>Count</th>
+            </tr>
+            <br>
+            <table id="t03">
+                <tr>
+                    <th>Type</th>
+                    <th>Busiest Hour</th>
+                    <th>Count</th>
+                </tr>
+            </table>
+        </table>
     </div>
     <script src="upload.js"></script>
     <div class="datepicker">

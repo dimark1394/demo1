@@ -14,7 +14,7 @@ function drawChart() {
         legend: { position: 'bottom' }
     };
     console.log(data);
-    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+    var chart = new google.visualization.ColumnChart(document.getElementById('curve_chart'));
 
     chart.draw(data, options);
 }
