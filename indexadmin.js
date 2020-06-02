@@ -63,7 +63,7 @@ function drawLineChart() {
     };
     console.log(data);
 // Instantiate and draw the chart for pizza.
-    var chart = new google.visualization.PieChart(document.getElementById('linechart_div'));
+    var chart = new google.visualization.BarChart(document.getElementById('linechart_div'));
 
     chart.draw(data, options);
 }
@@ -103,7 +103,7 @@ function drawLineChart3() {
     };
     console.log(data);
 // Instantiate and draw the chart for pizza.
-    var chart = new google.visualization.PieChart(document.getElementById('linechart3_div'));
+    var chart = new google.visualization.BarChart(document.getElementById('linechart3_div'));
 
     chart.draw(data, options);
 }

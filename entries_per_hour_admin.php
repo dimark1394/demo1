@@ -13,14 +13,43 @@ $sql = "SELECT HOUR(timestamp), count(*) AS counter FROM locations GROUP BY HOUR
 $result = mysqli_query($conn, $sql);
 
 while ($row = mysqli_fetch_array($result)) {
-    $year [] = array(
+    $hour [] = array(
         'hour' => $row['HOUR(timestamp)'],
         'count' => $row['counter'],
     );
 }
 
 
-foreach ($year as $row) {
+$n=sizeof($hour);
+
+
+$hour_last=array();
+for($i=0; $i<24; $i++)
+{
+
+        $hour_last[]= array(
+            'hour'=>$i,
+            'count'=>0
+    );
+
+
+}
+
+
+for($i=0; $i<$n; $i++)
+{
+    for($j=0; $j<24; $j++)
+    {
+        if ($hour_last[$j]['hour']==$hour[$i]['hour'])
+        {
+            $hour_last[$j]['count'] = $hour[$i]['count'];
+        }
+    }
+
+}
+
+
+foreach ($hour_last as $row) {
     $temp = array();
     $temp[] = array('v' => (string)$row['hour']);
     $temp[] = array('v' => (integer)$row['count']);
@@ -28,9 +57,8 @@ foreach ($year as $row) {
 
 }
 
+
 $table['rows'] = $rows;
 $jsonTable = json_encode($table, true);
 echo $jsonTable;
-//print_r($year);
-
 
