@@ -102,6 +102,28 @@ if($tempusername!=$users_final[0]['user'] && $tempusername!=$users_final[1]['use
 //echo  "THis if the final final top 3 (or more) users  ";
 //echo " " .$tempusername;
 //echo "<br>";
-print_r($users_final);
+//print_r($users_final);
 
 
+$table = array();
+$table['cols'] = array(
+    array('label' => 'user', 'type' => 'string'),
+    array('label' => 'count', 'type'=> 'number'),
+    array('label' => 'position', 'type'=> 'number')
+);
+
+$rows = array();
+foreach ($users_final as $row)
+{
+    $temp=array();
+    $temp[] = array('v' => (string) $row['user']);
+    $temp[] = array('v'=> (integer) $row['count']);
+    $temp[] = array('v'=> (integer) $row['position']);
+    $rows[] = array('c'=> $temp);
+
+}
+
+
+$table['rows'] = $rows;
+$jsonTable = json_encode($table, true);
+echo $jsonTable;
