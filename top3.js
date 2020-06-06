@@ -1,9 +1,9 @@
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+google.charts.load('current', {'packages':['table']});
+google.charts.setOnLoadCallback(drawTable);
 
-function drawChart() {
+function drawTable() {
     var jsonData = $.ajax({
-        url: "top3scorers.php",
+        url: "top3scores.php",
         dataType: "json",
         async: false
     }).responseText;
@@ -14,7 +14,7 @@ function drawChart() {
         legend: { position: 'bottom' }
     };
     console.log(data);
-    var chart = new google.visualization.Table(document.getElementById(''));
+    var table = new google.visualization.Table(document.getElementById(''));
 
-    chart.draw(data, options);
+    table.draw(data, options);
 }

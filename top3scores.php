@@ -98,32 +98,103 @@ if($tempusername!=$users_final[0]['user'] && $tempusername!=$users_final[1]['use
     }
 }
 
-//echo "<br>";echo "<br>";
-//echo  "THis if the final final top 3 (or more) users  ";
-//echo " " .$tempusername;
-//echo "<br>";
-//print_r($users_final);
+echo "<br>";echo "<br>";
+echo  "THis if the final final top 3 (or more) users  ";
+echo " " .$tempusername;
+echo "<br>";
+print_r($users_final);
 
 
-$table = array();
-$table['cols'] = array(
-    array('label' => 'user', 'type' => 'string'),
-    array('label' => 'count', 'type'=> 'number'),
-    array('label' => 'position', 'type'=> 'number')
-);
+echo "<br>";echo "<br>";
+echo "now i need to have the firstName and the lastName ";
+//this query is to include the firstname and last name
+$sql2="SELECT firstName, lastName, username FROM users GROUP BY username" ;
+$result2=mysqli_query($conn, $sql2);
 
-$rows = array();
-foreach ($users_final as $row)
+while($row = mysqli_fetch_array($result2) )
 {
-    $temp=array();
-    $temp[] = array('v' => (string) $row['user']);
-    $temp[] = array('v'=> (integer) $row['count']);
-    $temp[] = array('v'=> (integer) $row['position']);
-    $rows[] = array('c'=> $temp);
+    $users_temp[] = array(
+        'user' => $row['username'],
+        'first' => $row['firstName'],
+        'last'=>$row['lastName']
+    ) ;
+}
+echo "<br>";echo "<br>";
+print_r($users_temp);
 
+$n=sizeof($users_temp);
+for($i=0; $i<$n; $i++)
+{
+    $users_temp[$i]['last']=substr($users_temp[$i]['last'], 0 , 1) . '.';
+}
+echo "<br>";echo "<br>";
+print_r($users_temp);
+
+
+//exw ton pinaka $users_temp me keys to username FIrsname kai PRwto gramma lastname  me .
+//exw to pinaka $users_final  pou exei tous top 3 (+thesi user)
+//prepei na ta enwsw ta gamimena ftiaxnontas pinaka $top3[] me key values firstname lastname count (isws kai position)
+//to size tou $users_temp exei size $n
+//to size tou $users_final exei size $k
+$top3=array();
+
+echo "<br>";
+echo "<br>";
+$l=0;
+$k=sizeof($users_final);
+for($i=0; $i<$n; $i++)
+{
+    for($j=0; $j<$k; $j++)
+    {
+        if($users_temp[$i]['user']==$users_final[$j]['user'])
+        {
+            $top3[$l]['name']=$users_temp[$i]['first'] . ' ' . $users_temp[$i]['last'];
+            $top3[$l]['score']= $users_final[$j]['count'];
+            $l=$l+1;
+        }
+    }
+}
+echo "<br>";
+echo "<br>";
+echo "This is the big change";
+echo "<br>";
+print_r($top3);
+
+
+
+function sortArray($a, $b) {
+    return $b['score'] - $a['score'];
 }
 
+usort($top3, 'sortArray');
+echo "<br>";
+echo "<br>";
+echo "This is the FINAL big change";
+echo "<br>";
+print_r($top3);
 
-$table['rows'] = $rows;
-$jsonTable = json_encode($table, true);
-echo $jsonTable;
+
+//$table = array();
+//$table['cols'] = array(
+//    array('label' => 'user', 'type' => 'string'),
+//    array('label' => 'count', 'type'=> 'number'),
+//    array('label' => 'position', 'type'=> 'number')
+//);
+//
+//$rows = array();
+//foreach ($users_final as $row)
+//{
+//    $temp=array();
+//    $temp[] = array('v' => (string) $row['user']);
+//    $temp[] = array('v'=> (integer) $row['count']);
+//    $temp[] = array('v'=> (integer) $row['position']);
+//    $rows[] = array('c'=> $temp);
+//
+//}
+//
+//
+//$table['rows'] = $rows;
+//$jsonTable = json_encode($table, true);
+//echo $jsonTable;
+
+
