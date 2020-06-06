@@ -2,7 +2,7 @@
 
 include_once ('connection.php');
 session_start();
-$tempusername=$_SESSION['uiduser'];
+$tempusername = $_SESSION['uiduser'];
 $sql="SELECT username FROM activity  GROUP BY username  ";
 $result=mysqli_query($conn,$sql);
 while($row = mysqli_fetch_array($result) )
@@ -25,6 +25,8 @@ while($row = mysqli_fetch_array($result1) )
         'count' => $row['counter']
     ) ;
 }
+
+
 //echo "<br>";
 //echo  "THis the scores for each month";
 //echo "<br>";
@@ -61,7 +63,7 @@ usort($users, 'sortByOrder');
 
 
 //echo "<br>";echo "<br>";
-//echo  "THis the scores for each month before including the the top 3  user";
+//echo  "THis the scores for each month before including the the top 3  $ user";
 //echo "<br>";
 //print_r($users);
 
@@ -84,7 +86,7 @@ $users_final[2]['position']=3;
 //echo "<br>";
 //print_r($users_final);
 //
-//$n=sizeof($users);
+$n=sizeof($users);
 
 if($tempusername!=$users_final[0]['user'] && $tempusername!=$users_final[1]['user'] && $tempusername!=$users_final[2]['user'] )
 {
@@ -94,19 +96,21 @@ if($tempusername!=$users_final[0]['user'] && $tempusername!=$users_final[1]['use
         {
             $users_final[3]['user']=$users[$i]['user'];
             $users_final[3]['position']=$i+1;
+            $users_final[3]['count']=$users[$i]['count'];
         }
+
     }
 }
 
-echo "<br>";echo "<br>";
-echo  "THis if the final final top 3 (or more) users  ";
-echo " " .$tempusername;
-echo "<br>";
-print_r($users_final);
+//echo "<br>";echo "<br>";
+//echo  "THis if the final final top 3 (or more) users  ";
+//echo " " .$tempusername;
+//echo "<br>";
+//print_r($users_final);
 
 
-echo "<br>";echo "<br>";
-echo "now i need to have the firstName and the lastName ";
+//echo "<br>";echo "<br>";
+//echo "now i need to have the firstName and the lastName ";
 //this query is to include the firstname and last name
 $sql2="SELECT firstName, lastName, username FROM users GROUP BY username" ;
 $result2=mysqli_query($conn, $sql2);
@@ -119,16 +123,16 @@ while($row = mysqli_fetch_array($result2) )
         'last'=>$row['lastName']
     ) ;
 }
-echo "<br>";echo "<br>";
-print_r($users_temp);
+//echo "<br>";echo "<br>";
+//print_r($users_temp);
 
 $n=sizeof($users_temp);
 for($i=0; $i<$n; $i++)
 {
     $users_temp[$i]['last']=substr($users_temp[$i]['last'], 0 , 1) . '.';
 }
-echo "<br>";echo "<br>";
-print_r($users_temp);
+//echo "<br>";echo "<br>";
+//print_r($users_temp);
 
 
 //exw ton pinaka $users_temp me keys to username FIrsname kai PRwto gramma lastname  me .
@@ -138,8 +142,8 @@ print_r($users_temp);
 //to size tou $users_final exei size $k
 $top3=array();
 
-echo "<br>";
-echo "<br>";
+//echo "<br>";
+//echo "<br>";
 $l=0;
 $k=sizeof($users_final);
 for($i=0; $i<$n; $i++)
@@ -150,15 +154,16 @@ for($i=0; $i<$n; $i++)
         {
             $top3[$l]['name']=$users_temp[$i]['first'] . ' ' . $users_temp[$i]['last'];
             $top3[$l]['score']= $users_final[$j]['count'];
+            $top3[$l]['position']= $users_final[$j]['position'];
             $l=$l+1;
         }
     }
 }
-echo "<br>";
-echo "<br>";
-echo "This is the big change";
-echo "<br>";
-print_r($top3);
+//echo "<br>";
+//echo "<br>";
+//echo "This is the big change";
+//echo "<br>";
+//print_r($top3);
 
 
 
@@ -167,34 +172,34 @@ function sortArray($a, $b) {
 }
 
 usort($top3, 'sortArray');
-echo "<br>";
-echo "<br>";
-echo "This is the FINAL big change";
-echo "<br>";
-print_r($top3);
+//echo "<br>";
+//echo "<br>";
+//echo "This is the FINAL big change";
+//echo "<br>";
+//print_r($top3);
 
 
-//$table = array();
-//$table['cols'] = array(
-//    array('label' => 'user', 'type' => 'string'),
-//    array('label' => 'count', 'type'=> 'number'),
-//    array('label' => 'position', 'type'=> 'number')
-//);
-//
-//$rows = array();
-//foreach ($users_final as $row)
-//{
-//    $temp=array();
-//    $temp[] = array('v' => (string) $row['user']);
-//    $temp[] = array('v'=> (integer) $row['count']);
-//    $temp[] = array('v'=> (integer) $row['position']);
-//    $rows[] = array('c'=> $temp);
-//
-//}
-//
-//
-//$table['rows'] = $rows;
-//$jsonTable = json_encode($table, true);
-//echo $jsonTable;
+$table = array();
+$table['cols'] = array(
+    array('label' => 'name', 'type' => 'string'),
+    array('label' => 'position', 'type'=> 'number'),
+    array('label' => 'score', 'type'=> 'number'),
+);
+
+$rows = array();
+foreach ($top3 as $row)
+{
+    $temp=array();
+    $temp[] = array('v' => (string) $row['name']);
+    $temp[] = array('v'=> (integer) $row['position']);
+    $temp[] = array('v'=> (integer) $row['score']);
+    $rows[] = array('c'=> $temp);
+
+}
+
+
+$table['rows'] = $rows;
+$jsonTable = json_encode($table, true);
+echo $jsonTable;
 
 

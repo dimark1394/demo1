@@ -3,8 +3,8 @@ google.charts.setOnLoadCallback(drawTable);
 
 function drawTable() {
     var jsonData = $.ajax({
-        url: "top3scores.php",
-        dataType: "json",
+        url:"top3scores.php",
+        dataType:"json",
         async: false
     }).responseText;
     var data = new google.visualization.DataTable(jsonData);
@@ -14,7 +14,7 @@ function drawTable() {
         legend: { position: 'bottom' }
     };
     console.log(data);
-    var table = new google.visualization.Table(document.getElementById(''));
+    var table = new google.visualization.Table(document.getElementById('top3'));
 
     table.draw(data, options);
 }

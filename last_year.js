@@ -3,7 +3,7 @@ google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
     var jsonData = $.ajax({
-        url: "eco_year.php",
+        url:"eco_year.php",
         dataType: "json",
         async: false
     }).responseText;
