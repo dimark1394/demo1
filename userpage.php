@@ -30,7 +30,6 @@ if(!isset($_SESSION['uiduser'])){
     <script src="js/vendor/jquery.ui.widget.js"></script>
     <script src="js/jquery.iframe-transport.js"></script>
     <script src="js/jquery.fileupload.js"></script>
-    <script src="entries_per_activity.js"></script>
 
 </head>
 <body background="images/rio.jpg">
@@ -58,22 +57,9 @@ if(!isset($_SESSION['uiduser'])){
             <div id="files"></div>
 
         </form>
-        <div id="entries_per_activity" style="width: 700px; height: 300px"></div>
-        <table id="t02">
-            <tr>
-                <th>Type</th>
-                <th>Busiest Day</th>
-                <th>Count</th>
-            </tr>
-            <br>
-            <table id="t03">
-                <tr>
-                    <th>Type</th>
-                    <th>Busiest Hour</th>
-                    <th>Count</th>
-                </tr>
-            </table>
-        </table>
+        <div id="entries_per_activity" style="width: 60%; height: 80%"></div>
+        <div id="daystable" style="width: 100%; height: 100%"></div>
+        <div id="hourstable" style="width: 100%; height: 100%"></div>
     </div>
     <script src="upload.js"></script>
     <div class="datepicker">

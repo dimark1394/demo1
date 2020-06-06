@@ -13,7 +13,6 @@ function drawChart() {
         curveType: 'function',
         legend: { position: 'bottom' }
     };
-    console.log(data);
     var chart = new google.visualization.ColumnChart(document.getElementById('curve_chart'));
 
     chart.draw(data, options);

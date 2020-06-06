@@ -24,7 +24,7 @@
         <a class="welcomemsg">Welcome to our site</a>
 <!--        <div class="loginformu" >-->
 
-        <form id="login_formu" name="login_form" method="POST" action="loginvaluser.php">
+        <form id="login_formu" name="login_form" method="POST" action="loginvaluser.php" style="display: inline">
             <label>Username:</label>
             <input id="usernameu" type="text" name="username" placeholder="username" >
             <label>Password:</label>
@@ -34,7 +34,7 @@
         </form>
 <!--        </div>-->
 <!--        <div class="loginforma" >-->
-        <form id="login_form" name="login_form" method="POST" action="loginval.php">
+        <form id="login_form" name="login_form" method="POST" action="loginval.php" style="display: none">
             <label>Username:</label>
             <input id="username" type="text" name="username" placeholder="username" >
             <label>Password:</label>

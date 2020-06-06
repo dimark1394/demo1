@@ -46,30 +46,19 @@ $(document).ready(function () {
 
                     let heatmapLayer = new HeatmapOverlay(cfg);
                     drawpiechart(data[1]);
+                    drawdaytable(data[2]);
+                    drawhourtable(data[3]);
 
                     mymap.addLayer(heatmapLayer);
                     heatmapLayer.setData(testData);
-                    var busiestdtable = document.getElementById('t02');
-                    const busiestddata = data[2];
-                    $.each(busiestddata, function (i, object){
-                      const tr = document.createElement('tr');
-                      tr.innerHTML = '<td>' + object.type + '</td>' +
-                          '<td>' + object.busiest_day + '</td>' + '<td>' + object.count + '</td>' ;
-                      busiestdtable.appendChild(tr);
-                    });
-                    const busiesthtable = document.getElementById('t03');
-                    const busiesthdata = data[3];
-                    $.each(busiesthdata, function (i, obj){
-                        const trh = document.createElement('tr');
-                        trh.innerHTML = '<td>' + obj.type + '</td>' +
-                            '<td>' + obj.busiest_hour + ':00' + '</td>' + '<td>' + obj.count  + '</td>' ;
-                        busiesthtable.appendChild(trh);
-                    });
                 }
                 else {
                     alert("No entries during these Dates");
                 }
+
+
             }
+
         })
     })
 })
@@ -82,17 +71,42 @@ function drawpiechart(data) {
     google.charts.setOnLoadCallback(drawChart);
     let datapie = data;
     function drawChart() {
-        var jsonData = datapie;
-        var data = new google.visualization.DataTable(jsonData);
-        var options = {
+        const jsonData = datapie;
+        const data = new google.visualization.DataTable(jsonData);
+        const options = {
             title: 'Number of entries per activity',
             curveType: 'function',
             legend: {position: 'bottom'}
         };
-        console.log(data);
         var chart = new google.visualization.PieChart(document.getElementById('entries_per_activity'));
 
         chart.draw(data, options);
     }
 }
+
+function drawdaytable(data) {
+    google.charts.load('current', {'packages':['table']});
+    google.charts.setOnLoadCallback(drawdaytable);
+    let dataday = data;
+    function drawdaytable() {
+        const jsonData = dataday;
+        const data = new google.visualization.DataTable(jsonData);
+        var chart1 = new google.visualization.Table(document.getElementById('daystable'));
+        chart1.draw(data,{showRowNumber: true, width: '50%', height: '50%'});
+    }
+}
+
+function drawhourtable(data) {
+    google.charts.load('current', {'packages':['table']});
+    google.charts.setOnLoadCallback(drawdaytable);
+    let dataday = data;
+    function drawdaytable() {
+        const jsonData = dataday;
+        const data = new google.visualization.DataTable(jsonData);
+        var chart2 = new google.visualization.Table(document.getElementById('hourstable'));
+        chart2.draw(data,{showRowNumber: true, width: '50%', height: '50%'});
+    }
+}
+
+
 

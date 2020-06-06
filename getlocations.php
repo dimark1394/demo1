@@ -70,65 +70,66 @@ $table['rows'] = $rows;
 
 date_default_timezone_set('Europe/Athens');
 
-$busiest_days = array();
-
+$busiest_days_r = array();
+$busiest_d_table = array();
+$busiest_d_table['cols'] = array(
+    array('label' => 'Day', 'type' => 'string'),
+    array('label' => 'Type', 'type' => 'string'),
+    array('label' => 'Count', 'type' => 'number')
+);
 $sql2 = "SELECT type,dayname(timestamp),count(*) AS counter FROM activity WHERE username = '$tempusername' AND timestamp BETWEEN '$date1_insert' AND '$date2_insert'  GROUP BY type,WEEKDAY(timestamp) ORDER BY type,count(*) DESC" ;
 $result2 = mysqli_query($conn, $sql2);
 
-while ($row2 = mysqli_fetch_array($result2)) {
-    if($row2['type'] != '') {
-        $busiest_days [] = array(
-            'type' => $row2['type'],
-            'count' => $row2['counter'],
-            'day' => $row2['dayname(timestamp)']
-        );
-    }
-}
-//print_r($eco_type);
 $current_type_d = '';
 $next_type_d = '';
-foreach ($busiest_days as $day){
-    $next_type_d = $day['type'];
-    if($current_type_d != $next_type_d ) {
-        $current_type_d = $next_type_d;
-        $busiest_d [] = array(
-            'type' => $current_type_d,
-            'busiest_day' => $day['day'],
-            'count' => $day['count']
-        );
+foreach ($result2 as $row2){
+    $temp1 = array();
+    $next_type_d = $row2['type'];
+    if ($row2['type'] != ''){
+        if($current_type_d != $next_type_d){
+            $current_type_d = $next_type_d;
+            $temp1[] = array('v' => (string)$row2['dayname(timestamp)']);
+            $temp1[] = array('v' => (string)$row2['type']);
+            $temp1[] = array('v' => (int)$row2['counter']);
+            $busiest_days_r[] = array('c' => $temp1);
+        }
     }
 }
+$result2 -> free();
+$busiest_d_table['rows'] = $busiest_days_r;
 
-$busiest_hours = array();
+
+$busiest_hours_r = array();
+$busiest_hours_table = array();
+$busiest_hours_table['cols'] = array(
+    array('label' => 'Busiest Hour (24hr)', 'type' => 'number'),
+    array('label' => 'Type', 'type' => 'string'),
+    array('label' => 'Count', 'type' => 'number')
+);
 
 $sql = "SELECT type,HOUR(timestamp),count(*) AS counter FROM activity WHERE username = '$tempusername' AND timestamp BETWEEN '$date1_insert' AND '$date2_insert'   GROUP BY type,HOUR(timestamp) ORDER BY type,count(*) DESC" ;
-$result = mysqli_query($conn, $sql);
+$result3 = mysqli_query($conn, $sql);
 
-while ($row3 = mysqli_fetch_array($result)) {
-    if($row3['type'] != '') {
-        $busiest_hours [] = array(
-            'type' => $row3['type'],
-            'count' => $row3['counter'],
-            'hour' => $row3['HOUR(timestamp)']
-        );
-    }
-}
 
 $current_type = '';
 $next_type = '';
-foreach ($busiest_hours as $hour){
+foreach ($result3 as $hour){
+    $temp2 = array();
     $next_type = $hour['type'];
-    if($current_type != $next_type ) {
-        $current_type = $next_type;
-        $busiest_h [] = array(
-            'type' => $current_type,
-            'busiest_hour' => $hour['hour'],
-            'count' => $hour['count']
-        );
+    if($next_type != '') {
+        if ($current_type != $next_type) {
+            $current_type = $next_type;
+            $temp2[] = array('v' => (int)$hour['HOUR(timestamp)']);
+            $temp2[] = array('v' => (string)$hour['type']);
+            $temp2[] = array('v' => (int)$hour['counter']);
+            $busiest_hours_r[] = array('c' => $temp2);
+        }
     }
 }
+$result3 ->free();
+$busiest_hours_table['rows'] = $busiest_hours_r;
 
-$allresults = array($location_data,$table, $busiest_d, $busiest_h);
+$allresults = array($location_data,$table, $busiest_d_table, $busiest_hours_table);
 echo json_encode($allresults);
 
 
