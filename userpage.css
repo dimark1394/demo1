@@ -244,6 +244,7 @@ table#t01 th {
 {
     top: 100px;
     opacity: 1;
+    color: #fff;
 }
 .container2 .box .content h3
 {
@@ -344,7 +345,7 @@ table#t01 th {
     margin: 0;
     padding: 0;
     color: #fff;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .datepicker .h3
