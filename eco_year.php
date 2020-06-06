@@ -244,7 +244,7 @@ for($i=0; $i<$M; $i++)
 $table = array();
 $table['cols'] = array(
     array('label' => 'month', 'type' => 'string'),
-    array('label' => 'score', 'type'=> 'number')
+    array('label' => 'score %', 'type'=> 'number')
 );
 
 $rows = array();
