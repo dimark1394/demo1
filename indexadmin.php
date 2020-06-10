@@ -123,7 +123,11 @@ if(!isset($_SESSION['uid'])){
 
         		<label for="db">Export or Delete DataBase</label>
         		<button type="button">EXPORT</button>
-        		<button type="button">DELETE</button>
+                <form method="post">
+        		<button type="button" name="delete" id="delete">DELETE</button>
+                <p style="color: aliceblue"  id="message" ></p>
+                </form>
+                <script type="text/javascript"  src="delete_dp.js"></script>
     		</form>
     	</div>
     </div>
