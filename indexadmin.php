@@ -24,8 +24,8 @@ if(!isset($_SESSION['uid'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/vendor/jquery.ui.widget.js"></script>
     <script src="js/jquery.iframe-transport.js"></script>
-    <script src="js/jquery.fileupload.js"></script>
-    <script src="upload.js"></script>
+<!--    <script src="js/jquery.fileupload.js"></script>-->
+<!--    <script src="upload.js"></script>-->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
@@ -123,10 +123,8 @@ if(!isset($_SESSION['uid'])){
 
         		<label for="db">Export or Delete DataBase</label>
         		<button type="button">EXPORT</button>
-                <form method="post">
         		<button type="button" name="delete" id="delete">DELETE</button>
                 <p style="color: aliceblue"  id="message" ></p>
-                </form>
                 <script type="text/javascript"  src="delete_dp.js"></script>
     		</form>
     	</div>
