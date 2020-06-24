@@ -26,7 +26,7 @@ while($row = mysqli_fetch_array($result1) )
     ) ;
 }
 
-
+// PRWTO SIMEIO EDWWWWWWWWWWWWWWWWWWWWWWWWWWWW POY DEN BGAZEI BUG GIA 2 MONO OIKOLOGOUS
 //echo "<br>";
 //echo  "THis the scores for each month";
 //echo "<br>";
@@ -53,7 +53,7 @@ for($i=0; $i<$m; $i++)
 //echo "<br>";
 //print_r($users);
 
-//menei na ta sortarw to users se ftinousa seira me to keyvalye count
+//menei na ta sortarw to users se fthinousa seira me to keyvalue count
 function sortByOrder($a, $b) {
     return $b['count'] - $a['count'];
 }
@@ -61,9 +61,10 @@ function sortByOrder($a, $b) {
 usort($users, 'sortByOrder');
 
 
-
+//MEXRI EDW OLA KALA MOY BGAZEI STON PINAKA $users SE FTHINOUSA SEIRA OLA TA ONOMATA POY THELW. TO THEMA EINAI NA PERASV STO USER FINAL PINAKA WSTE GIA 3 KENH THESI NA VAZEI KENA
 //echo "<br>";echo "<br>";
 //echo  "THis the scores for each month before including the the top 3  $ user";
+
 //echo "<br>";
 //print_r($users);
 
