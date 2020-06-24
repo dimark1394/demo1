@@ -12,7 +12,7 @@ $(document).ready(function () {
                 else {
                     document.getElementById("lastupload").innerText = response[0].lastupdt;
                     document.getElementById("startdate").innerText = " Your data cover from: " + response[0].startdt;
-                    document.getElementById("enddate").innerText = " To: " + response[0].startdt;
+                    document.getElementById("enddate").innerText = " To: " + response[0].lastdt;
                     $("#lastupload").text = response[0].lastupdt;
                 }
             }
