@@ -18,6 +18,7 @@ while($row = mysqli_fetch_array($result) )
 //echo "<br>";
 $sql1="SELECT username,count(*) AS counter FROM activity WHERE MONTH(timestamp) = MONTH(CURRENT_DATE()) AND YEAR(timestamp ) = YEAR(CURRENT_DATE()) AND (type='WALKING' OR type='ON_BICYCLE' OR type='ON_FOOT' OR type='RUNNING') GROUP BY username";
 $result1=mysqli_query($conn, $sql1);
+$scores = array();
 while($row = mysqli_fetch_array($result1) )
 {
     $scores [] = array(
@@ -25,6 +26,11 @@ while($row = mysqli_fetch_array($result1) )
         'count' => $row['counter']
     ) ;
 }
+
+//v size to xrismopoiw sto telos gia periptwsi poy einai entelws kenos o minas apo score wste na einai v=0 opote to top3 bazw aplis sinthiki oti se auth tin periptwsi bale onomata "-"
+$v=sizeof($scores);
+//echo "<br> size  ";
+//echo $v;
 
 // PRWTO SIMEIO EDWWWWWWWWWWWWWWWWWWWWWWWWWWWW POY DEN BGAZEI BUG GIA 2 MONO OIKOLOGOUS
 //echo "<br>";
@@ -67,19 +73,55 @@ usort($users, 'sortByOrder');
 
 //echo "<br>";
 //print_r($users);
-
-
+$p=sizeof($users);
+//echo "<br>";
+//echo $p;
+//echo "<br>";
 $users_final= array();
+if($p>=1)
+{
+    $users_final[0]['user'] = $users[0]['user'];
+    $users_final[0]['count'] = $users[0]['count'];
+    $users_final[0]['position'] = 1;
+}
+else
+{
+    $users_final[0]['user'] = "-";
+    $users_final[0]['count'] = 0;
+    $users_final[0]['position'] = 0;
+}
+if($p>=2)
+{
+    $users_final[1]['user'] = $users[1]['user'];
+    $users_final[1]['count'] = $users[1]['count'];
+    $users_final[1]['position'] = 2;
+}
+else
+{
+    $users_final[1]['user'] = "-";
+    $users_final[1]['count'] = 0;
+    $users_final[1]['position'] = 0;
+}
+if($p>=3)
+{
+    $users_final[2]['user'] = $users[2]['user'];
+    $users_final[2]['count'] = $users[2]['count'];
+    $users_final[2]['position'] = 3;
+}
+else
+{
+    $users_final[2]['user'] = "-";
+    $users_final[2]['count'] = 0;
+    $users_final[2]['position'] = 0;
+}
 
-$users_final[0]['user']=$users[0]['user'];
-$users_final[0]['count']=$users[0]['count'];
-$users_final[0]['position']=1;
-$users_final[1]['user']=$users[1]['user'];
-$users_final[1]['count']=$users[1]['count'];
-$users_final[1]['position']=2;
-$users_final[2]['user']=$users[2]['user'];
-$users_final[2]['count']=$users[2]['count'];
-$users_final[2]['position']=3;
+//echo "<br>";
+//echo  $users_final[0]['user'];
+//echo "<br>";
+//echo  $users_final[1]['user'];
+//echo "<br>";
+//echo  $users_final[2]['user'];
+//echo "<br>";
 
 
 //echo "<br>";echo "<br>";
@@ -164,7 +206,7 @@ for($i=0; $i<$n; $i++)
 //echo "<br>";
 //echo "This is the big change";
 //echo "<br>";
-//print_r($top3);
+//print_r($users_final);
 
 
 
@@ -178,6 +220,36 @@ usort($top3, 'sortArray');
 //echo "This is the FINAL big change";
 //echo "<br>";
 //print_r($top3);
+
+if($users_final[0]['user']=="-" || $v==0)
+{
+    $top3[0]['name']="-";
+    $top3[0]['score']= 0;
+    $top3[0]['position']= 0;
+}
+
+//echo "<br>";
+//echo $top3[0]['name'];
+//echo "<br>";
+
+
+
+if($users_final[1]['user']=="-" || $v==0)
+{
+    $top3[1]['name']="-";
+    $top3[1]['score']= 0;
+    $top3[1]['position']= 0;
+}
+
+
+if($users_final[2]['user']=="-" || $v==0)
+{
+    $top3[2]['name']="-";
+    $top3[2]['score']= 0;
+    $top3[2]['position']= 0;
+}
+
+
 
 
 $table = array();
@@ -201,6 +273,7 @@ foreach ($top3 as $row)
 
 $table['rows'] = $rows;
 $jsonTable = json_encode($table, true);
+//echo "<br>";
 echo $jsonTable;
 
 
