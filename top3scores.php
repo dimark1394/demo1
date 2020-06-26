@@ -3,6 +3,7 @@
 include_once ('connection.php');
 session_start();
 $tempusername = $_SESSION['uiduser'];
+$users=array();
 $sql="SELECT username FROM activity  GROUP BY username  ";
 $result=mysqli_query($conn,$sql);
 while($row = mysqli_fetch_array($result) )
@@ -39,6 +40,8 @@ $v=sizeof($scores);
 //print_r($scores);
 
 $n=sizeof($users);
+
+
 $m=sizeof($scores);
 
 for($i=0; $i<$m; $i++)
