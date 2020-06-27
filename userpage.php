@@ -99,7 +99,7 @@ if(!isset($_SESSION['uiduser'])){
 
 
     <div id="highscores">
-        <a id="highscoresmsg">These are the top three ecologists of the month</a>
+        <a id="highscoresmsg">These are the top three ecologists of the month (including you even if you are not in the top 3)</a>
         <script defer async type="text/javascript" src="top3.js"></script>
         <div id="top3" style="width: 600px; height:300px"></div>
 
