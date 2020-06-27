@@ -94,7 +94,7 @@ if(!isset($_SESSION['uid'])){
         <script type="text/javascript" src="mapadmin.js"></script>
         <div id="adminform" >
         	<form name="heatmapadmin" id="heatmapadmin">
-        		<label for="datepicker">Pick your desired daterange</label>
+        		<label for="datepicker" name="date_range">Pick your desired daterange</label>
 			        <div id="datepicker">
 			        	<input type="text" name="datetimefilter" id="datetimefilter"  value=""/>
                         <script type="text/javascript">
