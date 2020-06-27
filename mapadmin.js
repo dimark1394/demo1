@@ -18,10 +18,8 @@ $(document).ready(function () {
                 type : $("#type").val()
             },
             success: function (data) {
+                console.log(data[0]);
                 drawheatmap(data[0]);
-                drawpiechart(data[1]);
-                drawdaytable(data[2]);
-                drawhourtable(data[3]);
             }
 
         })
