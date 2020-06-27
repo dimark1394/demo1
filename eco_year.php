@@ -9,7 +9,7 @@ $eco_type=array();
 
 $sql="SELECT monthname(timestamp),count(*) AS counter FROM activity WHERE timestamp BETWEEN DATE_SUB(NOW(), INTERVAL 365 DAY) AND NOW() AND (type='WALKING' OR type='ON_BICYCLE' ) GROUP BY month(timestamp) ORDER BY month(timestamp)";
 $result = mysqli_query($conn, $sql);
-
+$eco_type=array();
 while($row = mysqli_fetch_array($result) )
 {
     $eco_type [] = array(
@@ -22,7 +22,7 @@ while($row = mysqli_fetch_array($result) )
 
 $sql1="SELECT MONTHNAME(timestamp),count(*) AS counter1 FROM activity  WHERE timestamp BETWEEN DATE_SUB(NOW(), INTERVAL 365 DAY) AND NOW() GROUP BY MONTHNAME(timestamp) ORDER BY MONTH(timestamp)";
 $result1 = mysqli_query($conn,$sql1);
-
+$eco_type_total=array();
 while($row = mysqli_fetch_array($result1) )
 {
     $eco_type_total [] = array(
