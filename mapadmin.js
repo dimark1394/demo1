@@ -6,15 +6,16 @@ mymap.addLayer(osm);
 //sintetagmenes kai zoom
 mymap.setView([38.246242, 21.7350847], 12);
 $(document).ready(function () {
-    $("#heatmap").submit(function (e) {
+    $("#heatmapadmin").submit(function (e) {
         // let myArray = [];
         e.preventDefault();
         $.ajax({
             type: "POST",
-            url: "getlocations.php",
+            url: "getlocationsadmin.php",
             dataType: 'JSON',
             data: {
-                datefilter: $("#datefilter").val()
+                datetimefilter: $("#datetimefilter").val(),
+                type : $("#type").val()
             },
             success: function (data) {
                 drawheatmap(data[0]);

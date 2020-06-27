@@ -10,7 +10,7 @@ if (isset($_FILES['uploadingfile'])) {
 
 
     $data = file_get_contents($file);
-    $rand_arr = array("ON_FOOT","WALKING","IN_VEHICLE","ON_BICYCLE","RUNNING");
+    $rand_arr = array("ON_FOOT","WALKING","IN_VEHICLE","ON_BICYCLE","RUNNING","STILL");
 
     $array = json_decode($data, true);
     date_default_timezone_set('Europe/Athens');
@@ -50,7 +50,7 @@ if (isset($_FILES['uploadingfile'])) {
                         if ($confmax < $conf ) {
                             $confmax = $conf;
                             $typemax = $type;
-                            if(($typemax == 'TILTING') || ($typemax == 'UNKNOWN')){
+                            if(($typemax == 'TILTING') || ($typemax == 'UNKNOWN') || ($typemax == 'STILL')){
                                 $typemax = $rand_arr[array_rand($rand_arr,1)];
                             }
                         }

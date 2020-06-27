@@ -90,37 +90,47 @@ if(!isset($_SESSION['uid'])){
         <div id="mapid"></div>
     
         <script type="text/javascript" src="mapadmin.js"></script>
-        <div id="adminform">
-        	<form>
-        		<label for="date">Pick your desired daterange</label>
+        <div id="adminform" >
+        	<form name="heatmapadmin" id="heatmapadmin">
+        		<label for="datepicker">Pick your desired daterange</label>
 			        <div id="datepicker">
-			        	<input type="text" name="datetimes" />
-			        	<script>
-			        		
-							$(function() {
-							  $('input[name="datetimes"]').daterangepicker({
-							    timePicker: true,
-							    startDate: moment().startOf('hour'),
-							    endDate: moment().startOf('hour').add(32, 'hour'),
-							    locale: {
-							      format: 'M/DD hh:mm A'
-							    }
-							  });
-							});
-			        	</script>
+			        	<input type="text" name="datetimefilter" id="datetimefilter"  value=""/>
+                        <script type="text/javascript">
+                            $(function() {
+
+                                $('input[name="datetimefilter"]').daterangepicker({
+                                    timePicker: true,
+                                    timePicker24Hour:true,
+                                    autoUpdateInput: false,
+                                    locale: {
+                                        cancelLabel: 'Clear'
+                                    }
+                                });
+
+                                $('input[name="datetimefilter"]').on('apply.daterangepicker', function(ev, picker) {
+                                    $(this).val(picker.startDate.format('DD-MM-YYYY HH:mm:ss') + ' - ' + picker.endDate.format('DD-MM-YYYY HH:mm:ss'));
+                                });
+
+                                $('input[name="datetimefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+                                    $(this).val('');
+                                });
+
+                            });
+                        </script>
             
         			</div>
-        		<label for="activity">Pick your desired activity</label>
-        		<select id="activity" name="activity">
-        			<option value="walking">WALKING</option>
-        			<option value="running">RUNNING</option>
-        			<option value="still">STILL</option>
-        			<option value="car">IN_VEHICLE</option>
-        			<option value="bike">ON_BICYCLE</option>
-                    <option value="onfoot">ON_FOOT</option>
+        		<label for="type">Pick your desired activity</label>
+        		<select id="type" name="type">
+        			<option value="WALKING">WALKING</option>
+        			<option value="RUNNING">RUNNING</option>
+        			<option value="STILL">STILL</option>
+        			<option value="IN_VEHICLE">IN VEHICLE</option>
+        			<option value="ON_BICYCLE">ON BICYCLE</option>
+                    <option value="ON_FOOT">ON FOOT</option>
+                    <option value="ALL">ALL TYPES</option>
         		</select><br>
 
-        		<button type="button">Create HeatMap</button>
+        		<input type="submit" name="sumbithmadmin" id="submithmadmin" value="See Heatmap">
             </form>
         		<label for="db">Export or Delete DataBase</label>
         		<button type="button">EXPORT</button>
