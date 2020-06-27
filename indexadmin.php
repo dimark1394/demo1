@@ -89,7 +89,7 @@ if(!isset($_SESSION['uid'])){
 
         <div id="mapid"></div>
     
-        <script type="text/javascript" src="map.js"></script>
+        <script type="text/javascript" src="mapadmin.js"></script>
         <div id="adminform">
         	<form>
         		<label for="date">Pick your desired daterange</label>
@@ -111,22 +111,23 @@ if(!isset($_SESSION['uid'])){
             
         			</div>
         		<label for="activity">Pick your desired activity</label>
-        		<select id="activity" name="activity" multiple>
+        		<select id="activity" name="activity">
         			<option value="walking">WALKING</option>
         			<option value="running">RUNNING</option>
         			<option value="still">STILL</option>
-        			<option value="car">CAR</option>
-        			<option value="bike">BIKE</option>
-        		</select>
+        			<option value="car">IN_VEHICLE</option>
+        			<option value="bike">ON_BICYCLE</option>
+                    <option value="onfoot">ON_FOOT</option>
+        		</select><br>
 
         		<button type="button">Create HeatMap</button>
-
+            </form>
         		<label for="db">Export or Delete DataBase</label>
         		<button type="button">EXPORT</button>
         		<button type="button" name="delete" id="delete">DELETE</button>
                 <p style="color: aliceblue"  id="message" ></p>
                 <script type="text/javascript"  src="delete_dp.js"></script>
-    		</form>
+
     	</div>
     </div>
 

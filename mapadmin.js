@@ -17,10 +17,10 @@ $(document).ready(function () {
                 datefilter: $("#datefilter").val()
             },
             success: function (data) {
-                    drawheatmap(data[0]);
-                    drawpiechart(data[1]);
-                    drawdaytable(data[2]);
-                    drawhourtable(data[3]);
+                drawheatmap(data[0]);
+                drawpiechart(data[1]);
+                drawdaytable(data[2]);
+                drawhourtable(data[3]);
             }
 
         })
@@ -64,48 +64,3 @@ function drawheatmap(data) {
     mymap.addLayer(heatmapLayer);
     heatmapLayer.setData(testData);
 }
-
-
-
-function drawpiechart(data) {
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-    let datapie = data;
-    function drawChart() {
-        const jsonData = datapie;
-        const data = new google.visualization.DataTable(jsonData);
-        const options = {
-            title: 'Number of entries per activity',
-            curveType: 'function',
-            legend: {position: 'bottom'}
-        };
-        let chart = new google.visualization.PieChart(document.getElementById('entries_per_activity'));
-
-        chart.draw(data, options);
-    }
-}
-
-function drawdaytable(data) {
-    google.charts.load('current', {'packages':['table']});
-    google.charts.setOnLoadCallback(drawdaytable);
-    let dataday = data;
-    function drawdaytable() {
-        const data = new google.visualization.DataTable(dataday);
-        var chart1 = new google.visualization.Table(document.getElementById('daystable'));
-        chart1.draw(data,{showRowNumber: true, width: '50%', height: '50%'});
-    }
-}
-
-function drawhourtable(data) {
-    google.charts.load('current', {'packages':['table']});
-    google.charts.setOnLoadCallback(drawdaytable);
-    let dataday = data;
-    function drawdaytable() {
-        const data = new google.visualization.DataTable(dataday);
-        var chart2 = new google.visualization.Table(document.getElementById('hourstable'));
-        chart2.draw(data,{showRowNumber: true, width: '50%', height: '50%'});
-    }
-}
-
-
-

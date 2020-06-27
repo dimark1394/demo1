@@ -15,6 +15,7 @@ function drawPieChart() {
         dataType: "json",
         async: false
     }).responseText;
+    console.log(jsonData);
     var data = new google.visualization.DataTable(jsonData);
     var options = {
         title: 'Pososto drastiriotitas ana xristi',
