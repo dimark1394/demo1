@@ -132,9 +132,10 @@ if(!isset($_SESSION['uid'])){
                     <option value="ALL">ALL TYPES</option>
         		</select><br>
                         <label for="db">Export or Delete DataBase</label>
-                        <button type="button" name="export">EXPORT</button>
+                        <button id="export "type="button" name="export">EXPORT</button>
         		<input type="submit" name="sumbithmadmin" id="submithmadmin" value="See Heatmap">
             </form>
+            <script type="text/javascript"  src="export.js"></script>
         </div>
 
 

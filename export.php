@@ -4,8 +4,8 @@ session_start();
 $date = mysqli_real_escape_string($conn, $_POST['datetimefilter']);
 $type = mysqli_real_escape_string($conn,$_POST['type']);
 
-if(isset($_POST["export"]))
-{
+//if(isset($_POST["export"]))
+//{
 //    header('Content-Type: text/csv; charset=utf-8');
 //    header('Content-Disposition: attachment; filename=data.csv');
 //    $output = fopen("php://output", "w");
@@ -98,7 +98,7 @@ if(isset($_POST["export"]))
     echo json_encode($date);
 
 
-}
+//}
 //    else
 //    $sql = "SELECT locations.username, locations.timestamp, locations.lat , locations.lng, locations.accuracy , activity.type, activity.confidence from locations INNER JOIN activity WHERE locations.id=activity.id_location ";
 //    $result=mysqli_query($conn, $sql);
