@@ -32,9 +32,9 @@ body{
     padding:0;
     margin:0;
     background-repeat: no-repeat, repeat;
-    background-position: 50% 65%;
-    background-attachment: fixed;
-    background-size: auto;
+    /*background-position: 50% 65%;*/
+    /*background-attachment: fixed;*/
+    background-size: cover;
 
 }
 .loginform {
@@ -80,11 +80,10 @@ body{
 input[type=submit]:hover {
     background-color: #C36A9B;
 }
-#t01{
-    width: auto;
-}
+
+
 th, td {
-    padding: 15px;
+    padding: 0.1vw;
 }
 
 .loginerror{
@@ -122,31 +121,6 @@ th, td {
 }
 
 
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 15px;
-    text-align: left;
-}
-table#t01 tr:nth-child(even) {
-    background-color: orange;
-}
-table#t01 tr:nth-child(odd) {
-    background-color: coral;
-}
-table#t01 th {
-    background-color: orangered;
-    color: white;
-}
-#t02{
-    background-color: #cccccc;
-}
-
-#t03{
-    background-color: #cccccc;
-}
 
 #mapcontainer{
     float: left;

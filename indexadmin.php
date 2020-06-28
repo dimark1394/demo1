@@ -120,7 +120,7 @@ if(!isset($_SESSION['uid'])){
                             });
                         </script>
             
-        			</div>
+
         		<label for="type">Pick your desired activity</label>
         		<select id="type" name="type">
         			<option value="WALKING">WALKING</option>
@@ -134,13 +134,14 @@ if(!isset($_SESSION['uid'])){
 
         		<input type="submit" name="sumbithmadmin" id="submithmadmin" value="See Heatmap">
             </form>
+        </div>
         		<label for="db">Export or Delete DataBase</label>
         		<button type="button">EXPORT</button>
         		<button type="button" name="delete" id="delete">DELETE</button>
                 <p style="color: aliceblue"  id="message" ></p>
                 <script type="text/javascript"  src="delete_dp.js"></script>
 
-    	</div>
+    </div>
     </div>
 
 

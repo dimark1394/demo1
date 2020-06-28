@@ -18,7 +18,6 @@ $(document).ready(function () {
                 type : $("#type").val()
             },
             success: function (data) {
-                console.log(data[0]);
                 drawheatmap(data[0]);
             }
 

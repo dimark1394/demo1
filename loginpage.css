@@ -20,9 +20,9 @@ body{
     padding:0;
     margin:0;
     background-repeat: no-repeat, repeat;
-    background-position: 50% 65%;
-    background-attachment: fixed;
-    background-size: auto;
+    /*background-position: 50% 65%;*/
+    /*background-attachment: fixed;*/
+    background-size: cover;
 
 }
 #login_form{
