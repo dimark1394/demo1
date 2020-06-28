@@ -52,7 +52,7 @@ if(!isset($_SESSION['uid'])){
 
 <main>
 
-    <div id="dashboard">
+    <div id="dashboard" style="display: inline">
         <div id="piechart_div" style="width: 500px; height: 300px; float:left"></div>
 
 
@@ -69,7 +69,7 @@ if(!isset($_SESSION['uid'])){
 
     </div>
 
-    <div id="mapcontainer">
+    <div id="mapcontainer" style="display: none">
         <script>
             function adminFunction() {
                 let x = document.getElementById("mapcontainer");
@@ -77,7 +77,7 @@ if(!isset($_SESSION['uid'])){
                 if(x.style.display === 'none'){
                     x.style.display = 'inline';
                     y.style.display = 'none';
-                    document.getElementById('switch').innerHTML = 'dashboard';
+                    document.getElementById('switch').innerHTML = 'Dashboard';
 
                 }else{
                     x.style.display = 'none';

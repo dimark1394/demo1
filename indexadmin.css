@@ -144,7 +144,6 @@ label {
 #mapcontainer{
     float: left;
     width: 30%;
-    display: none;
 }
 
 #mapid {
@@ -166,10 +165,7 @@ label {
     margin-right: 1%;
 }
 
-#dashboard
-{
-    display: inline;
-}
+
 
 #adminform
 {
