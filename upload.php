@@ -3,15 +3,18 @@ include_once ('connection.php');
 session_start();
 date_default_timezone_set('Europe/Athens');
 $tempusername = $_SESSION['uiduser'];
-//$squares=array();
-//$squares = ($_POST['squares']);
-print_r($squares);
+$squares = ($_POST['squares']);
+$secrets   = explode(',',$squares);
+$k=sizeof($secrets);
+print_r($secrets);
+echo $k;
+
 if (isset($_FILES['uploadingfile'])) {
 
     $file = $_FILES['uploadingfile']['tmp_name'];
     //print_r($file);
 
-   // $k=sizeof($squares);
+
 
     $data = file_get_contents($file);
     $rand_arr = array("ON_FOOT","WALKING","IN_VEHICLE","ON_BICYCLE","RUNNING","STILL");
@@ -26,7 +29,7 @@ if (isset($_FILES['uploadingfile'])) {
     foreach ($array["locations"] as $row ) {
         $lattemp = $row['latitudeE7']*pow(10,-7);
         $lontemp = $row['longitudeE7']*pow(10, -7);
-        if((cacldist($lattemp, $lontemp) < 10.0) && ($row["activity"])) {
+        if((cacldist($lattemp, $lontemp) < 10.0) && ($row["activity"]) && (polygons($lattemp,$lontemp, $k , $secrets)==TRUE)) {
             if(strlen($row["timestampMs"]) == 12){
                 $temptime = date('Y-m-d H:i:s', substr($row["timestampMs"], 0, -2));
             }else{
@@ -98,15 +101,17 @@ function polygons($lat2,$lon2,$k, $x)
         $i=0;
         while($accept==false && $i<=$k)
         {
-            if($x[$i][0]['lat']<=$lat2 && $lat2<=$x[$i][2]['lat'] && $x[$i][1]['lng']<=$lon2 && $lon2<=$x[$i][3]['lng'])
+            if($x[$i]>=$lat2 && $lat2<=$x[$i+ 4] && $x[$i+ 3]>=$lon2 && $lon2<=$x[$i+7][3])
             {
                 $accept=false;
+                break;
+                //einai mesa sto polugwno
             }
             else
             {
                 $accept=true;
             }
-            $i=$i+1;
+            $i=$i+8;
         }
 
     }
