@@ -4,11 +4,10 @@ session_start();
 $date = mysqli_real_escape_string($conn, $_POST['datetimefilter']);
 $type = mysqli_real_escape_string($conn,$_POST['type']);
 $location_data = array();
-if($date == ''){
-    if($type == 'ALL') {
+if ($date == '') {
+    if ($type == 'ALL') {
         $sql = "SELECT locations.lat,locations.lng FROM locations INNER JOIN activity ON activity.id_location= locations.id";
-    }
-    else {
+    } else {
         $sql = "SELECT locations.lat,locations.lng FROM locations INNER JOIN activity ON activity.id_location= locations.id WHERE activity.type = '$type'";
     }
     $result = mysqli_query($conn, $sql);
@@ -20,8 +19,7 @@ if($date == ''){
         ];
     }
 
-}
-else {
+} else {
     $date1 = substr("$date", 0, 19);
 
     $date1_end = substr("$date1", 6, 4);
@@ -46,10 +44,10 @@ else {
     $date2_insert = $date2_end . $date2_mid . $date2_start . $date2_time;
     $location_data = array();
 
-    if($type == 'ALL') {
+    if ($type == 'ALL') {
         $sql = "SELECT lat, lng FROM locations WHERE timestamp BETWEEN '$date1_insert' AND '$date2_insert' ";
-    }else{
-        $sql =  "SELECT locations.lat,locations.lng FROM locations  INNER JOIN activity ON activity.id_location= locations.id WHERE activity.type = '$type' AND locations.timestamp BETWEEN '$date1_insert' AND '$date2_insert' ";
+    } else {
+        $sql = "SELECT locations.lat,locations.lng FROM locations  INNER JOIN activity ON activity.id_location= locations.id WHERE activity.type = '$type' AND locations.timestamp BETWEEN '$date1_insert' AND '$date2_insert' ";
     }
     $result = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_array($result)) {
@@ -65,5 +63,4 @@ else {
 }
 
 
-$results = array($location_data);
-echo json_encode($results);
+echo json_encode($location_data);

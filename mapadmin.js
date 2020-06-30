@@ -10,25 +10,53 @@ mymap.setView([38.246242, 21.7350847], 12);
 $("#switch").click(function () {
     mymap.invalidateSize();
 });
-$(document).ready(function () {
-    $("#heatmapadmin").submit(function (e) {
-        // let myArray = [];
-        e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: "getlocationsadmin.php",
-            dataType: 'JSON',
-            data: {
-                datetimefilter: $("#datetimefilter").val(),
-                type : $("#type").val()
-            },
-            success: function (data) {
-                drawheatmap(data[0]);
-            }
+// $(document).ready(function () {
+//     $("#heatmapadmin").submit(function (e) {
+//         // let myArray = [];
+//         e.preventDefault();
+//         $.ajax({
+//             type: "POST",
+//             url: "getlocationsadmin.php",
+//             data: $("#heatmapadmin").serialize(),
+//             success: function (data) {
+//                 drawheatmap(data[0]);
+//             }
+//
+//         })
+//     })
+// })
 
-        })
-    })
-})
+function submitform() {
+    var data = $("#heatmapadmin").serialize();
+
+    $.ajax({
+        type: 'POST',
+        url: 'getlocationsadmin.php',
+        dataType: 'JSON',
+        data: data,
+        success: function (data) {
+            console.log('geiaa');
+            drawheatmap(data);
+
+        }
+    });
+
+}
+
+function submitexport(){
+    const data = $("#heatmapadmin").serialize();
+    $.ajax({
+        type: 'POST',
+        url: 'export.php',
+        data: data,
+        success: function (data) {
+            console.log(data);
+            confirm("Your data has been exported");
+
+        }
+    });
+}
+
 function drawheatmap(data) {
     let layercount = 0;
     mymap.eachLayer(function (layer) {

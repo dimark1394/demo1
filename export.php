@@ -6,10 +6,10 @@ $type = mysqli_real_escape_string($conn,$_POST['type']);
 
 //if(isset($_POST["export"]))
 //{
-//    header('Content-Type: text/csv; charset=utf-8');
-//    header('Content-Disposition: attachment; filename=data.csv');
-//    $output = fopen("php://output", "w");
-//    fputcsv($output, array('ID', 'date', 'latitude', 'longitude', 'type', 'confidence', 'accuracy'));
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename=data.csv');
+    $output = fopen("php://output", "w");
+    fputcsv($output, array('ID', 'date', 'latitude', 'longitude', 'type', 'confidence', 'accuracy'));
     $data=array();
     if($date=='') {
         if ($type == 'ALL') {
@@ -94,8 +94,7 @@ $type = mysqli_real_escape_string($conn,$_POST['type']);
 //        fclose($output);
 
     }
-
-    echo json_encode($date);
+echo json_encode($data);
 
 
 //}

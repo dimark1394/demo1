@@ -25,6 +25,8 @@ if(!isset($_SESSION['uiduser'])){
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel='stylesheet' href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.css' />
+    <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.js'></script>
     <link rel="stylesheet" href="userpage.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="js/vendor/jquery.ui.widget.js"></script>
@@ -51,15 +53,19 @@ if(!isset($_SESSION['uiduser'])){
         <form id="upload" >
             Choose your json file :
             <input type="file" name="uploadingfile" id="uploadedfile" accept=".json" required/>
+
             <button name="submitupload" id="submitupload">Sumbit your JSON file!</button>
             <a id="progress"></a><br>
             <div id="error"></div><br>
             <div id="files"></div>
 
         </form>
+        <script type="text/javascript" src="getsquares.js"></script>
+        <button name="getsquares" id="getsquares">Select unwanted areas</button>
+        <button name="savesquares" id="savesquares">Save unwanted areas</button>
         <div id="entries_per_activity" style="width: 60%; height: 80%"></div>
         <div id="daystable" style="width: 100%; height: 100%"></div>
-        <div id="hourstable" style="width: 100%; height: 100%"></div>
+        <div id="hourstable" style="width: 100%; height: 100%"></div>s
     </div>
     <script src="upload.js"></script>
     <div class="datepicker">

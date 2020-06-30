@@ -93,7 +93,7 @@ if(!isset($_SESSION['uid'])){
     
         <script type="text/javascript" src="mapadmin.js"></script>
         <div id="adminform" >
-        	<form name="heatmapadmin" id="heatmapadmin" action="export.php">
+        	<form name="heatmapadmin" id="heatmapadmin" >
         		<label for="datepicker" name="date_range">Pick your desired daterange</label>
 			        <div id="datepicker">
 			        	<input type="text" name="datetimefilter" id="datetimefilter"  value=""/>
@@ -131,11 +131,13 @@ if(!isset($_SESSION['uid'])){
                     <option value="ON_FOOT">ON FOOT</option>
                     <option value="ALL">ALL TYPES</option>
         		</select><br>
-                        <label for="db">Export or Delete DataBase</label>
-                        <button id="export "type="button" name="export">EXPORT</button>
-        		<input type="submit" name="sumbithmadmin" id="submithmadmin" value="See Heatmap">
+                <button type="button" name="sumbithmadmin"  onclick="submitform()">See your Heatmap</button>
+                <button type="button" name="export" onclick="submitexport()" >Export</button>
             </form>
-            <script type="text/javascript"  src="export.js"></script>
+<!--            <script type="text/javascript"  src="export.js"></script>-->
+<!--            <label for="db">Export or Delete DataBase</label>-->
+<!--            <button id="export  name="export">EXPORT</button>-->
+
         </div>
 
 

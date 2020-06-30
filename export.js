@@ -1,11 +1,18 @@
-$("#export").click(function() {
-    $.ajax({
-        method: 'GET',
-        url:'export.php',
-        dataType:'json',
-        success:function(data){
-            console.log(data);
-        }
-    })
+$(document).ready(function () {
+    $("#export").click(function () {
+        $.ajax({
+            method: 'POST',
+            url: 'export.php',
+            dataType: 'json',
+            data: {
+                datetimefilter: $("#datetimefilter").val(),
+                type: $("#type").val(),
+                submit: $("#submithmadmin").val()
+            },
+            success: function (data) {
+                console.log(data);
+            }
+        })
 
+    })
 })
