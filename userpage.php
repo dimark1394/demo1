@@ -55,14 +55,16 @@ if(!isset($_SESSION['uiduser'])){
             <input type="file" name="uploadingfile" id="uploadedfile" accept=".json" required/>
 
             <button name="submitupload" id="submitupload">Sumbit your JSON file!</button>
+            <label id="file-name"></label>
+            <br>
+            <button name="getsquares" id="getsquares">Select unwanted areas</button>
+            <button name="savesquares" id="savesquares">Save unwanted areas</button>
             <a id="progress"></a><br>
             <div id="error"></div><br>
             <div id="files"></div>
 
         </form>
         <script type="text/javascript" src="getsquares.js"></script>
-        <button name="getsquares" id="getsquares">Select unwanted areas</button>
-        <button name="savesquares" id="savesquares">Save unwanted areas</button>
         <div id="entries_per_activity" style="width: 60%; height: 80%"></div>
         <div id="daystable" style="width: 100%; height: 100%"></div>
         <div id="hourstable" style="width: 100%; height: 100%"></div>s

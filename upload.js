@@ -1,8 +1,15 @@
 $(document).ready(function () {
+    $("#uploadedfile").change(function () {
+        $("#file-name").text(this.files[0].name);
+    })
+
     $("#uploadedfile").fileupload({
         url: 'upload.php',
         dataType: 'json',
-        autoUpload: false
+        autoUpload: false,
+        formData: {
+            squares: savedsquares
+        }
         // add: function (e, data) {
         //     $("#submitupload").off('click').on('click', function () {
         //         data.submit();
