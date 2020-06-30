@@ -67,13 +67,13 @@ $type = mysqli_real_escape_string($conn,$_POST['type']);
 
         if($type=='ALL') {
 
-            $sql = "SELECT locations.username, locations.timestamp, locations.lat , locations.lng, locations.accuracy , activity.type, activity.confidence from locations INNER JOIN activity WHERE locations.id=activity.id_location AND timestamp BETWEEN '$date1_insert' AND '$date2_insert'";
+            $sql = "SELECT locations.username, locations.timestamp, locations.lat , locations.lng, locations.accuracy , activity.type, activity.confidence from locations INNER JOIN activity WHERE locations.id=activity.id_location AND locations.timestamp BETWEEN '$date1_insert' AND '$date2_insert'";
 
         }
 
         else {
 
-            $sql = "SELECT locations.username, locations.timestamp, locations.lat , locations.lng, locations.accuracy , activity.type, activity.confidence from locations INNER JOIN activity WHERE locations.id=activity.id_location  AND activity.type = '$type' AND timestamp BETWEEN '$date1_insert' AND '$date2_insert'";
+            $sql = "SELECT locations.username, locations.timestamp, locations.lat , locations.lng, locations.accuracy , activity.type, activity.confidence from locations INNER JOIN activity WHERE locations.id=activity.id_location  AND activity.type = '$type' AND locations.timestamp BETWEEN '$date1_insert' AND '$date2_insert'";
         }
         $result=mysqli_query($conn, $sql);
 //        while($row = mysqli_fetch_array($result) ) {
@@ -94,7 +94,6 @@ $type = mysqli_real_escape_string($conn,$_POST['type']);
         fclose($output);
 
     }
-echo json_encode($data);
 
 
 //}
