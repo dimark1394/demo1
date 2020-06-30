@@ -59,6 +59,7 @@ if(!isset($_SESSION['uiduser'])){
             <br>
             <button name="getsquares" id="getsquares">Select unwanted areas</button>
             <button name="savesquares" id="savesquares">Save unwanted areas</button>
+            <button name="deletesquares" id="deletesquares">Start again</button>
             <a id="progress"></a><br>
             <div id="error"></div><br>
             <div id="files"></div>
