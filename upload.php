@@ -3,14 +3,15 @@ include_once ('connection.php');
 session_start();
 date_default_timezone_set('Europe/Athens');
 $tempusername = $_SESSION['uiduser'];
-
-$squares = ($_POST['squares']);
+//$squares=array();
+//$squares = ($_POST['squares']);
 print_r($squares);
 if (isset($_FILES['uploadingfile'])) {
 
     $file = $_FILES['uploadingfile']['tmp_name'];
     //print_r($file);
 
+   // $k=sizeof($squares);
 
     $data = file_get_contents($file);
     $rand_arr = array("ON_FOOT","WALKING","IN_VEHICLE","ON_BICYCLE","RUNNING","STILL");
@@ -83,3 +84,31 @@ function cacldist($lat2,$lon2){
     $km = $miles * 1.609344;
     return $km ;
 }
+
+//function polygons($lat2,$lon2,$k, $x)
+//{
+//    $accept=false;
+//    if($k==0)
+//    {
+//        $accept==true;
+//        //kane oti kaname se oli to upload.php
+//    }
+//    else
+//    {
+//        $i=0;
+//        while($accept==false && $i<=$k)
+//        {
+//            if($x[$i][0]['lat']<=$lat2 && $lat2<=$x[$i][2]['lat'] && $x[$i][1]['lng']<=$lon2 && $lon2<=$x[$i][3]['lng'])
+//            {
+//                $accept=false;
+//            }
+//            else
+//            {
+//                $accept=true;
+//            }
+//            $i=$i+1;
+//        }
+//
+//    }
+//    return $accept;
+//}

@@ -7,17 +7,28 @@ $table = array();
 $hour=array();
 $table['cols'] = array(
     array('label' => 'hour', 'type' => 'string'),
-    array('label' => 'count', 'type' => 'number')
+    array('label' => 'rate %', 'type' => 'number')
 );
 
 $sql = "SELECT HOUR(timestamp), count(*) AS counter FROM locations GROUP BY HOUR(timestamp) ";
 $result = mysqli_query($conn, $sql);
 
+$sql2= "SELECT * FROM locations";
+$result2=mysqli_query($conn, $sql);
+$total = mysqli_num_rows($result2);
+
 while ($row = mysqli_fetch_array($result)) {
     $hour [] = array(
         'hour' => $row['HOUR(timestamp)'],
-        'count' => $row['counter'],
+        'rate %' => $row['counter']/$total*100,
     );
+}
+
+$N=sizeof($hour);
+
+for($i=0; $i<$N; $i++)
+{
+    $hour[$i]['rate %']=round($hour[$i]['rate %'], 0.005);
 }
 
 
@@ -30,7 +41,7 @@ for($i=0; $i<24; $i++)
 
         $hour_last[]= array(
             'hour'=>$i,
-            'count'=>0
+            'rate %'=>0
     );
 
 
@@ -43,7 +54,7 @@ for($i=0; $i<$n; $i++)
     {
         if ($hour_last[$j]['hour']==$hour[$i]['hour'])
         {
-            $hour_last[$j]['count'] = $hour[$i]['count'];
+            $hour_last[$j]['rate %'] = $hour[$i]['rate %'];
         }
     }
 
@@ -53,7 +64,7 @@ for($i=0; $i<$n; $i++)
 foreach ($hour_last as $row) {
     $temp = array();
     $temp[] = array('v' => (string)$row['hour']);
-    $temp[] = array('v' => (integer)$row['count']);
+    $temp[] = array('v' => (integer)$row['rate %']);
     $rows[] = array('c' => $temp);
 
 }

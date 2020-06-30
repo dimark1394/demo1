@@ -19,6 +19,8 @@ foreach ($result as $r){
         $rows[] = array('c' => $temp);
     }
 }
+
+
 $result -> free();
 $table['rows'] = $rows;
 $jsonTable = json_encode($table,true);
