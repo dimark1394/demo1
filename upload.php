@@ -5,8 +5,9 @@ date_default_timezone_set('Europe/Athens');
 $tempusername = $_SESSION['uiduser'];
 $squares = ($_POST['squares']);
 $secrets   = explode(',',$squares);
-$k=sizeof($secrets);
-print_r($secrets);
+$secretsfl = array_map('floatval',$secrets);
+$k=sizeof($secretsfl);
+print_r($secretsfl);
 echo $k;
 
 if (isset($_FILES['uploadingfile'])) {
@@ -29,7 +30,7 @@ if (isset($_FILES['uploadingfile'])) {
     foreach ($array["locations"] as $row ) {
         $lattemp = $row['latitudeE7']*pow(10,-7);
         $lontemp = $row['longitudeE7']*pow(10, -7);
-        if((cacldist($lattemp, $lontemp) < 10.0) && ($row["activity"]) && (polygons($lattemp,$lontemp, $k , $secrets)==TRUE)) {
+        if((cacldist($lattemp, $lontemp) < 10.0) && ($row["activity"]) && (polygons($lattemp,$lontemp, $k , $secretsfl))) {
             if(strlen($row["timestampMs"]) == 12){
                 $temptime = date('Y-m-d H:i:s', substr($row["timestampMs"], 0, -2));
             }else{
@@ -88,28 +89,32 @@ function cacldist($lat2,$lon2){
     return $km ;
 }
 
-function polygons($lat2,$lon2,$k, $x)
+function polygons($lat,$lon,$k, array $x)
 {
-    $accept=false;
-    if($k==0)
+    if($k==1)
     {
-        $accept==true;
+        $accept= true;
+        echo 'kanena kritirio';
         //kane oti kaname se oli to upload.php
     }
     else
     {
+        $accept = false;
         $i=0;
-        while($accept==false && $i<=$k)
+        while($i<$k)
         {
-            if($x[$i]>=$lat2 && $lat2<=$x[$i+ 4] && $x[$i+ 3]>=$lon2 && $lon2<=$x[$i+7][3])
+            if(($x[$i]<$lat) && ($x[$i+ 4]>$lat) && ($x[$i + 3]<$lon) && ($x[$i + 7]>$lon))
             {
-                $accept=false;
+                $accept= false;
+                echo 'mesa';
                 break;
                 //einai mesa sto polugwno
             }
             else
             {
-                $accept=true;
+                $accept= true;
+                echo $lat -$x[$i] ;
+                echo 'exo';
             }
             $i=$i+8;
         }
