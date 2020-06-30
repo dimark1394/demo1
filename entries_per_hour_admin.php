@@ -4,6 +4,7 @@ include_once('connection.php');
 session_start();
 $rows = array();
 $table = array();
+$hour=array();
 $table['cols'] = array(
     array('label' => 'hour', 'type' => 'string'),
     array('label' => 'count', 'type' => 'number')

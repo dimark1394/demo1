@@ -9,7 +9,7 @@ $type = mysqli_real_escape_string($conn,$_POST['type']);
     header('Content-Type: text/csv; charset=utf-8');
     header('Content-Disposition: attachment; filename=data.csv');
     $output = fopen("php://output", "w");
-    fputcsv($output, array('ID', 'date', 'latitude', 'longitude', 'type', 'confidence', 'accuracy'));
+    fputcsv($output, array('ID', 'date', 'latitude', 'longitude', 'confidence', 'type', 'accuracy'));
     $data=array();
     if($date=='') {
         if ($type == 'ALL') {

@@ -2,7 +2,7 @@
 include_once ('connection.php');
 session_start();
 
-
+$user_count=array();
 $sql="SELECT * FROM locations ";
 $result=mysqli_query($conn, $sql);
 $total = mysqli_num_rows($result);
