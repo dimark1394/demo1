@@ -3,6 +3,7 @@ include_once ('connection.php');
 session_start();
 $rows=array();
 $table=array();
+$year=array();
 $table['cols'] = array(
     array('label' => 'year', 'type' => 'string'),
     array('label' => 'count', 'type' => 'number')

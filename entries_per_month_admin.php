@@ -4,6 +4,7 @@ include_once('connection.php');
 session_start();
 $rows = array();
 $table = array();
+$month = array();
 $table['cols'] = array(
     array('label' => 'month', 'type' => 'string'),
     array('label' => 'count', 'type' => 'number')

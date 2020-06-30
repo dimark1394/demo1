@@ -4,6 +4,7 @@ include_once('connection.php');
 session_start();
 $rows = array();
 $table = array();
+$day=array();
 $table['cols'] = array(
     array('label' => 'day', 'type' => 'string'),
     array('label' => 'count', 'type' => 'number')
