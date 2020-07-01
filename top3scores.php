@@ -2,7 +2,7 @@
 
 include_once ('connection.php');
 session_start();
-$tempusername = $_SESSION['uiduser'];
+$tempusername = $_SESSION['uiduid'];
 $users=array();
 $sql="SELECT username FROM activity  GROUP BY username  ";
 $result=mysqli_query($conn,$sql);
@@ -158,7 +158,7 @@ if($tempusername!=$users_final[0]['user'] && $tempusername!=$users_final[1]['use
 //echo "<br>";echo "<br>";
 //echo "now i need to have the firstName and the lastName ";
 //this query is to include the firstname and last name
-$sql2="SELECT firstName, lastName, username FROM users GROUP BY username" ;
+$sql2="SELECT firstName, lastName, username, user_id FROM users GROUP BY username" ;
 $result2=mysqli_query($conn, $sql2);
 
 while($row = mysqli_fetch_array($result2) )
@@ -166,7 +166,8 @@ while($row = mysqli_fetch_array($result2) )
     $users_temp[] = array(
         'user' => $row['username'],
         'first' => $row['firstName'],
-        'last'=>$row['lastName']
+        'last'=>$row['lastName'],
+        'user_id'=>$row['user_id']
     ) ;
 }
 //echo "<br>";echo "<br>";
@@ -196,7 +197,7 @@ for($i=0; $i<$n; $i++)
 {
     for($j=0; $j<$k; $j++)
     {
-        if($users_temp[$i]['user']==$users_final[$j]['user'])
+        if($users_temp[$i]['user_id']==$users_final[$j]['user'])
         {
             $top3[$l]['name']=$users_temp[$i]['first'] . ' ' . $users_temp[$i]['last'];
             $top3[$l]['score']= $users_final[$j]['count'];
