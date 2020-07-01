@@ -28,6 +28,7 @@ if (isset($_POST['submit'])) {
                 } else if ($pwdcheck == 0) {
                     session_start();
                     $_SESSION['uiduser'] = $row['username'];
+                    $_SESSION['uiduid'] = $row['user_id'];
                     $_SESSION['usermail'] = $row['email'];
                     echo "success as user";
                 } else {
