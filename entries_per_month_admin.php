@@ -15,7 +15,7 @@ $sql = "SELECT MONTHNAME(timestamp), count(*) AS counter FROM locations GROUP BY
 $result = mysqli_query($conn, $sql);
 
 $sql2= "SELECT * FROM locations";
-$result2=mysqli_query($conn, $sql);
+$result2=mysqli_query($conn, $sql2);
 $total = mysqli_num_rows($result2);
 
 while ($row = mysqli_fetch_array($result)) {
