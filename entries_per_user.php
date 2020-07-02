@@ -36,7 +36,48 @@ for($i=0; $i<$N; $i++)
 {
       $user_count[$i]['rate %']=round($user_count[$i]['rate %'], 0.005);
 }
+
+//for($i=0; $i<$N; $i++)
+//{
+//    echo $user_count[$i]['user'];
+//    echo " ";
+//    echo $user_count[$i]['rate %'];
+//    echo "<br>";
+//}
+
+//menei na ta sortarw to users_count se fthinousa seira me to keyvalue rate %
+function sortByOrder($a, $b) {
+    return $b['rate %'] - $a['rate %'];
+}
+
+usort($user_count, 'sortByOrder');
+
 //echo "<br>";
+//for($i=0; $i<$N; $i++)
+//{
+//    echo $user_count[$i]['user'];
+//    echo " ";
+//    echo $user_count[$i]['rate %'];
+//    echo "<br>";
+//}
+
+$user_final=array();
+//An allaksw to i=5 me i=6 gia paradeigma tha tous top6 se %. Opote to i allazei posous xristes thelw na dw sinolika
+
+for($i=0; $i<5; $i++)
+{
+    $user_final[$i]['user']=$user_count[$i]['user'];
+    $user_final[$i]['rate %']=$user_count[$i]['rate %'];
+}
+//echo "<br>";
+//for($i=0; $i<5; $i++)
+//{
+//    echo $user_final[$i]['user'];
+//    echo " ";
+//    echo $user_final[$i]['rate %'];
+//    echo "<br>";
+//}
+////echo "<br>";
 //print_r($user_count);
 
 $table = array();
@@ -46,7 +87,7 @@ $table['cols'] = array(
 );
 
 $rows = array();
-foreach ($user_count as $row)
+foreach ($user_final as $row)
 {
     $temp=array();
     $temp[] = array('v' => (string) $row['user']);
