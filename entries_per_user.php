@@ -37,7 +37,6 @@ for($i=0; $i<$N; $i++)
       $user_count[$i]['rate %']=round($user_count[$i]['rate %'], 0.005);
 }
 //echo "<br>";
-//
 //print_r($user_count);
 
 $table = array();
