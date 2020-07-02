@@ -24,7 +24,7 @@ if($tempusername)
         $array = json_decode($data, true);
         date_default_timezone_set('Europe/Athens');
         $currentdate = date('Y-m-d H:i:s');
-        $sql1 = "UPDATE users SET lastupload='$currentdate' WHERE username='$tempusername'";
+        $sql1 = "UPDATE users SET lastupload='$currentdate' WHERE user_id='$tempusername'";
         mysqli_query($conn, $sql1);
     }
     $date_cor = "0";

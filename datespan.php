@@ -8,7 +8,7 @@ if($tempusername) {
     $message = array();
 
 
-    $query = "SELECT lastupload FROM users WHERE username='$tempusername' ";
+    $query = "SELECT lastupload FROM users WHERE user_id='$tempusername' ";
     $last = mysqli_query($conn, $query);
     while ($last1 = mysqli_fetch_array($last)) {
         $last_updates [] = array(
