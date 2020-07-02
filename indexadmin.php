@@ -53,18 +53,20 @@ if(!isset($_SESSION['uid'])){
 <main>
 
     <div id="dashboard" style="display: inline">
-        <div id="piechart_div" style="width: 500px; height: 300px; float:left"></div>
+
+        
+        <div id="activity_div" style="width: 500px; height: 200px; float:right"></div>
 
 
-        <div id="barchart_div" style="width: 400px; height: 250px; float:left"></div>
+        <div id="user_div" style="width: 450px; height: 200px; float:left"></div>
 
-        <div id="linechart_div" style="border: 1px solid #ccc; width: 400px; height: 250px; float:left"></div>
+        <div id="month_div" style="border: 1px solid #ccc; width: 400px; height: 250px; float:left"></div>
 
-        <div id="linechart2_div" style="border: 1px solid #ccc; width: 400px; height: 250px; float:left"></div>
+        <div id="day_div" style="border: 1px solid #ccc; width: 400px; height: 250px; float:right"></div>
 
-        <div id="linechart3_div" style="border: 1px solid #ccc; width: 400px; height: 250px; float:left"></div>
+        <div id="hour_div" style="border: 1px solid #ccc; width: 400px; height: 250px; float:left"></div>
 
-        <div id="linechart4_div" style="border: 1px solid #ccc; width: 400px; height: 250px; float:left"></div>
+        <div id="year_div" style="border: 1px solid #ccc; width: 400px; height: 300px; float:right"></div>
 
 
     </div>

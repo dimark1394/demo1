@@ -24,7 +24,7 @@ function drawPieChart() {
     };
     console.log(data);
 // Instantiate and draw the chart for pizza.
-    var chart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+    var chart = new google.visualization.PieChart(document.getElementById('activity_div'));
 
     chart.draw(data, options);
 }
@@ -44,7 +44,7 @@ function drawBarChart() {
     };
     console.log(data);
 
-    var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
+    var barchart = new google.visualization.BarChart(document.getElementById('user_div'));
     barchart.draw(data, options);
 
 }
@@ -64,7 +64,7 @@ function drawLineChart() {
     };
     console.log(data);
 // Instantiate and draw the chart for pizza.
-    var chart = new google.visualization.BarChart(document.getElementById('linechart_div'));
+    var chart = new google.visualization.BarChart(document.getElementById('month_div'));
 
     chart.draw(data, options);
 }
@@ -84,7 +84,7 @@ function drawLineChart2() {
     };
     console.log(data);
 // Instantiate and draw the chart for pizza.
-    var chart = new google.visualization.PieChart(document.getElementById('linechart2_div'));
+    var chart = new google.visualization.PieChart(document.getElementById('day_div'));
 
     chart.draw(data, options);
 }
@@ -104,7 +104,7 @@ function drawLineChart3() {
     };
     console.log(data);
 // Instantiate and draw the chart for pizza.
-    var chart = new google.visualization.BarChart(document.getElementById('linechart3_div'));
+    var chart = new google.visualization.BarChart(document.getElementById('hour_div'));
 
     chart.draw(data, options);
 }
@@ -124,7 +124,7 @@ function drawLineChart4() {
     };
     console.log(data);
 // Instantiate and draw the chart for pizza.
-    var chart = new google.visualization.PieChart(document.getElementById('linechart4_div'));
+    var chart = new google.visualization.PieChart(document.getElementById('year_div'));
 
     chart.draw(data, options);
 }
