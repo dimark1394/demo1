@@ -23,7 +23,7 @@ function drawPieChart() {
         legend: { position: 'bottom' }
     };
     console.log(data);
-// Instantiate and draw the chart for pizza.
+
     var chart = new google.visualization.PieChart(document.getElementById('activity_div'));
 
     chart.draw(data, options);
@@ -103,7 +103,7 @@ function drawLineChart3() {
         legend: { position: 'bottom' }
     };
     console.log(data);
-// Instantiate and draw the chart for pizza.
+
     var chart = new google.visualization.BarChart(document.getElementById('hour_div'));
 
     chart.draw(data, options);
