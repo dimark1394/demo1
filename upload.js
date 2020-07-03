@@ -20,7 +20,6 @@ $(document).ready(function () {
         var fileTypeAllowed = /.\.(json)$/i;
         var fileName = data.originalFiles[0]['name'];
         var fileSize = data.originalFiles[0]['size'];
-        console.log(data);
         $("#submitupload").off('click').on('click', function () {
             if (!fileTypeAllowed.test(fileName)) {
                 $("#error").html('Only json files are allowed');

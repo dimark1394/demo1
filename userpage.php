@@ -61,6 +61,9 @@ if(!isset($_SESSION['uiduser'])){
             <button name="savesquares" id="savesquares">Save unwanted areas</button>
             <button name="deletesquares" id="deletesquares">Start again</button>
             <br>
+            <a id="progress"></a><br>
+            <div id="error"></div><br>
+            <div id="files"></div><br>
             <a>How to use:
               <br>  1.Choose your Json file to be uploaded <br>
                     2.Press Submit your JSON file
@@ -72,9 +75,7 @@ if(!isset($_SESSION['uiduser'])){
                 then choose your secret areas as long as you don't press Submit<br>
                 Remember: Always save your areas before sumbit
             </a>
-            <a id="progress"></a><br>
-            <div id="error"></div><br>
-            <div id="files"></div>
+
 
         </form>
         <script type="text/javascript" src="getsquares.js"></script>
@@ -122,7 +123,7 @@ if(!isset($_SESSION['uiduser'])){
     <div id="highscores">
         <a id="highscoresmsg">These are the top three ecologists of the month (including you even if you are not in the top 3)</a>
         <script defer async type="text/javascript" src="top3.js"></script>
-        <div id="top3" style="width: 30rem; height:10rem;"></div>
+        <div id="top3" style="width: 30rem; height:13rem;"></div>
 
         <script defer async type="text/javascript" src="last_year.js"></script>
         <div id="curve_chart" style="width: 40rem; height: 20rem"></div>

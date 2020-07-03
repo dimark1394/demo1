@@ -14,13 +14,9 @@ if (isset($_FILES['uploadingfile'])) {
     //print_r($file);
 
 
-    $start = microtime(true);
     $data = file_get_contents($file);
-    echo ''.microtime(true) - $start.' seconds';
     $rand_arr = array("ON_FOOT","WALKING","IN_VEHICLE","ON_BICYCLE","RUNNING","STILL");
-    $start1 = microtime(true);
     $array = json_decode($data, true);
-    echo ''.microtime(true) - $start1.' seconds';
     date_default_timezone_set('Europe/Athens');
     $currentdate = date('Y-m-d H:i:s');
     $sql1 = "UPDATE users SET lastupload='$currentdate' WHERE user_id='$tempusername'";
@@ -73,7 +69,7 @@ if (isset($_FILES['uploadingfile'])) {
 
         }
 
-    $msg = array("msg" => "times ok ");
+    $msg = array("msg" => "Your data have been saved!!!");
     exit(json_encode($msg));
 
 
