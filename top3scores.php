@@ -33,7 +33,7 @@ $v=sizeof($scores);
 //echo "<br> size  ";
 //echo $v;
 
-// PRWTO SIMEIO EDWWWWWWWWWWWWWWWWWWWWWWWWWWWW POY DEN BGAZEI BUG GIA 2 MONO OIKOLOGOUS
+// PRWTO SIMEIO EDWW POY DEN BGAZEI BUG GIA 2 MONO OIKOLOGOUS
 //echo "<br>";
 //echo  "THis the scores for each month";
 //echo "<br>";
@@ -184,7 +184,7 @@ for($i=0; $i<$n; $i++)
 
 //exw ton pinaka $users_temp me keys to username FIrsname kai PRwto gramma lastname  me .
 //exw to pinaka $users_final  pou exei tous top 3 (+thesi user)
-//prepei na ta enwsw ta gamimena ftiaxnontas pinaka $top3[] me key values firstname lastname count (isws kai position)
+//prepei na ta enwsw  ftiaxnontas pinaka $top3[] me key values firstname lastname count (isws kai position)
 //to size tou $users_temp exei size $n
 //to size tou $users_final exei size $k
 $top3=array();
