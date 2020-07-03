@@ -53,22 +53,34 @@ if(!isset($_SESSION['uiduser'])){
         <form id="upload" >
             Choose your json file :
             <input type="file" name="uploadingfile" id="uploadedfile" accept=".json" required/>
-
-            <button name="submitupload" id="submitupload">Sumbit your JSON file!</button>
             <label id="file-name"></label>
+            <button name="submitupload" id="submitupload">Sumbit your JSON file!</button>
+
             <br>
             <button name="getsquares" id="getsquares">Select unwanted areas</button>
             <button name="savesquares" id="savesquares">Save unwanted areas</button>
             <button name="deletesquares" id="deletesquares">Start again</button>
+            <br>
+            <a>How to use:
+              <br>  1.Choose your Json file to be uploaded <br>
+                    2.Press Submit your JSON file
+            <br>Or if you want to hide some areas:
+            <br>1a. Press Select unwanted areas ( a tool will apear on map)<br>
+                2a. Press Save unwanted areas ( then follow step 1,2) <br>
+                3a. If you want to start anew press Start again <br>
+                Notice: It doesn't matter if you first choose your file and<br>
+                then choose your secret areas as long as you don't press Submit<br>
+                Remember: Always save your areas before sumbit
+            </a>
             <a id="progress"></a><br>
             <div id="error"></div><br>
             <div id="files"></div>
 
         </form>
         <script type="text/javascript" src="getsquares.js"></script>
-        <div id="entries_per_activity" style="width: 60%; height: 80%"></div>
-        <div id="daystable" style="width: 100%; height: 100%"></div>
-        <div id="hourstable" style="width: 100%; height: 100%"></div>s
+        <div id="entries_per_activity" style="width: 60%; height: 80%; margin-bottom: 0.5rem; margin-left: 1rem;"></div>
+        <div id="daystable" style="width: 100%; height: 100%; margin-bottom: 0.5rem ; margin-left: 1rem"></div>
+        <div id="hourstable" style="width: 100%; height: 100%; margin-bottom: 0.5rem; margin-left: 1rem"></div>
     </div>
     <script src="upload.js"></script>
     <div class="datepicker">
@@ -110,10 +122,10 @@ if(!isset($_SESSION['uiduser'])){
     <div id="highscores">
         <a id="highscoresmsg">These are the top three ecologists of the month (including you even if you are not in the top 3)</a>
         <script defer async type="text/javascript" src="top3.js"></script>
-        <div id="top3" style="width: 600px; height:300px"></div>
+        <div id="top3" style="width: 30rem; height:10rem;"></div>
 
         <script defer async type="text/javascript" src="last_year.js"></script>
-        <div id="curve_chart" style="width: 700px; height: 300px"></div>
+        <div id="curve_chart" style="width: 40rem; height: 20rem"></div>
 
         <script src="datespan.js"></script>
         <script src="eco.js"></script>
