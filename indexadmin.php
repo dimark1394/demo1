@@ -54,19 +54,24 @@ if(!isset($_SESSION['uid'])){
 
     <div id="dashboard" style="display: inline">
 
-        
-        <div id="activity_div" style="width: 500px; height: 200px; float:right"></div>
+        <h1>There are the diagrams for some data</h1>
+        <div class="dashboard-left">
 
+             <div class="diagram-left" id="user_div" style="border: 1px solid #ccc; "></div>
 
-        <div id="user_div" style="width: 450px; height: 200px; float:left"></div>
+             <div class="diagram-left" id="month_div" style="border: 1px solid #ccc; "></div>
 
-        <div id="month_div" style="border: 1px solid #ccc; width: 400px; height: 250px; float:left"></div>
+              <div class="diagram-left" id="hour_div" style="border: 1px solid #ccc; "></div>
+        </div>
 
-        <div id="day_div" style="border: 1px solid #ccc; width: 400px; height: 250px; float:right"></div>
+        <div class="dashboard-right">
 
-        <div id="hour_div" style="border: 1px solid #ccc; width: 400px; height: 250px; float:left"></div>
+            <div class="diagram-right" id="activity_div" style="border: 1px solid #ccc; "></div>
 
-        <div id="year_div" style="border: 1px solid #ccc; width: 400px; height: 300px; float:right"></div>
+            <div class="diagram-right" id="day_div" style="border: 1px solid #ccc; "></div>
+
+            <div class="diagram-right" id="year_div" style="border: 1px solid #ccc; "></div>
+        </div>
 
 
     </div>

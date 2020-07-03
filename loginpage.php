@@ -78,12 +78,12 @@
                 Location History Visualizer.
             </p>
             <div class="registerform">
-                <a>Εάν δεν έχετε λογαριασμό παρακαλώ εγγραφείτε ΕΔΩ</a>
+                <a>Sing in for free if you don' t have an account</a>
                 <form id="register_form" action="register.php" method="POST" >
-                    <label>Όνομα:</label>
+                    <label>First name:</label>
                     <input class="inputregister" type="text" name="fname" placeholder="Enter your first name" id="userfname">
                     <br>
-                    <label>Επώνυμο:</label>
+                    <label>Last name:</label>
                     <input class="inputregister" type="text" name="lname" placeholder="Enter your last last name" id="userlname">
                     <label>Username:</label>
                     <input class="inputregister" type="text" name="username" placeholder="Enter your desired username" id="usernamereg">

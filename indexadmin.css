@@ -172,3 +172,45 @@ label {
     color: #f1f1f1;
     float: right;
 }
+
+.dashboard-left
+{
+    position:relative;
+    float:left;
+    padding-right: 10%;
+    margin-left: 10%;
+    padding-bottom: 100px;
+
+}
+
+.dashboard-right
+{
+    position:relative;
+    float: right;
+    padding-left: 12%;
+    margin-right: 10%;
+    padding-bottom: 100px;
+}
+.diagram-left
+{
+    width: 600px;
+    height: 300px;
+    margin-top: 15%;
+
+
+}
+
+.diagram-right
+{
+    width: 600px;
+    height: 300px;
+    margin-top: 15%;
+
+
+}
+
+h1
+{
+    color: white;
+    margin-left: 38%;
+}

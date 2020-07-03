@@ -18,7 +18,7 @@ function drawPieChart() {
     console.log(jsonData);
     var data = new google.visualization.DataTable(jsonData);
     var options = {
-        title: 'Pososto drastiriotitas ana xristi',
+        title: 'Percentage of activity per user',
         curveType: 'function',
         legend: { position: 'bottom' }
     };
@@ -38,7 +38,7 @@ function drawBarChart() {
     }).responseText;
     var data = new google.visualization.DataTable(jsonData);
     var options = {
-        title: 'Pososto egraffwn ana xristi',
+        title: 'Percentage of uploads per user (top 5)',
         curveType: 'function',
         legend: { position: 'bottom' }
     };
@@ -58,7 +58,7 @@ function drawLineChart() {
     }).responseText;
     var data = new google.visualization.DataTable(jsonData);
     var options = {
-        title: 'Pososto drastiriotitas ana mina',
+        title: 'Percentage of activity per month',
         curveType: 'function',
         legend: { position: 'bottom' }
     };
@@ -78,7 +78,7 @@ function drawLineChart2() {
     }).responseText;
     var data = new google.visualization.DataTable(jsonData);
     var options = {
-        title: 'Pososto drastiriotitas ana mera',
+        title: 'Percentage of activity per day',
         curveType: 'function',
         legend: { position: 'bottom' }
     };
@@ -98,7 +98,7 @@ function drawLineChart3() {
     }).responseText;
     var data = new google.visualization.DataTable(jsonData);
     var options = {
-        title: 'Pososto drastiriotitas ana wra',
+        title: 'Percentage of activity per hour',
         curveType: 'function',
         legend: { position: 'bottom' }
     };
@@ -118,7 +118,7 @@ function drawLineChart4() {
     }).responseText;
     var data = new google.visualization.DataTable(jsonData);
     var options = {
-        title: 'Pososto drastiriotitas ana xrono',
+        title: 'Percentage of activity per year',
         curveType: 'function',
         legend: { position: 'bottom' }
     };
